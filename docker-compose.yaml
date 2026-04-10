@@ -1,0 +1,31 @@
+services: 
+  redis:
+    image: redis:8.6
+    container_name: issus_ticket_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - issus_ticket_redis_data:/data
+  app:
+    container_name: ptd-api-LLM
+    build:
+      context: . 
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - /src/.venv  # Protect the container's Linux-built venv from host overwrite
+    depends_on:
+      - redis
+    healthcheck:
+      # The command to run (0 exit code = healthy, non-zero = unhealthy)
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health/"]
+      interval: 30s        # Time between checks
+      timeout: 10s         # Time to wait for a response
+      retries: 3           # Number of failures before marking "unhealthy"
+      start_period: 40s    # Initial grace period for startup
+      
+volumes:
+  issus_ticket_redis_data:
