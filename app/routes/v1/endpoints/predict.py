@@ -1,6 +1,6 @@
 from fastapi import APIRouter,BackgroundTasks
 from app.schemas.predict_ticket_schema import predictRequest,predictResponse
-from app.services.predict_agent.util.agent import graph
+from app.services.predict_agent.agent import graph
 
 router = APIRouter(prefix="/predict",tags=["predict-ticket"])
 
