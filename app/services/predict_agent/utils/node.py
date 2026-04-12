@@ -1,11 +1,13 @@
+import httpx
+
 from typing import Dict, Any
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
-from app.services.predict_agent.util.state import TicketState, LLMPredictOutput
+from app.services.predict_agent.utils.state import TicketState, LLMPredictOutput, TicketPredictResult, TicketItem
 from app.core.config import settings
 # การตั้งค่า LLM (gemini-2.5-flash)
 llm = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
+    model="gemini-2.5-flash-lite",
     temperature=0,
     api_key=settings.GEMINI_API_KEY
 )
@@ -21,13 +23,11 @@ Always return the result strictly following the required schema.
 Do not include any explanation outside the schema.
 """
 
-
-
-def llm_predict_node(state: TicketState) -> Dict[str, Any]:
+async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
 
     print(state)
 
-    if state.error or not state.success or not state.title or not state.description:
+    if state.error or not state.success:
         print("[NODE PREDICT]: LLM can't processing")
         return {
             "success": False,
@@ -36,8 +36,17 @@ def llm_predict_node(state: TicketState) -> Dict[str, Any]:
         }
 
     print("--- NODE: LLM_predict ---")
-    title = state.title
-    description = state.description
+    tickets = state.grouped_tickets
+
+    if not tickets:
+        if state.title and state.description:
+            tickets = [TicketItem(title=state.title, description=state.description)]
+        else:
+            return {
+                "success": False,
+                "error": "No tickets provided",
+                "steps": state.steps + [{"node": "LLM_predict", "status": "error", "error": "No tickets provided"}]
+            }
     
     # สร้าง Prompt Template สำหรับส่งไปให้ Gemini 
     prompt = ChatPromptTemplate.from_messages([
@@ -49,19 +58,28 @@ def llm_predict_node(state: TicketState) -> Dict[str, Any]:
     chain = prompt | llm.with_structured_output(LLMPredictOutput)
     
     try:
-        # พยากรณ์ผลลัพธ์
-        result: LLMPredictOutput = chain.invoke({
-            "title": title,
-            "description": description
-        })
-        
-        # คืนค่า (dict) เพื่อเอาไปอัปเดต state ตัวหลักของ Graph
+        results = []
+
+        for item in tickets:
+            result: LLMPredictOutput = await chain.ainvoke({
+                "title": item.title,
+                "description": item.description
+            })
+            results.append(
+                TicketPredictResult(
+                    title=item.title,
+                    description=item.description,
+                    prediction=result,
+                )
+            )
+        print(f"LLM Predict Results: {results}")
+
         return {
-            "data": result,
+            "data": results,
             "success": True,
-            "steps": state.steps + [{"node": "LLM_predict", "status": "success", "result": result.dict()}]
+            "steps": state.steps + [{"node": "LLM_predict", "status": "success", "result_count": len(results)}]
         }
-        
+
     except Exception as e:
         print(f"Error in LLM_predict: {e}")
         return {
@@ -70,10 +88,48 @@ def llm_predict_node(state: TicketState) -> Dict[str, Any]:
             "steps": state.steps + [{"node": "LLM_predict", "status": "error", "error": str(e)}]
         }
 
-def callback_node(state: TicketState):
-    print(f"Title: {state.title}")
-    print(f"Description: {state.description}")
-    print(f"Data: {state.data}")
-    print(f"Success: {state.success}")
-    print(f"Error: {state.error}")
-    print(f"Steps: {state.steps}")
+async def callback_node(state: TicketState):
+    print("--- [NODE CALLBACK]: callback_node ---")
+    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create/ticket"
+
+    if state.error or not state.success or not state.data:
+        payload = {
+            "form_id": state.form_id,
+            "status": "failed",
+            "message": f"Failed to process ticket {state.error}",
+        }
+    else:
+        payload = {
+            "form_id": state.form_id,
+            "status": "success",
+            "data": [item.model_dump() for item in state.data],
+            "message": f"Ticket {state.form_id} processed successfully ",
+            }
+
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(callback_url, json=payload)
+            print(f"Callback response: {response.status_code} - {response.text}")
+
+            if response.status_code in (200, 204):
+                return {
+                    "callback_response": {
+                        "status": "Success",
+                        "status_code": response.status_code,
+                        "message": "Callback successful",
+                    }
+                }
+
+            return {
+                "callback_response": {
+                    "status": "Failed",
+                    "status_code": response.status_code,
+                    "message": response.text,
+                }
+            }
+    except Exception as e:
+        print(f"Error in callback_node: {e}")
+        return {
+            "callback_response": {"status": "Failed", "error": str(e)},
+        }
+        

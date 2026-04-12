@@ -1,7 +1,7 @@
 {
   "dependencies": ["."],
   "graphs": {
-    "my_agent": "./app/services/predict_agent/util/agent.py:graph"
+    "predict_agent": "./app/services/predict_agent/agent.py:graph"
   },
   "env": "./.env"
 }

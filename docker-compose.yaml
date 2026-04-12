@@ -6,6 +6,7 @@ services:
       - "6379:6379"
     volumes:
       - issus_ticket_redis_data:/data
+      
   app:
     container_name: ptd-api-LLM
     build:

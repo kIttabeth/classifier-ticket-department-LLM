@@ -15,7 +15,9 @@ class Setting(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
     REDIS_DB: int
-
+    
+    LANGSMITH_TRACING: bool
+    
     model_config = SettingsConfigDict(env_file_encoding="utf-8",env_file=".env")
 
 settings = Setting()

@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from enum import Enum
+from typing import List
+
+from pydantic import BaseModel
 
 class PriorityEnum(str, Enum):
     LOW = "low"
@@ -16,13 +18,16 @@ class DepartmentEnum(str,Enum):
     IOT = "IOT"
     OTHER = "OTHER"
 
-class predictRequest(BaseModel):
-    from_id:str
+class ticket(BaseModel):
+    form_id:str
     title:str 
     description:str
+    
+class predictRequest(BaseModel):
+    data:List[ticket]
 
 class predictResponse(BaseModel):
-    form_id:str
+    form_ids: List[str]
     status: int
     message:str
     

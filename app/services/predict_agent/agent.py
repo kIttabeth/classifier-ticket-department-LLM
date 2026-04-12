@@ -1,15 +1,17 @@
-from langgraph.graph import StateGraph,END,START
-from app.services.predict_agent.util.node import llm_predict_node,callback_node
-from app.services.predict_agent.util.state import TicketState
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import StateGraph, END, START
+from app.services.predict_agent.utils.node import llm_predict_node,callback_node
+from app.services.predict_agent.utils.state import TicketState
 
 # สร้าง Graph
 builder = StateGraph(TicketState)
 
-builder.add_node("LLM_predict",llm_predict_node)
-builder.add_node("Callback_node",callback_node)
+builder.add_node("llm_predict",llm_predict_node)
+builder.add_node("callback_node",callback_node)
 
-builder.add_edge(START,"LLM_predict")
-builder.add_edge("LLM_predict","Callback_node")
-builder.add_edge("Callback_node",END)
+builder.add_edge(START,"llm_predict")
+builder.add_edge("llm_predict","callback_node")
+builder.add_edge("callback_node",END)
 
-graph = builder.compile()
+memory = MemorySaver()
+graph = builder.compile(checkpointer=memory)
