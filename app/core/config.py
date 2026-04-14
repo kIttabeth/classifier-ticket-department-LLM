@@ -11,6 +11,7 @@ class Setting(BaseSettings):
     #Embedding Model
     DENSE_EMBEDDING_BASE_URL: str 
     
+    
     #Redis
     REDIS_HOST: str
     REDIS_PORT: int
