@@ -3,7 +3,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-class PriorityEnum(str, Enum):
+class PriorityEnum(str,Enum):
     LOW = "low"
     MEDIUM = "medium"
     HIGH = "high"
@@ -18,13 +18,18 @@ class DepartmentEnum(str,Enum):
     IOT = "IOT"
     OTHER = "OTHER"
 
-class ticket(BaseModel):
-    form_id:str
-    title:str 
-    description:str
-    
+class formItem(BaseModel):
+    id: str
+    form_id: str
+    title: str 
+    description: str
+
+class companyData(BaseModel):
+    company_id: str
+    forms: List[formItem]
+
 class predictRequest(BaseModel):
-    data:List[ticket]
+    data: List[companyData]
 
 class predictResponse(BaseModel):
     form_ids: List[str]
