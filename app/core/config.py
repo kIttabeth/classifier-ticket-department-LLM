@@ -9,7 +9,7 @@ class Setting(BaseSettings):
     GEMINI_API_KEY: str
 
     #Embedding Model
-    EMBEDDING_BASE_URL: str 
+    DENSE_EMBEDDING_BASE_URL: str 
     
     #Redis
     REDIS_HOST: str
