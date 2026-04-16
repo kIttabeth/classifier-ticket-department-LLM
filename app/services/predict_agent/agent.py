@@ -14,4 +14,4 @@ builder.add_edge("llm_predict","callback_node")
 builder.add_edge("callback_node",END)
 
 memory = MemorySaver()
-graph = builder.compile()
+graph = builder.compile(checkpointer=memory)

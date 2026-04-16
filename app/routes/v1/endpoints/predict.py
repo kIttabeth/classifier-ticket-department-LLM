@@ -1,12 +1,12 @@
-from fastapi import APIRouter, BackgroundTasks
+from fastapi import APIRouter
 
 from app.schemas.predict_ticket_schema import predictRequest, predictResponse
-from app.services.predict_agent.agent import graph
+from app.worker import ticket_prediction
 
-router = APIRouter(prefix="/predict-LLM", tags=["predict-ticket"])
+router = APIRouter(tags=["predict-ticket"])
 
-@router.post("/", response_model=predictResponse)
-async def predict_ticket(tickets: predictRequest, background_tasks: BackgroundTasks):
+@router.post("/predict-LLM", response_model=predictResponse)
+async def predict_ticket(tickets: predictRequest):
     try:
         grouped_tickets = {}
         
@@ -34,34 +34,23 @@ async def predict_ticket(tickets: predictRequest, background_tasks: BackgroundTa
         #   ],
         # }
 
-        form_ids = []
+        queued_count = 0
 
         for (company_id, form_id), tickets_list in grouped_tickets.items():
-            form_ids.append(form_id)
             state_dict = {
                 "company_id": company_id,
                 "form_id": form_id,
                 "grouped_tickets": tickets_list
             }
-
-        # state_dict = {
-        #     "company_id": "xxxx1",
-        #     "form_id":    "form_A",
-        #     "grouped_tickets": [
-        #         {"title": "Bug Report",   "description": "App crashes"},
-        #         {"title": "Bug Report 2", "description": "Login fail"},
-        #     ]
-        # }
-        
-            background_tasks.add_task(
-                graph.ainvoke,
-                state_dict,
-                {"configurable": {"thread_id": f"{company_id}-{form_id}"}},
-            )
+            
+            state_dict["thread_id"] = f"{company_id}_{form_id}"
+            
+            ticket_prediction.delay(state_dict)
+            queued_count += 1
 
         return predictResponse(
             message="Processing queued",
-            queued_count=len(form_ids),
+            queued_count=queued_count,
         )
     except Exception as e:
         from fastapi import HTTPException
