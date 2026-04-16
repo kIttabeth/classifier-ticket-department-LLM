@@ -9,18 +9,18 @@ class PriorityEnum(str,Enum):
     HIGH = "high"
     URGENT = "urgent"
 
-class DepartmentEnum(str,Enum):
-    Frontend = "Frontend"
-    Backend = "Backend"
-    UXUI = "UXUI"
-    Business_Analyst = "Business Analyst"
-    QA = "QA"
-    IOT = "IOT"
-    OTHER = "OTHER"
+# class DepartmentEnum(str,Enum):
+#     Frontend = "Frontend"
+#     Backend = "Backend"
+#     UXUI = "UXUI"
+#     Business_Analyst = "Business Analyst"
+#     QA = "QA"
+#     IOT = "IOT"
+#     OTHER = "OTHER"
 
 class formItem(BaseModel):
     id: str
-    form_id: str
+    link_id: str
     title: str 
     description: str
 
@@ -32,7 +32,6 @@ class predictRequest(BaseModel):
     data: List[companyData]
 
 class predictResponse(BaseModel):
-    form_ids: List[str]
-    status: int
+    # form_ids: List[str]
     message:str
-    
+    queued_count: int    

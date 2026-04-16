@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from app.schemas.predict_ticket_schema import DepartmentEnum, PriorityEnum
+from app.schemas.predict_ticket_schema import PriorityEnum
 
 class TicketItem(BaseModel):
     title: str
@@ -19,7 +19,7 @@ class TicketState(BaseModel):
     # ข้อมูลที่ได้รับมาจาก Route
     company_id: str = Field(...,description="company_id ที่ส่งมาจาก backend ")
     form_id: str = Field(...,description="form_id ที่ส่งมาจาก backend ")
-    grouped_tickets: List[TicketItem] = Field(default_factory=list, description="payload แบบ grouped ตาม form_id")
+    grouped_tickets: List[TicketItem] = Field(default_factory=list, description="payload แบบ grouped ตาม link_id")
     # title: Optional[str] = Field(None,description="title ของ ticket")
     # description: Optional[str] = Field(None,description="description ของ ticket")
     

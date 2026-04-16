@@ -9,10 +9,12 @@ router = APIRouter(prefix="/predict-LLM", tags=["predict-ticket"])
 async def predict_ticket(tickets: predictRequest, background_tasks: BackgroundTasks):
     try:
         grouped_tickets = {}
+        
+        print(tickets)
 
         for company in tickets.data:
             for form in company.forms:
-                key = (company.company_id, form.form_id)
+                key = (company.company_id, form.id)
                 grouped_tickets.setdefault(key, []).append(
                     {
                         "title": form.title,
@@ -58,10 +60,8 @@ async def predict_ticket(tickets: predictRequest, background_tasks: BackgroundTa
             )
 
         return predictResponse(
-            form_ids=form_ids,
             message="Processing queued",
-            status=200
-            # queued_count=len(form_ids),
+            queued_count=len(form_ids),
         )
     except Exception as e:
         from fastapi import HTTPException
