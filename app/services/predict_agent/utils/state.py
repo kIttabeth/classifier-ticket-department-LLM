@@ -12,8 +12,8 @@ class TicketPredictResult(BaseModel):
     # department_id: str = Field(..., description="ID ของแผนกที่เหมาะสมที่สุดสำหรับจัดการปัญหาใน Ticket นี้ (อ้างอิง ID จากข้อมูล Available Departments ที่ให้ไป)")
     title: str =  Field(..., description="title ของ ticket")
     description: str = Field(..., description="รายละเอียดของ ticket")
-    priority: PriorityEnum = Field(..., description="ระดับความสำคัญของปัญหา (low, medium, high, urgent)")
-    department_name: str = Field(..., description="ชื่อแผนกที่เหมาะสมที่สุดสำหรับจัดการปัญหาใน Ticket นี้")
+    priority: Optional[PriorityEnum] = Field(None, description="ระดับความสำคัญของปัญหา (low, medium, high, urgent)")
+    department_name: Optional[str] = Field(None, description="ชื่อแผนกที่เหมาะสมที่สุดสำหรับจัดการปัญหาใน Ticket นี้")
     
 class TicketState(BaseModel):
     # ข้อมูลที่ได้รับมาจาก Route

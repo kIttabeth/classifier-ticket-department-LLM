@@ -1,8 +1,8 @@
 import httpx
+import json
 
 from typing import Dict, Any
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import ChatPromptTemplate
 from app.services.predict_agent.utils.state import TicketState, TicketPredictResult, TicketItem
 from app.core.config import settings
 # การตั้งค่า LLM (gemini-2.5-flash)
@@ -21,7 +21,29 @@ Your task is to analyze support tickets and classify:
 
 Always return the result strictly following the required schema.
 Do not include any explanation outside the schema.
+If a ticket title or description is not related to recommendation requests or problem/issue reports,
+set both `priority` and `department_name` to null.
 """
+
+
+def _build_predict_messages(title: str, description: str, department_info: Any) -> list[dict[str, str]]:
+    system_content = PREDICT_SYSTEM_PROMPT + "\n\nAvailable Departments:\n" + json.dumps(department_info, ensure_ascii=False)
+    user_content = (
+        "Ticket Title: " + title + "\n"
+        + "Ticket Description: " + description + "\n\n"
+        + "Provide your analysis perfectly matching the schema and select the 'department_name' from the provided Available Departments."
+    )
+
+    # เดิมใช้ ChatPromptTemplate.from_messages([...]) แต่ตอนนี้เปลี่ยนมาใช้ messages ตรงๆ
+    # prompt = ChatPromptTemplate.from_messages([
+    #     {"role": "system", "content": PREDICT_SYSTEM_PROMPT + "\n\nAvailable Departments:\n{department_info}"},
+    #     {"role": "user", "content": "Ticket Title: {title}\nTicket Description: {description}\n\nProvide your analysis perfectly matching the schema and select the 'department_name' from the provided Available Departments."},
+    # ])
+
+    return [
+        {"role": "system", "content": system_content},
+        {"role": "user", "content": user_content},
+    ]
 
 
 def _normalize_department_name(name: str) -> str:
@@ -118,24 +140,25 @@ async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
             "steps": state.steps + [{"node": "LLM_predict", "status": "error", "error": str(department)}]
         }
     
-    # สร้าง Prompt Template สำหรับส่งไปให้ Gemini 
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", PREDICT_SYSTEM_PROMPT + "\n\nAvailable Departments:\n{department_info}"),
-        ("human", "Ticket Title: {title}\nTicket Description: {description}\n\nProvide your analysis perfectly matching the schema and select the 'department_name' from the provided Available Departments.")
-    ])
+    # สร้าง messages payload สำหรับส่งไปให้ Gemini
+    # prompt = ChatPromptTemplate.from_messages([
+    #     {"role": "system", "content": PREDICT_SYSTEM_PROMPT + "\n\nAvailable Departments:\n{department_info}"},
+    #     {"role": "user", "content": "Ticket Title: {title}\nTicket Description: {description}\n\nProvide your analysis perfectly matching the schema and select the 'department_name' from the provided Available Departments."},
+    # ])
     
     # ใช้ with_structured_output เพื่อบังคับโครงสร้างข้อมูลให้ออกมาตาม BaseModel
-    chain = prompt | llm.with_structured_output(TicketPredictResult)
+    # chain = prompt | llm.with_structured_output(TicketPredictResult)
+    chain = llm.with_structured_output(TicketPredictResult)
     
     try:
         results = []
 
         for item in tickets:
-            result: TicketPredictResult = await chain.ainvoke({
-                "title": item.title,
-                "description": item.description,
-                "department_info": department
-            })
+            # result: TicketPredictResult = await chain.ainvoke(
+            #    {"department_info": department, "title": item.title, "description": item.description}
+            #)
+            messages = _build_predict_messages(item.title, item.description, department)
+            result: TicketPredictResult = await chain.ainvoke(messages)
             
             # บังคับ title / description เดิม เผื่อ LLM ตอบกลับมาเพี้ยน
             result.title = item.title
@@ -204,6 +227,11 @@ async def callback_node(state: TicketState):
         for item in state.data:
             priority_val = item.priority.value if hasattr(item.priority, "value") else item.priority
             department_name = getattr(item, "department_name", "")
+
+            # ข้ามรายการที่โมเดลระบุว่าไม่เกี่ยวกับงาน triage
+            if priority_val is None and department_name is None:
+                continue
+
             mapped_department_id = department_mapping.get(_normalize_department_name(department_name), "")
             payload.append({
                 "department_id": mapped_department_id,
@@ -214,6 +242,15 @@ async def callback_node(state: TicketState):
                 "status": "success" if mapped_department_id else "failed",
                 "title": item.title
             })
+
+    if not payload:
+        return {
+            "callback_response": {
+                "status": "Skipped",
+                "status_code": 204,
+                "message": "No callback payload to send",
+            }
+        }
 
     try:
         async with httpx.AsyncClient() as client:
