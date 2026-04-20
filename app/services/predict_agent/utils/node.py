@@ -1,6 +1,5 @@
 import httpx
 import json
-#testtest
 from typing import Dict, Any
 from langchain_google_genai import ChatGoogleGenerativeAI
 from app.services.predict_agent.utils.state import TicketState, TicketPredictResult, TicketItem
