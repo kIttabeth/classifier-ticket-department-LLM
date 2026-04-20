@@ -39,6 +39,11 @@ celery_app.conf.update(
     worker_max_tasks_per_child=10,  # Restart worker after 10 tasks to prevent memory leaks
 )
 
+# Keep one process-level event loop for Celery tasks. Using asyncio.run per task
+# closes the loop after each run and can cause "Event loop is closed" on reused async clients.
+_event_loop = asyncio.new_event_loop()
+asyncio.set_event_loop(_event_loop)
+
 @celery_app.task(name="ticket_prediction",bind=True,max_retries=2)
 def ticket_prediction(self, state_dict:dict):
     try:
@@ -46,7 +51,12 @@ def ticket_prediction(self, state_dict:dict):
         form_id = state_dict.get("form_id", "")
         thread_id = state_dict.get("thread_id", f"{company_id}_{form_id}" if company_id and form_id else None)
 
-        return asyncio.run(
+        global _event_loop
+        if _event_loop.is_closed():
+            _event_loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(_event_loop)
+
+        return _event_loop.run_until_complete(
             graph.ainvoke(
                 state_dict,
                 {"configurable": {"thread_id": thread_id}},

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-
+import uuid
 from app.schemas.predict_ticket_schema import predictRequest, predictResponse
 from app.worker import ticket_prediction
 
@@ -43,7 +43,7 @@ async def predict_ticket(tickets: predictRequest):
                 "grouped_tickets": tickets_list
             }
             
-            state_dict["thread_id"] = f"{company_id}_{form_id}"
+            state_dict["thread_id"] = f"{company_id}_{form_id}_{uuid.uuid4().hex[:8]}"  # เพิ่ม thread_id ที่ไม่ซ้ำกันสำหรับแต่ละงาน
             
             ticket_prediction.delay(state_dict)
             queued_count += 1

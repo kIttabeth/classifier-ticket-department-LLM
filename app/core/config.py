@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-class Setting(BaseSettings):
+class Settings(BaseSettings):
     
     #Callback
     BASE_BACKEND_URL: str
@@ -21,4 +21,4 @@ class Setting(BaseSettings):
     
     model_config = SettingsConfigDict(env_file_encoding="utf-8",env_file=".env")
 
-settings = Setting()
+settings = Settings()

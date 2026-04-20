@@ -157,7 +157,7 @@ async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
             # result: TicketPredictResult = await chain.ainvoke(
             #    {"department_info": department, "title": item.title, "description": item.description}
             #)
-            messages = _build_predict_messages(item.title, item.description, department)
+            messages =  _build_predict_messages(item.title, item.description, department)
             result: TicketPredictResult = await chain.ainvoke(messages)
             
             # บังคับ title / description เดิม เผื่อ LLM ตอบกลับมาเพี้ยน
@@ -184,12 +184,11 @@ async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
 
 async def callback_node(state: TicketState):
     print("--- [NODE CALLBACK]: callback_node ---")
-    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create-bulk"
+    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create-bulk/"
     
     print(f"path {callback_url}")
     payload = []
-    departments = await get_department(state.company_id)
-    department_mapping = _extract_department_mapping(departments)
+    department_mapping: Dict[str, str] = {}
     
     if state.error or not state.success or not state.data:
         tickets_list = state.grouped_tickets
@@ -205,31 +204,45 @@ async def callback_node(state: TicketState):
         if tickets_list:
             for t in tickets_list:
                 payload.append({
-                    "department_id": "",
+                    "department_id": None,
                     "form_id": state.form_id,
                     "description": t.description,
                     "message": error_msg,
-                    "priority": "",
+                    "priority": None,
                     "status": "failed",
                     "title": t.title
                 })
-        else:
-            payload.append({
-                "department_id": "",
-                "form_id": state.form_id,
-                "description": "",
-                "message": error_msg,
-                "priority": "",
-                "status": "failed",
-                "title": ""
-            })
     else:
+        has_routing_result = any(
+            (
+                (item.priority.value if hasattr(item.priority, "value") else item.priority) not in (None, "", "null")
+                or getattr(item, "department_name", "") not in (None, "", "null")
+            )
+            for item in state.data
+        )
+        #https://claude.ai/share/170e6f10-dc9c-4dde-be2e-044876cf0cf1
+        #any(...) — ถ้ามีแม้แต่ item เดียวที่ผ่านเงื่อนไข
+        #True → มีอย่างน้อย 1 item ที่ถูก route แล้ว
+        #False → ไม่มี item ไหนเลยที่มีข้อมูล routing
+
+        if not has_routing_result:
+            return {
+                "callback_response": {
+                    "status": "Skipped",
+                    "status_code": 204,
+                    "message": "No routing fields in data; callback skipped",
+                }
+            }
+
+        departments = await get_department(state.company_id)
+        department_mapping = _extract_department_mapping(departments)
+
         for item in state.data:
             priority_val = item.priority.value if hasattr(item.priority, "value") else item.priority
             department_name = getattr(item, "department_name", "")
 
             # ข้ามรายการที่โมเดลระบุว่าไม่เกี่ยวกับงาน triage
-            if priority_val is None and department_name is None:
+            if priority_val in (None, "", "null") and department_name in (None, "", "null"):
                 continue
 
             mapped_department_id = department_mapping.get(_normalize_department_name(department_name), "")
