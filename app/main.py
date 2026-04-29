@@ -1,11 +1,11 @@
+# This module configures the FastAPI application and global middleware.
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.routes.v1.router import api_router
 
-app = FastAPI(title="Classifier-Ticket-Department-LLM",version="1.0.0")
+app = FastAPI(title="Classifier-Ticket-Department-LLM", version="1.0.0")
 
-app.include_router(api_router,prefix="/api/v1")
-
-from fastapi.middleware.cors import CORSMiddleware
+app.include_router(api_router, prefix="/api/v1")
 
 app.add_middleware(
     CORSMiddleware,

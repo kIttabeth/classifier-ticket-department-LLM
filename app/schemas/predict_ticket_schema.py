@@ -20,7 +20,6 @@ class PriorityEnum(str,Enum):
 
 class formItem(BaseModel):
     id: str
-    link_id: str
     title: str 
     description: str
 

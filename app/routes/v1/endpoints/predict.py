@@ -1,5 +1,7 @@
-from fastapi import APIRouter
+# This module exposes the ticket prediction endpoint.
+from fastapi import APIRouter, HTTPException
 import uuid
+
 from app.schemas.predict_ticket_schema import predictRequest, predictResponse
 from app.worker import ticket_prediction
 
@@ -7,6 +9,7 @@ router = APIRouter(tags=["predict-ticket"])
 
 @router.post("/predict-LLM", response_model=predictResponse)
 async def predict_ticket(tickets: predictRequest):
+    # Queue grouped ticket prediction jobs for asynchronous processing.
     try:
         grouped_tickets = {}
         
@@ -52,6 +55,7 @@ async def predict_ticket(tickets: predictRequest):
             message="Processing queued",
             queued_count=queued_count,
         )
+    except HTTPException:
+        raise
     except Exception as e:
-        from fastapi import HTTPException
         raise HTTPException(status_code=500, detail=str(e))

@@ -1,24 +1,22 @@
+# This module defines application settings loaded from the environment.
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+
 class Settings(BaseSettings):
-    
-    #Callback
+    # Define all runtime configuration used by the application.
     BASE_BACKEND_URL: str
 
-    #Gemini 
     GEMINI_API_KEY: str
 
-    #Embedding Model
-    DENSE_EMBEDDING_BASE_URL: str 
-    
-    
-    #Redis
+    DENSE_EMBEDDING_BASE_URL: str
+
     REDIS_HOST: str
     REDIS_PORT: int
     REDIS_DB: int
-    
+
     LANGSMITH_TRACING: bool
-    
-    model_config = SettingsConfigDict(env_file_encoding="utf-8",env_file=".env")
+    SECRET_API_KEY: str
+
+    model_config = SettingsConfigDict(env_file_encoding="utf-8", env_file=".env")
 
 settings = Settings()

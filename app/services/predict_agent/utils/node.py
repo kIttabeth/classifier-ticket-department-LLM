@@ -1,9 +1,11 @@
+# This module handles ticket prediction flow nodes and backend callbacks.
 import httpx
 import json
 from typing import Dict, Any
 from langchain_google_genai import ChatGoogleGenerativeAI
 from app.services.predict_agent.utils.state import TicketState, TicketPredictResult, TicketItem
 from app.core.config import settings
+from app.utils.hmac import SIGNATURE_HEADER, generate_hmac
 # การตั้งค่า LLM (gemini-2.5-flash)
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
@@ -26,6 +28,7 @@ set both `priority` and `department_name` to null.
 
 
 def _build_predict_messages(title: str, description: str, department_info: Any) -> list[dict[str, str]]:
+    # Build the LLM message payload for a single ticket.
     system_content = PREDICT_SYSTEM_PROMPT + "\n\nAvailable Departments:\n" + json.dumps(department_info, ensure_ascii=False)
     user_content = (
         "Ticket Title: " + title + "\n"
@@ -46,6 +49,7 @@ def _build_predict_messages(title: str, description: str, department_info: Any) 
 
 
 def _normalize_department_name(name: str) -> str:
+    # Normalize a department name for lookup matching.
     return (name or "").strip().lower()
 
 
@@ -88,9 +92,21 @@ def _extract_department_mapping(raw_departments: Any) -> Dict[str, str]:
     return mapping
 
 async def get_department(company_id:str):
+    # Fetch department data for the given company.
+    print("company_id", company_id)
     try:
+        request_body: bytes = b""
+        signature = generate_hmac(body=request_body, secret=settings.SECRET_API_KEY)
+        headers = {
+            "Content-Type": "application/json",
+            SIGNATURE_HEADER: f"sha256={signature}",
+        }
+        print("headers:", headers)
         async with httpx.AsyncClient() as client:
-            response = await client.get(f"{settings.BASE_BACKEND_URL}/api/v1/departments/{company_id}")
+            response = await client.get(
+                f"{settings.BASE_BACKEND_URL}/api/v1/departments/{company_id}",
+                headers=headers
+                )
             
             response.raise_for_status()  # raises HTTPStatusError ถ้า 4xx/5xx
 
@@ -104,6 +120,7 @@ async def get_department(company_id:str):
         return str(e)
 
 async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
+    # Predict priority and department for each ticket in the state.
 
     print(state)
 
@@ -182,8 +199,9 @@ async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
         }
 
 async def callback_node(state: TicketState):
+    # Send callback results to the backend with an HMAC signature header.
     print("--- [NODE CALLBACK]: callback_node ---")
-    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create-bulk/"
+    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create-bulk"
     
     print(f"path {callback_url}")
     payload = []
@@ -265,8 +283,19 @@ async def callback_node(state: TicketState):
         }
 
     try:
+        request_body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        signature = generate_hmac(body=request_body, secret=settings.SECRET_API_KEY)
+        headers = {
+            "Content-Type": "application/json",
+            SIGNATURE_HEADER: f"sha256={signature}",
+        }
+
         async with httpx.AsyncClient() as client:
-            response = await client.post(callback_url, json=payload)
+            response = await client.post(
+                callback_url,
+                content=request_body,
+                headers=headers,
+            )
             print("payload:",payload)
             print(f"Callback response: {response.status_code} - {response.text}")
 
