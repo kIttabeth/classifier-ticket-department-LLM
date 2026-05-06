@@ -1,16 +1,31 @@
-# This module handles ticket prediction flow nodes and backend callbacks.
-import httpx
+# This module handles LangGraph nodes for cache lookup, LLM prediction, and callbacks.
 import json
-from typing import Dict, Any
+from typing import Any, Dict, List
+
+import httpx
 from langchain_google_genai import ChatGoogleGenerativeAI
-from app.services.predict_agent.utils.state import TicketState, TicketPredictResult, TicketItem
+
 from app.core.config import settings
+from app.services.predict_agent.utils.cache import (
+    load_cache_entries,
+    find_best_cached_prediction,
+    get_ticket_embeddings,
+    save_prediction_cache,
+)
+from app.services.predict_agent.utils.state import (
+    IndexedTicketPredictResult,
+    PendingTicketItem,
+    TicketItem,
+    TicketPredictResult,
+    TicketState,
+)
 from app.utils.hmac import SIGNATURE_HEADER, generate_hmac
-# การตั้งค่า LLM (gemini-2.5-flash)
+
+# This LLM is used for fresh predictions when semantic cache misses.
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
     temperature=0,
-    api_key=settings.GEMINI_API_KEY
+    api_key=settings.GEMINI_API_KEY,
 )
 
 PREDICT_SYSTEM_PROMPT = """
@@ -36,12 +51,6 @@ def _build_predict_messages(title: str, description: str, department_info: Any) 
         + "Provide your analysis perfectly matching the schema and select the 'department_name' from the provided Available Departments."
     )
 
-    # เดิมใช้ ChatPromptTemplate.from_messages([...]) แต่ตอนนี้เปลี่ยนมาใช้ messages ตรงๆ
-    # prompt = ChatPromptTemplate.from_messages([
-    #     {"role": "system", "content": PREDICT_SYSTEM_PROMPT + "\n\nAvailable Departments:\n{department_info}"},
-    #     {"role": "user", "content": "Ticket Title: {title}\nTicket Description: {description}\n\nProvide your analysis perfectly matching the schema and select the 'department_name' from the provided Available Departments."},
-    # ])
-
     return [
         {"role": "system", "content": system_content},
         {"role": "user", "content": user_content},
@@ -54,7 +63,7 @@ def _normalize_department_name(name: str) -> str:
 
 
 def _extract_department_mapping(raw_departments: Any) -> Dict[str, str]:
-    """Build {normalized_department_name: department_id} mapping from API response."""
+    # Build {normalized_department_name: department_id} mapping from API response.
     if isinstance(raw_departments, str):
         return {}
 
@@ -69,31 +78,57 @@ def _extract_department_mapping(raw_departments: Any) -> Dict[str, str]:
     if not isinstance(department_list, list):
         return mapping
 
-    for dept in department_list:
-        if not isinstance(dept, dict):
+    for department in department_list:
+        if not isinstance(department, dict):
             continue
 
-        dept_id = str(
-            dept.get("id")
-            or dept.get("department_id")
-            or dept.get("_id")
+        department_id = str(
+            department.get("id")
+            or department.get("department_id")
+            or department.get("_id")
             or ""
         ).strip()
-        dept_name = str(
-            dept.get("name")
-            or dept.get("department_name")
-            or dept.get("title")
+        department_name = str(
+            department.get("name")
+            or department.get("department_name")
+            or department.get("title")
             or ""
         ).strip()
 
-        if dept_id and dept_name:
-            mapping[_normalize_department_name(dept_name)] = dept_id
+        if department_id and department_name:
+            mapping[_normalize_department_name(department_name)] = department_id
 
     return mapping
 
-async def get_department(company_id:str):
+
+def _get_tickets_from_state(state: TicketState) -> List[TicketItem]:
+    # Read ticket items from the current graph state with backward-compatible fallback.
+    if state.grouped_tickets:
+        return state.grouped_tickets
+
+    title = getattr(state, "title", None)
+    description = getattr(state, "description", None)
+    if title and description:
+        return [TicketItem(title=title, description=description)]
+
+    return []
+
+
+def _merge_indexed_results(
+    ticket_count: int,
+    cached_results: List[IndexedTicketPredictResult],
+    fresh_results: List[IndexedTicketPredictResult],
+) -> List[TicketPredictResult]:
+    # Merge cached and fresh predictions back into the original ticket order.
+    merged_result_map: Dict[int, TicketPredictResult] = {
+        item.index: item.result for item in cached_results
+    }
+    merged_result_map.update({item.index: item.result for item in fresh_results})
+    return [merged_result_map[index] for index in sorted(merged_result_map) if index < ticket_count]
+
+
+async def get_department(company_id: str) -> Any:
     # Fetch department data for the given company.
-    print("company_id", company_id)
     try:
         request_body: bytes = b""
         signature = generate_hmac(body=request_body, secret=settings.SECRET_API_KEY)
@@ -101,134 +136,236 @@ async def get_department(company_id:str):
             "Content-Type": "application/json",
             SIGNATURE_HEADER: f"sha256={signature}",
         }
-        print("headers:", headers)
         async with httpx.AsyncClient() as client:
             response = await client.get(
                 f"{settings.BASE_BACKEND_URL}/api/v1/departments/{company_id}",
-                headers=headers
+                headers=headers,
+            )
+            response.raise_for_status()
+            return response.json()
+    except httpx.HTTPStatusError as error:
+        return str(error)
+    except Exception as error:
+        return str(error)
+
+
+async def cache_lookup_node(state: TicketState) -> Dict[str, Any]:
+    # Resolve semantic cache hits and collect only the cache misses for LLM processing.
+    if state.error or not state.success:
+        return {
+            "success": False,
+            "error": "Cache lookup skipped due to previous error",
+            "steps": state.steps + [{"node": "cache_lookup", "status": "error", "error": "Invalid state"}],
+        }
+
+    tickets = _get_tickets_from_state(state)
+    if not tickets:
+        return {
+            "success": False,
+            "error": "No tickets provided",
+            "steps": state.steps + [{"node": "cache_lookup", "status": "error", "error": "No tickets provided"}],
+        }
+
+    try:
+        cache_entries = await load_cache_entries()
+        cached_results: List[IndexedTicketPredictResult] = []
+        uncached_tickets: List[PendingTicketItem] = []
+
+        for index, ticket in enumerate(tickets):
+            title_embedding, description_embedding = await get_ticket_embeddings(
+                title=ticket.title,
+                description=ticket.description,
+            )
+            cached_result, _ = find_best_cached_prediction(
+                cache_entries=cache_entries,
+                title_embedding=title_embedding,
+                description_embedding=description_embedding,
+            )
+
+            if cached_result is not None:
+                cached_results.append(
+                    IndexedTicketPredictResult(index=index, result=cached_result)
                 )
-            
-            response.raise_for_status()  # raises HTTPStatusError ถ้า 4xx/5xx
+                continue
 
-            data = response.json()
-            print(f"Available departments for company_id {company_id}: {data}")
-            return data
+            uncached_tickets.append(
+                PendingTicketItem(
+                    index=index,
+                    title=ticket.title,
+                    description=ticket.description,
+                    title_embedding=title_embedding,
+                    description_embedding=description_embedding,
+                )
+            )
 
-    except httpx.HTTPStatusError as e:
-        return str(e)
-    except Exception as e:
-        return str(e)
+        data = []
+        if not uncached_tickets:
+            data = _merge_indexed_results(
+                ticket_count=len(tickets),
+                cached_results=cached_results,
+                fresh_results=[],
+            )
+
+        return {
+            "data": data,
+            "cached_results": cached_results,
+            "fresh_results": [],
+            "uncached_tickets": uncached_tickets,
+            "success": True,
+            "steps": state.steps + [{
+                "node": "cache_lookup",
+                "status": "success",
+                "cache_hit_count": len(cached_results),
+                "cache_miss_count": len(uncached_tickets),
+            }],
+        }
+    except Exception as error:
+        return {
+            "success": False,
+            "error": str(error),
+            "steps": state.steps + [{"node": "cache_lookup", "status": "error", "error": str(error)}],
+        }
+
+
+def route_after_cache_lookup(state: TicketState) -> str:
+    # Route to callback immediately on full cache hit, otherwise continue to the LLM node.
+    if state.error or not state.success:
+        return "callback_node"
+    if state.uncached_tickets:
+        return "llm_predict"
+    return "callback_node"
+
 
 async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
-    # Predict priority and department for each ticket in the state.
-
-    print(state)
-
+    # Predict priority and department for cache-miss tickets and merge with cache hits.
     if state.error or not state.success:
-        print("[NODE PREDICT]: LLM can't processing")
         return {
             "success": False,
-            "error": "LLM Can't processing due to previous error",
-            "steps": state.steps + [{"node": "LLM_predict", "status": "error", "error": "Invalid state"}]
+            "error": "LLM can't process due to previous error",
+            "steps": state.steps + [{"node": "llm_predict", "status": "error", "error": "Invalid state"}],
         }
-        
-    print("--- NODE: LLM_predict ---")
-    tickets = state.grouped_tickets
 
+    tickets = _get_tickets_from_state(state)
     if not tickets:
-        title = getattr(state, "title", None)
-        desc = getattr(state, "description", None)
-        if title and desc:
-            tickets = [TicketItem(title=title, description=desc)]
-        else:
-            return {
-                "success": False,
-                "error": "No tickets provided",
-                "steps": state.steps + [{"node": "LLM_predict", "status": "error", "error": "No tickets provided"}]
-            }
-            
+        return {
+            "success": False,
+            "error": "No tickets provided",
+            "steps": state.steps + [{"node": "llm_predict", "status": "error", "error": "No tickets provided"}],
+        }
+
+    pending_tickets = state.uncached_tickets or [
+        PendingTicketItem(index=index, title=ticket.title, description=ticket.description)
+        for index, ticket in enumerate(tickets)
+    ]
+
     department = await get_department(state.company_id)
     if isinstance(department, str):
-        print(f"[NODE PREDICT]: get_department failed: {department}")
         return {
             "success": False,
-            "error": str(department),
-            "steps": state.steps + [{"node": "LLM_predict", "status": "error", "error": str(department)}]
+            "error": department,
+            "steps": state.steps + [{"node": "llm_predict", "status": "error", "error": department}],
         }
-    
-    # สร้าง messages payload สำหรับส่งไปให้ Gemini
-    # prompt = ChatPromptTemplate.from_messages([
-    #     {"role": "system", "content": PREDICT_SYSTEM_PROMPT + "\n\nAvailable Departments:\n{department_info}"},
-    #     {"role": "user", "content": "Ticket Title: {title}\nTicket Description: {description}\n\nProvide your analysis perfectly matching the schema and select the 'department_name' from the provided Available Departments."},
-    # ])
-    
-    # ใช้ with_structured_output เพื่อบังคับโครงสร้างข้อมูลให้ออกมาตาม BaseModel
-    # chain = prompt | llm.with_structured_output(TicketPredictResult)
+
     chain = llm.with_structured_output(TicketPredictResult)
-    
-    try:
-        results = []
 
-        for item in tickets:
-            # result: TicketPredictResult = await chain.ainvoke(
-            #    {"department_info": department, "title": item.title, "description": item.description}
-            #)
-            messages =  _build_predict_messages(item.title, item.description, department)
+    try:
+        fresh_results: List[IndexedTicketPredictResult] = []
+
+        for ticket in pending_tickets:
+            messages = _build_predict_messages(ticket.title, ticket.description, department)
             result: TicketPredictResult = await chain.ainvoke(messages)
-            
-            # บังคับ title / description เดิม เผื่อ LLM ตอบกลับมาเพี้ยน
-            result.title = item.title
-            result.description = item.description
-            
-            results.append(result)
-            
-        print(f"LLM Predict Results: {results}")
+            result.title = ticket.title
+            result.description = ticket.description
+            fresh_results.append(
+                IndexedTicketPredictResult(index=ticket.index, result=result)
+            )
+
+        data = _merge_indexed_results(
+            ticket_count=len(tickets),
+            cached_results=state.cached_results,
+            fresh_results=fresh_results,
+        )
 
         return {
-            "data": results,
+            "data": data,
+            "fresh_results": fresh_results,
             "success": True,
-            "steps": state.steps + [{"node": "LLM_predict", "status": "success", "result_count": len(results)}]
+            "steps": state.steps + [{
+                "node": "llm_predict",
+                "status": "success",
+                "result_count": len(fresh_results),
+                "cache_hit_count": len(state.cached_results),
+            }],
         }
-
-    except Exception as e:
-        print(f"Error in LLM_predict: {e}")
+    except Exception as error:
         return {
             "success": False,
-            "error": str(e),
-            "steps": state.steps + [{"node": "LLM_predict", "status": "error", "error": str(e)}]
+            "error": str(error),
+            "steps": state.steps + [{"node": "llm_predict", "status": "error", "error": str(error)}],
         }
 
-async def callback_node(state: TicketState):
-    # Send callback results to the backend with an HMAC signature header.
-    print("--- [NODE CALLBACK]: callback_node ---")
-    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create-bulk"
-    
-    print(f"path {callback_url}")
-    payload = []
-    department_mapping: Dict[str, str] = {}
-    
-    if state.error or not state.success or not state.data:
-        tickets_list = state.grouped_tickets
-        if not tickets_list:
-            # Fallback if no grouped tickets but have title/desc
-            body_title = getattr(state, "title", "")
-            body_desc = getattr(state, "description", "")
-            if body_title or body_desc:
-                tickets_list = [TicketItem(title=body_title, description=body_desc)]
 
-        error_msg = str(state.error) if state.error else "Failed to process ticket"
-        
-        if tickets_list:
-            for t in tickets_list:
-                payload.append({
-                    "department_id": None,
-                    "form_id": state.form_id,
-                    "description": t.description,
-                    "message": error_msg,
-                    "priority": None,
-                    "status": "failed",
-                    "title": t.title
-                })
+async def save_cache_node(state: TicketState) -> Dict[str, Any]:
+    # Persist fresh LLM predictions into Redis semantic cache.
+    if state.error or not state.success:
+        return {
+            "steps": state.steps + [{"node": "save_cache", "status": "skipped", "reason": "Invalid state"}],
+        }
+
+    if not state.fresh_results or not state.uncached_tickets:
+        return {
+            "steps": state.steps + [{"node": "save_cache", "status": "skipped", "reason": "No fresh results"}],
+        }
+
+    pending_ticket_map = {ticket.index: ticket for ticket in state.uncached_tickets}
+
+    try:
+        for fresh_result in state.fresh_results:
+            pending_ticket = pending_ticket_map.get(fresh_result.index)
+            if pending_ticket is None:
+                continue
+
+            await save_prediction_cache(
+                title=pending_ticket.title,
+                description=pending_ticket.description,
+                title_embedding=pending_ticket.title_embedding,
+                description_embedding=pending_ticket.description_embedding,
+                result=fresh_result.result,
+            )
+
+        return {
+            "steps": state.steps + [{
+                "node": "save_cache",
+                "status": "success",
+                "saved_count": len(state.fresh_results),
+            }],
+        }
+    except Exception as error:
+        return {
+            "steps": state.steps + [{"node": "save_cache", "status": "error", "error": str(error)}],
+        }
+
+
+async def callback_node(state: TicketState) -> Dict[str, Any]:
+    # Send callback results to the backend with an HMAC signature header.
+    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create-bulk"
+    payload: list[dict[str, Any]] = []
+    department_mapping: Dict[str, str] = {}
+
+    if state.error or not state.success or not state.data:
+        tickets_list = _get_tickets_from_state(state)
+        error_message = str(state.error) if state.error else "Failed to process ticket"
+
+        for ticket in tickets_list:
+            payload.append({
+                "department_id": None,
+                "form_id": state.form_id,
+                "description": ticket.description,
+                "message": error_message,
+                "priority": None,
+                "status": "failed",
+                "title": ticket.title,
+            })
     else:
         has_routing_result = any(
             (
@@ -237,10 +374,6 @@ async def callback_node(state: TicketState):
             )
             for item in state.data
         )
-        #https://claude.ai/share/170e6f10-dc9c-4dde-be2e-044876cf0cf1
-        #any(...) — ถ้ามีแม้แต่ item เดียวที่ผ่านเงื่อนไข
-        #True → มีอย่างน้อย 1 item ที่ถูก route แล้ว
-        #False → ไม่มี item ไหนเลยที่มีข้อมูล routing
 
         if not has_routing_result:
             return {
@@ -255,11 +388,10 @@ async def callback_node(state: TicketState):
         department_mapping = _extract_department_mapping(departments)
 
         for item in state.data:
-            priority_val = item.priority.value if hasattr(item.priority, "value") else item.priority
+            priority_value = item.priority.value if hasattr(item.priority, "value") else item.priority
             department_name = getattr(item, "department_name", "")
 
-            # ข้ามรายการที่โมเดลระบุว่าไม่เกี่ยวกับงาน triage
-            if priority_val in (None, "", "null") and department_name in (None, "", "null"):
+            if priority_value in (None, "", "null") and department_name in (None, "", "null"):
                 continue
 
             mapped_department_id = department_mapping.get(_normalize_department_name(department_name), "")
@@ -268,9 +400,9 @@ async def callback_node(state: TicketState):
                 "form_id": state.form_id,
                 "description": item.description,
                 "message": "Processed successfully" if mapped_department_id else f"Department '{department_name}' not found",
-                "priority": priority_val,
+                "priority": priority_value,
                 "status": "success" if mapped_department_id else "failed",
-                "title": item.title
+                "title": item.title,
             })
 
     if not payload:
@@ -296,28 +428,24 @@ async def callback_node(state: TicketState):
                 content=request_body,
                 headers=headers,
             )
-            print("payload:",payload)
-            print(f"Callback response: {response.status_code} - {response.text}")
 
-            if response.status_code in (200, 204):
-                return {
-                    "callback_response": {
-                        "status": "Success",
-                        "status_code": response.status_code,
-                        "message": "Callback successful",
-                    }
-                }
-
+        if response.status_code in (200, 204):
             return {
                 "callback_response": {
-                    "status": "Failed",
+                    "status": "Success",
                     "status_code": response.status_code,
-                    "message": response.text,
+                    "message": "Callback successful",
                 }
             }
-    except Exception as e:
-        print(f"Error in callback_node: {e}")
+
         return {
-            "callback_response": {"status": "Failed", "error": str(e)},
+            "callback_response": {
+                "status": "Failed",
+                "status_code": response.status_code,
+                "message": response.text,
+            }
         }
-        
+    except Exception as error:
+        return {
+            "callback_response": {"status": "Failed", "error": str(error)},
+        }

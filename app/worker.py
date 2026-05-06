@@ -1,16 +1,28 @@
-from celery import Celery
+# This module configures the Celery worker and centralizes Redis connection setup.
 import asyncio
 import os
 
+from celery import Celery
+
 from app.core.config import settings
-from app.services.predict_agent.agent import graph
 
-_redis_pass = getattr(settings, "REDIS_PASSWORD", None)
 
-if _redis_pass:
-    REDIS_URL = f"redis://:{_redis_pass}@{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
-else:
-    REDIS_URL = f"redis://{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
+def build_redis_url() -> str:
+    # Build the Redis connection URL from runtime settings.
+    redis_password = getattr(settings, "REDIS_PASSWORD", None)
+    if redis_password:
+        return f"redis://:{redis_password}@{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
+    return f"redis://{settings.REDIS_HOST}:{settings.REDIS_PORT}/{settings.REDIS_DB}"
+
+
+def get_prediction_graph():
+    # Load the prediction graph lazily to avoid worker/cache circular imports.
+    from app.services.predict_agent.agent import graph
+
+    return graph
+
+
+REDIS_URL = build_redis_url()
     
 print(f"[Worker] Connecting to Redis at: {REDIS_URL}")
 
@@ -46,10 +58,12 @@ asyncio.set_event_loop(_event_loop)
 
 @celery_app.task(name="ticket_prediction",bind=True,max_retries=2)
 def ticket_prediction(self, state_dict:dict):
+    # Run the ticket prediction graph inside the shared worker event loop.
     try:
         company_id = state_dict.get("company_id", "")
         form_id = state_dict.get("form_id", "")
         thread_id = state_dict.get("thread_id", f"{company_id}_{form_id}" if company_id and form_id else None)
+        graph = get_prediction_graph()
 
         global _event_loop
         if _event_loop.is_closed():
