@@ -1,8 +1,11 @@
 # This module configures the Celery worker and centralizes Redis connection setup.
 import asyncio
 import os
+from enum import Enum
+from typing import Any
 
 from celery import Celery
+from pydantic import BaseModel
 
 from app.core.config import settings
 
@@ -20,6 +23,22 @@ def get_prediction_graph():
     from app.services.predict_agent.agent import graph
 
     return graph
+
+
+def make_json_safe(value: Any) -> Any:
+    # Recursively convert task results into JSON-serializable primitives for Celery.
+    if isinstance(value, BaseModel):
+        return value.model_dump(mode="json")
+    if isinstance(value, Enum):
+        return value.value
+    if isinstance(value, dict):
+        return {
+            str(key): make_json_safe(item)
+            for key, item in value.items()
+        }
+    if isinstance(value, (list, tuple, set)):
+        return [make_json_safe(item) for item in value]
+    return value
 
 
 REDIS_URL = build_redis_url()
@@ -70,12 +89,13 @@ def ticket_prediction(self, state_dict:dict):
             _event_loop = asyncio.new_event_loop()
             asyncio.set_event_loop(_event_loop)
 
-        return _event_loop.run_until_complete(
+        result = _event_loop.run_until_complete(
             graph.ainvoke(
                 state_dict,
                 {"configurable": {"thread_id": thread_id}},
             )
         )
+        return make_json_safe(result)
     
     except Exception as e:
         print("Worker error:", str(e))
