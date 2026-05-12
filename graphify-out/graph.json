@@ -54,7 +54,7 @@
       "source_file": "app/main.py",
       "source_location": "L1",
       "id": "app_main_py",
-      "community": 13,
+      "community": 14,
       "norm_label": "main.py"
     },
     {
@@ -63,34 +63,43 @@
       "source_file": "app/worker.py",
       "source_location": "L1",
       "id": "app_worker_py",
-      "community": 9,
+      "community": 10,
       "norm_label": "worker.py"
     },
     {
       "label": "build_redis_url()",
       "file_type": "code",
       "source_file": "app/worker.py",
-      "source_location": "L10",
+      "source_location": "L13",
       "id": "app_worker_build_redis_url",
-      "community": 9,
+      "community": 10,
       "norm_label": "build_redis_url()"
     },
     {
       "label": "get_prediction_graph()",
       "file_type": "code",
       "source_file": "app/worker.py",
-      "source_location": "L18",
+      "source_location": "L21",
       "id": "app_worker_get_prediction_graph",
-      "community": 9,
+      "community": 10,
       "norm_label": "get_prediction_graph()"
+    },
+    {
+      "label": "make_json_safe()",
+      "file_type": "code",
+      "source_file": "app/worker.py",
+      "source_location": "L28",
+      "id": "app_worker_make_json_safe",
+      "community": 10,
+      "norm_label": "make_json_safe()"
     },
     {
       "label": "ticket_prediction()",
       "file_type": "code",
       "source_file": "app/worker.py",
-      "source_location": "L60",
+      "source_location": "L79",
       "id": "app_worker_ticket_prediction",
-      "community": 9,
+      "community": 10,
       "norm_label": "ticket_prediction()"
     },
     {
@@ -99,7 +108,7 @@
       "source_file": "app/core/config.py",
       "source_location": "L1",
       "id": "app_core_config_py",
-      "community": 10,
+      "community": 11,
       "norm_label": "config.py"
     },
     {
@@ -108,7 +117,7 @@
       "source_file": "app/core/config.py",
       "source_location": "L5",
       "id": "core_config_settings",
-      "community": 10,
+      "community": 11,
       "norm_label": "settings"
     },
     {
@@ -117,7 +126,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basesettings",
-      "community": 10,
+      "community": 11,
       "norm_label": "basesettings"
     },
     {
@@ -126,7 +135,7 @@
       "source_file": "app/routes/v1/router.py",
       "source_location": "L1",
       "id": "app_routes_v1_router_py",
-      "community": 14,
+      "community": 15,
       "norm_label": "router.py"
     },
     {
@@ -135,7 +144,7 @@
       "source_file": "app/routes/v1/endpoints/health.py",
       "source_location": "L1",
       "id": "app_routes_v1_endpoints_health_py",
-      "community": 11,
+      "community": 12,
       "norm_label": "health.py"
     },
     {
@@ -144,7 +153,7 @@
       "source_file": "app/routes/v1/endpoints/health.py",
       "source_location": "L6",
       "id": "endpoints_health_health",
-      "community": 11,
+      "community": 12,
       "norm_label": "health()"
     },
     {
@@ -153,7 +162,7 @@
       "source_file": "app/routes/v1/endpoints/predict.py",
       "source_location": "L1",
       "id": "app_routes_v1_endpoints_predict_py",
-      "community": 12,
+      "community": 13,
       "norm_label": "predict.py"
     },
     {
@@ -162,7 +171,7 @@
       "source_file": "app/routes/v1/endpoints/predict.py",
       "source_location": "L11",
       "id": "endpoints_predict_predict_ticket",
-      "community": 12,
+      "community": 13,
       "norm_label": "predict_ticket()"
     },
     {
@@ -171,7 +180,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L1",
       "id": "app_schemas_predict_ticket_schema_py",
-      "community": 1,
+      "community": 2,
       "norm_label": "predict_ticket_schema.py"
     },
     {
@@ -180,7 +189,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L6",
       "id": "schemas_predict_ticket_schema_priorityenum",
-      "community": 1,
+      "community": 2,
       "norm_label": "priorityenum"
     },
     {
@@ -189,7 +198,7 @@
       "source_file": "",
       "source_location": "",
       "id": "str",
-      "community": 5,
+      "community": 4,
       "norm_label": "str"
     },
     {
@@ -198,7 +207,7 @@
       "source_file": "",
       "source_location": "",
       "id": "enum",
-      "community": 1,
+      "community": 2,
       "norm_label": "enum"
     },
     {
@@ -207,7 +216,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L21",
       "id": "schemas_predict_ticket_schema_formitem",
-      "community": 1,
+      "community": 2,
       "norm_label": "formitem"
     },
     {
@@ -216,7 +225,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 1,
+      "community": 2,
       "norm_label": "basemodel"
     },
     {
@@ -225,7 +234,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L26",
       "id": "schemas_predict_ticket_schema_companydata",
-      "community": 1,
+      "community": 2,
       "norm_label": "companydata"
     },
     {
@@ -234,7 +243,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L30",
       "id": "schemas_predict_ticket_schema_predictrequest",
-      "community": 1,
+      "community": 2,
       "norm_label": "predictrequest"
     },
     {
@@ -243,7 +252,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L33",
       "id": "schemas_predict_ticket_schema_predictresponse",
-      "community": 1,
+      "community": 2,
       "norm_label": "predictresponse"
     },
     {
@@ -252,7 +261,7 @@
       "source_file": "app/services/predict_agent/agent.py",
       "source_location": "L1",
       "id": "app_services_predict_agent_agent_py",
-      "community": 15,
+      "community": 16,
       "norm_label": "agent.py"
     },
     {
@@ -261,97 +270,106 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L1",
       "id": "app_services_predict_agent_utils_cache_py",
-      "community": 6,
+      "community": 7,
       "norm_label": "cache.py"
     },
     {
       "label": "get_redis_client()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L25",
+      "source_location": "L24",
       "id": "utils_cache_get_redis_client",
-      "community": 6,
+      "community": 7,
       "norm_label": "get_redis_client()"
+    },
+    {
+      "label": "build_company_cache_index_key()",
+      "file_type": "code",
+      "source_file": "app/services/predict_agent/utils/cache.py",
+      "source_location": "L32",
+      "id": "utils_cache_build_company_cache_index_key",
+      "community": 7,
+      "norm_label": "build_company_cache_index_key()"
     },
     {
       "label": "build_ticket_cache_key()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L33",
+      "source_location": "L37",
       "id": "utils_cache_build_ticket_cache_key",
-      "community": 6,
+      "community": 7,
       "norm_label": "build_ticket_cache_key()"
     },
     {
       "label": "get_hybrid_embedding()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L44",
+      "source_location": "L48",
       "id": "utils_cache_get_hybrid_embedding",
-      "community": 6,
+      "community": 7,
       "norm_label": "get_hybrid_embedding()"
     },
     {
       "label": "get_ticket_embeddings()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L72",
+      "source_location": "L76",
       "id": "utils_cache_get_ticket_embeddings",
-      "community": 6,
+      "community": 7,
       "norm_label": "get_ticket_embeddings()"
     },
     {
       "label": "cosine_similarity()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L79",
+      "source_location": "L83",
       "id": "utils_cache_cosine_similarity",
-      "community": 6,
+      "community": 7,
       "norm_label": "cosine_similarity()"
     },
     {
       "label": "calculate_weighted_similarity()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L94",
+      "source_location": "L98",
       "id": "utils_cache_calculate_weighted_similarity",
-      "community": 6,
+      "community": 7,
       "norm_label": "calculate_weighted_similarity()"
     },
     {
       "label": "_get_dense_vector()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L106",
+      "source_location": "L110",
       "id": "utils_cache_get_dense_vector",
-      "community": 6,
+      "community": 7,
       "norm_label": "_get_dense_vector()"
     },
     {
       "label": "load_cache_entries()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L120",
+      "source_location": "L124",
       "id": "utils_cache_load_cache_entries",
-      "community": 6,
+      "community": 7,
       "norm_label": "load_cache_entries()"
     },
     {
       "label": "find_best_cached_prediction()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L141",
+      "source_location": "L149",
       "id": "utils_cache_find_best_cached_prediction",
-      "community": 6,
+      "community": 7,
       "norm_label": "find_best_cached_prediction()"
     },
     {
       "label": "save_prediction_cache()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/cache.py",
-      "source_location": "L167",
+      "source_location": "L175",
       "id": "utils_cache_save_prediction_cache",
-      "community": 6,
+      "community": 7,
       "norm_label": "save_prediction_cache()"
     },
     {
@@ -360,106 +378,124 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L1",
       "id": "app_services_predict_agent_utils_node_py",
-      "community": 5,
+      "community": 4,
       "norm_label": "node.py"
     },
     {
       "label": "_build_predict_messages()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L45",
+      "source_location": "L47",
       "id": "utils_node_build_predict_messages",
-      "community": 5,
+      "community": 4,
       "norm_label": "_build_predict_messages()"
     },
     {
       "label": "_normalize_department_name()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L60",
+      "source_location": "L62",
       "id": "utils_node_normalize_department_name",
-      "community": 5,
+      "community": 4,
       "norm_label": "_normalize_department_name()"
+    },
+    {
+      "label": "_normalize_nullable_text()",
+      "file_type": "code",
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L67",
+      "id": "utils_node_normalize_nullable_text",
+      "community": 4,
+      "norm_label": "_normalize_nullable_text()"
+    },
+    {
+      "label": "_build_ticket_predict_result()",
+      "file_type": "code",
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L79",
+      "id": "utils_node_build_ticket_predict_result",
+      "community": 4,
+      "norm_label": "_build_ticket_predict_result()"
     },
     {
       "label": "_extract_department_mapping()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L65",
+      "source_location": "L89",
       "id": "utils_node_extract_department_mapping",
-      "community": 5,
+      "community": 4,
       "norm_label": "_extract_department_mapping()"
     },
     {
       "label": "_get_tickets_from_state()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L104",
+      "source_location": "L128",
       "id": "utils_node_get_tickets_from_state",
-      "community": 5,
+      "community": 4,
       "norm_label": "_get_tickets_from_state()"
     },
     {
       "label": "_merge_indexed_results()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L117",
+      "source_location": "L141",
       "id": "utils_node_merge_indexed_results",
-      "community": 5,
+      "community": 4,
       "norm_label": "_merge_indexed_results()"
     },
     {
       "label": "get_department()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L130",
+      "source_location": "L154",
       "id": "utils_node_get_department",
-      "community": 5,
+      "community": 4,
       "norm_label": "get_department()"
     },
     {
       "label": "cache_lookup_node()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L152",
+      "source_location": "L176",
       "id": "utils_node_cache_lookup_node",
-      "community": 5,
+      "community": 4,
       "norm_label": "cache_lookup_node()"
     },
     {
       "label": "route_after_cache_lookup()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L230",
+      "source_location": "L254",
       "id": "utils_node_route_after_cache_lookup",
-      "community": 5,
+      "community": 4,
       "norm_label": "route_after_cache_lookup()"
     },
     {
       "label": "llm_predict_node()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L239",
+      "source_location": "L263",
       "id": "utils_node_llm_predict_node",
-      "community": 5,
+      "community": 4,
       "norm_label": "llm_predict_node()"
     },
     {
       "label": "save_cache_node()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L308",
+      "source_location": "L331",
       "id": "utils_node_save_cache_node",
-      "community": 5,
+      "community": 4,
       "norm_label": "save_cache_node()"
     },
     {
       "label": "callback_node()",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/node.py",
-      "source_location": "L349",
+      "source_location": "L373",
       "id": "utils_node_callback_node",
-      "community": 5,
+      "community": 4,
       "norm_label": "callback_node()"
     },
     {
@@ -468,7 +504,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L1",
       "id": "app_services_predict_agent_utils_state_py",
-      "community": 1,
+      "community": 2,
       "norm_label": "state.py"
     },
     {
@@ -477,7 +513,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L9",
       "id": "utils_state_ticketitem",
-      "community": 1,
+      "community": 2,
       "norm_label": "ticketitem"
     },
     {
@@ -486,52 +522,61 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L15",
       "id": "utils_state_ticketpredictresult",
-      "community": 1,
+      "community": 2,
       "norm_label": "ticketpredictresult"
+    },
+    {
+      "label": "TicketRoutingDecision",
+      "file_type": "code",
+      "source_file": "app/services/predict_agent/utils/state.py",
+      "source_location": "L29",
+      "id": "utils_state_ticketroutingdecision",
+      "community": 2,
+      "norm_label": "ticketroutingdecision"
     },
     {
       "label": "HybridEmbeddingData",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/state.py",
-      "source_location": "L29",
+      "source_location": "L41",
       "id": "utils_state_hybridembeddingdata",
-      "community": 1,
+      "community": 2,
       "norm_label": "hybridembeddingdata"
     },
     {
       "label": "PendingTicketItem",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/state.py",
-      "source_location": "L35",
+      "source_location": "L47",
       "id": "utils_state_pendingticketitem",
-      "community": 1,
+      "community": 2,
       "norm_label": "pendingticketitem"
     },
     {
       "label": "IndexedTicketPredictResult",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/state.py",
-      "source_location": "L44",
+      "source_location": "L56",
       "id": "utils_state_indexedticketpredictresult",
-      "community": 1,
+      "community": 2,
       "norm_label": "indexedticketpredictresult"
     },
     {
       "label": "TicketState",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/state.py",
-      "source_location": "L50",
+      "source_location": "L62",
       "id": "utils_state_ticketstate",
-      "community": 1,
+      "community": 2,
       "norm_label": "ticketstate"
     },
     {
       "label": "Config",
       "file_type": "code",
       "source_file": "app/services/predict_agent/utils/state.py",
-      "source_location": "L84",
+      "source_location": "L96",
       "id": "utils_state_config",
-      "community": 1,
+      "community": 2,
       "norm_label": "config"
     },
     {
@@ -540,7 +585,7 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L1",
       "id": "app_utils_hmac_py",
-      "community": 7,
+      "community": 8,
       "norm_label": "hmac.py"
     },
     {
@@ -549,7 +594,7 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L14",
       "id": "utils_hmac_normalize_hmac_body",
-      "community": 7,
+      "community": 8,
       "norm_label": "_normalize_hmac_body()"
     },
     {
@@ -558,7 +603,7 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L21",
       "id": "utils_hmac_generate_hmac",
-      "community": 7,
+      "community": 8,
       "norm_label": "generate_hmac()"
     },
     {
@@ -567,7 +612,7 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L28",
       "id": "utils_hmac_normalize_hmac_signature",
-      "community": 7,
+      "community": 8,
       "norm_label": "normalize_hmac_signature()"
     },
     {
@@ -576,7 +621,7 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L37",
       "id": "utils_hmac_verify_hmac",
-      "community": 7,
+      "community": 8,
       "norm_label": "verify_hmac()"
     },
     {
@@ -585,7 +630,7 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L44",
       "id": "utils_hmac_verify_request_hmac",
-      "community": 7,
+      "community": 8,
       "norm_label": "verify_request_hmac()"
     },
     {
@@ -594,7 +639,7 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L64",
       "id": "utils_hmac_verify_request_hmac_dependency",
-      "community": 7,
+      "community": 8,
       "norm_label": "verify_request_hmac_dependency()"
     },
     {
@@ -603,7 +648,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "id": "agents_md",
-      "community": 8,
+      "community": 9,
       "norm_label": "agents.md"
     },
     {
@@ -612,7 +657,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "id": "issus_e_tracker_llm_agents_agents_instructions",
-      "community": 8,
+      "community": 9,
       "norm_label": "agents instructions"
     },
     {
@@ -621,7 +666,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L3",
       "id": "issus_e_tracker_llm_agents_coding_style",
-      "community": 8,
+      "community": 9,
       "norm_label": "coding style"
     },
     {
@@ -630,7 +675,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L11",
       "id": "issus_e_tracker_llm_agents_dependency_management",
-      "community": 8,
+      "community": 9,
       "norm_label": "dependency management"
     },
     {
@@ -639,7 +684,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L16",
       "id": "issus_e_tracker_llm_agents_communication",
-      "community": 8,
+      "community": 9,
       "norm_label": "communication"
     },
     {
@@ -648,7 +693,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L21",
       "id": "issus_e_tracker_llm_agents_rules",
-      "community": 8,
+      "community": 9,
       "norm_label": "rules"
     },
     {
@@ -657,7 +702,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L25",
       "id": "issus_e_tracker_llm_agents_graphify",
-      "community": 8,
+      "community": 9,
       "norm_label": "graphify"
     },
     {
@@ -666,7 +711,7 @@
       "source_file": "CACHE.md",
       "source_location": "L1",
       "id": "cache_md",
-      "community": 4,
+      "community": 5,
       "norm_label": "cache.md"
     },
     {
@@ -675,7 +720,7 @@
       "source_file": "CACHE.md",
       "source_location": "L1",
       "id": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "community": 4,
+      "community": 5,
       "norm_label": "cache retrieval flow"
     },
     {
@@ -684,7 +729,7 @@
       "source_file": "CACHE.md",
       "source_location": "L5",
       "id": "issus_e_tracker_llm_cache",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e20\u0e32\u0e1e\u0e23\u0e27\u0e21"
     },
     {
@@ -693,7 +738,7 @@
       "source_file": "CACHE.md",
       "source_location": "L20",
       "id": "issus_e_tracker_llm_cache_flow",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e08\u0e14\u0e40\u0e23\u0e34\u0e21\u0e15\u0e19\u0e02\u0e2d\u0e07 flow"
     },
     {
@@ -702,7 +747,7 @@
       "source_file": "CACHE.md",
       "source_location": "L33",
       "id": "issus_e_tracker_llm_cache_state_cache",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e32\u0e07 state \u0e17\u0e35\u0e40\u0e01\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a cache"
     },
     {
@@ -711,7 +756,7 @@
       "source_file": "CACHE.md",
       "source_location": "L54",
       "id": "issus_e_tracker_llm_cache_cache",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e04\u0e32\u0e04\u0e07\u0e17\u0e35\u0e02\u0e2d\u0e07 cache"
     },
     {
@@ -720,7 +765,7 @@
       "source_file": "CACHE.md",
       "source_location": "L75",
       "id": "issus_e_tracker_llm_cache_cache_75",
-      "community": 2,
+      "community": 3,
       "norm_label": "\u0e02\u0e31\u0e19\u0e15\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e14\u0e36\u0e07 cache \u0e41\u0e1a\u0e1a\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14"
     },
     {
@@ -729,7 +774,7 @@
       "source_file": "CACHE.md",
       "source_location": "L77",
       "id": "issus_e_tracker_llm_cache_1_cache_lookup_node_state",
-      "community": 2,
+      "community": 3,
       "norm_label": "1. \u0e40\u0e02\u0e32 `cache_lookup_node(state)`"
     },
     {
@@ -738,7 +783,7 @@
       "source_file": "CACHE.md",
       "source_location": "L91",
       "id": "issus_e_tracker_llm_cache_2_ticket_state_get_tickets_from_state",
-      "community": 2,
+      "community": 3,
       "norm_label": "2. \u0e14\u0e36\u0e07 ticket \u0e08\u0e32\u0e01 state \u0e14\u0e27\u0e22 `_get_tickets_from_state()`"
     },
     {
@@ -747,7 +792,7 @@
       "source_file": "CACHE.md",
       "source_location": "L103",
       "id": "issus_e_tracker_llm_cache_3_cache_redis_load_cache_entries",
-      "community": 2,
+      "community": 3,
       "norm_label": "3. \u0e42\u0e2b\u0e25\u0e14 cache \u0e17\u0e31\u0e07\u0e2b\u0e21\u0e14\u0e08\u0e32\u0e01 redis \u0e14\u0e27\u0e22 `load_cache_entries()`"
     },
     {
@@ -756,7 +801,7 @@
       "source_file": "CACHE.md",
       "source_location": "L131",
       "id": "issus_e_tracker_llm_cache_4_embedding_ticket_get_ticket_embeddings",
-      "community": 2,
+      "community": 3,
       "norm_label": "4. \u0e2a\u0e23\u0e32\u0e07 embedding \u0e02\u0e2d\u0e07 ticket \u0e1b\u0e31\u0e08\u0e08\u0e1a\u0e31\u0e19\u0e14\u0e27\u0e22 `get_ticket_embeddings()`"
     },
     {
@@ -765,7 +810,7 @@
       "source_file": "CACHE.md",
       "source_location": "L147",
       "id": "issus_e_tracker_llm_cache_get_hybrid_embedding",
-      "community": 2,
+      "community": 3,
       "norm_label": "`get_hybrid_embedding()` \u0e17\u0e4d\u0e32\u0e2d\u0e30\u0e44\u0e23"
     },
     {
@@ -774,7 +819,7 @@
       "source_file": "CACHE.md",
       "source_location": "L155",
       "id": "issus_e_tracker_llm_cache_codeblock_1",
-      "community": 2,
+      "community": 3,
       "norm_label": "code:json ({)"
     },
     {
@@ -783,7 +828,7 @@
       "source_file": "CACHE.md",
       "source_location": "L171",
       "id": "issus_e_tracker_llm_cache_5_cache_find_best_cached_prediction",
-      "community": 2,
+      "community": 3,
       "norm_label": "5. \u0e2b\u0e32 cache \u0e17\u0e35\u0e43\u0e01\u0e25\u0e17\u0e35\u0e2a\u0e14\u0e14\u0e27\u0e22 `find_best_cached_prediction()`"
     },
     {
@@ -792,7 +837,7 @@
       "source_file": "CACHE.md",
       "source_location": "L186",
       "id": "issus_e_tracker_llm_cache_find_best_cached_prediction",
-      "community": 2,
+      "community": 3,
       "norm_label": "\u0e20\u0e32\u0e22\u0e43\u0e19 `find_best_cached_prediction()` \u0e17\u0e4d\u0e32\u0e2d\u0e30\u0e44\u0e23\u0e1a\u0e32\u0e07"
     },
     {
@@ -801,7 +846,7 @@
       "source_file": "CACHE.md",
       "source_location": "L196",
       "id": "issus_e_tracker_llm_cache_6_embedding_cache_get_dense_vector",
-      "community": 2,
+      "community": 3,
       "norm_label": "6. \u0e01\u0e32\u0e23\u0e2d\u0e32\u0e19 embedding \u0e08\u0e32\u0e01 cache \u0e14\u0e27\u0e22 `_get_dense_vector()`"
     },
     {
@@ -810,7 +855,7 @@
       "source_file": "CACHE.md",
       "source_location": "L210",
       "id": "issus_e_tracker_llm_cache_7_similarity",
-      "community": 2,
+      "community": 3,
       "norm_label": "7. \u0e01\u0e32\u0e23\u0e04\u0e4d\u0e32\u0e19\u0e27\u0e13 similarity"
     },
     {
@@ -819,7 +864,7 @@
       "source_file": "CACHE.md",
       "source_location": "L214",
       "id": "issus_e_tracker_llm_cache_cosine_similarity_left_vector_right_vector",
-      "community": 2,
+      "community": 3,
       "norm_label": "`cosine_similarity(left_vector, right_vector)`"
     },
     {
@@ -828,7 +873,7 @@
       "source_file": "CACHE.md",
       "source_location": "L226",
       "id": "issus_e_tracker_llm_cache_calculate_weighted_similarity",
-      "community": 2,
+      "community": 3,
       "norm_label": "`calculate_weighted_similarity(...)`"
     },
     {
@@ -837,7 +882,7 @@
       "source_file": "CACHE.md",
       "source_location": "L236",
       "id": "issus_e_tracker_llm_cache_codeblock_2",
-      "community": 2,
+      "community": 3,
       "norm_label": "code:text ((0.4 * title_similarity) + (0.6 * description_similarity))"
     },
     {
@@ -846,7 +891,7 @@
       "source_file": "CACHE.md",
       "source_location": "L242",
       "id": "issus_e_tracker_llm_cache_8_cache_hit_miss",
-      "community": 2,
+      "community": 3,
       "norm_label": "8. \u0e15\u0e31\u0e14\u0e2a\u0e34\u0e19\u0e27\u0e32\u0e40\u0e1b\u0e47\u0e19 cache hit \u0e2b\u0e23\u0e37\u0e2d miss"
     },
     {
@@ -855,7 +900,7 @@
       "source_file": "CACHE.md",
       "source_location": "L256",
       "id": "issus_e_tracker_llm_cache_9_hit_node",
-      "community": 2,
+      "community": 3,
       "norm_label": "9. \u0e16\u0e32 hit \u0e17\u0e31\u0e07\u0e2b\u0e21\u0e14 \u0e08\u0e30\u0e08\u0e1a\u0e15\u0e31\u0e07\u0e41\u0e15 node \u0e19\u0e35"
     },
     {
@@ -864,7 +909,7 @@
       "source_file": "CACHE.md",
       "source_location": "L268",
       "id": "issus_e_tracker_llm_cache_10_miss_llm",
-      "community": 2,
+      "community": 3,
       "norm_label": "10. \u0e16\u0e32\u0e22\u0e31\u0e07\u0e21\u0e35 miss \u0e08\u0e30\u0e44\u0e1b\u0e15\u0e2d\u0e17\u0e35 llm"
     },
     {
@@ -873,7 +918,7 @@
       "source_file": "CACHE.md",
       "source_location": "L278",
       "id": "issus_e_tracker_llm_cache_cache_278",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e23\u0e1b\u0e41\u0e1a\u0e1a\u0e02\u0e2d\u0e21\u0e25\u0e17\u0e35\u0e40\u0e01\u0e47\u0e1a\u0e43\u0e19 cache"
     },
     {
@@ -882,7 +927,7 @@
       "source_file": "CACHE.md",
       "source_location": "L284",
       "id": "issus_e_tracker_llm_cache_codeblock_3",
-      "community": 4,
+      "community": 5,
       "norm_label": "code:json ({)"
     },
     {
@@ -891,7 +936,7 @@
       "source_file": "CACHE.md",
       "source_location": "L306",
       "id": "issus_e_tracker_llm_cache_key_redis",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e27\u0e34\u0e18\u0e35\u0e15\u0e31\u0e07\u0e0a\u0e37\u0e2d key \u0e43\u0e19 redis"
     },
     {
@@ -900,7 +945,7 @@
       "source_file": "CACHE.md",
       "source_location": "L319",
       "id": "issus_e_tracker_llm_cache_flow_save_cache_redis",
-      "community": 4,
+      "community": 5,
       "norm_label": "flow \u0e15\u0e2d\u0e19 save cache \u0e01\u0e25\u0e31\u0e1a\u0e40\u0e02\u0e32 redis"
     },
     {
@@ -909,7 +954,7 @@
       "source_file": "CACHE.md",
       "source_location": "L323",
       "id": "issus_e_tracker_llm_cache_1_llm_predict_node",
-      "community": 4,
+      "community": 5,
       "norm_label": "1. \u0e40\u0e02\u0e32 `llm_predict_node()`"
     },
     {
@@ -918,7 +963,7 @@
       "source_file": "CACHE.md",
       "source_location": "L328",
       "id": "issus_e_tracker_llm_cache_2_save_cache_node",
-      "community": 4,
+      "community": 5,
       "norm_label": "2. \u0e40\u0e02\u0e32 `save_cache_node()`"
     },
     {
@@ -927,7 +972,7 @@
       "source_file": "CACHE.md",
       "source_location": "L338",
       "id": "issus_e_tracker_llm_cache_3_map_ticket_index",
-      "community": 4,
+      "community": 5,
       "norm_label": "3. map ticket \u0e40\u0e14\u0e34\u0e21\u0e01\u0e31\u0e1a\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e43\u0e2b\u0e21\u0e14\u0e27\u0e22 `index`"
     },
     {
@@ -936,7 +981,7 @@
       "source_file": "CACHE.md",
       "source_location": "L349",
       "id": "issus_e_tracker_llm_cache_4_save_prediction_cache",
-      "community": 4,
+      "community": 5,
       "norm_label": "4. \u0e40\u0e23\u0e35\u0e22\u0e01 `save_prediction_cache(...)`"
     },
     {
@@ -945,7 +990,7 @@
       "source_file": "CACHE.md",
       "source_location": "L361",
       "id": "issus_e_tracker_llm_cache_361",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e2a\u0e23\u0e1b\u0e2b\u0e19\u0e32\u0e17\u0e35\u0e02\u0e2d\u0e07\u0e41\u0e15\u0e25\u0e30\u0e1f\u0e31\u0e07\u0e01\u0e4c\u0e0a\u0e31\u0e19"
     },
     {
@@ -954,7 +999,7 @@
       "source_file": "CACHE.md",
       "source_location": "L405",
       "id": "issus_e_tracker_llm_cache_405",
-      "community": 4,
+      "community": 5,
       "norm_label": "\u0e2a\u0e23\u0e1b\u0e2a\u0e31\u0e19\u0e17\u0e35\u0e2a\u0e14"
     },
     {
@@ -963,15 +1008,213 @@
       "source_file": "README.md",
       "source_location": "L1",
       "id": "readme_md",
-      "community": 16,
+      "community": 17,
       "norm_label": "readme.md"
+    },
+    {
+      "label": "WORKFLOW.md",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L1",
+      "id": "workflow_md",
+      "community": 1,
+      "norm_label": "workflow.md"
+    },
+    {
+      "label": "This module documents the end-to-end runtime workflow of the project.",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L1",
+      "id": "issus_e_tracker_llm_workflow_this_module_documents_the_end_to_end_runtime_workflow_of_the_project",
+      "community": 1,
+      "norm_label": "this module documents the end-to-end runtime workflow of the project."
+    },
+    {
+      "label": "WORKFLOW",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L3",
+      "id": "issus_e_tracker_llm_workflow_workflow",
+      "community": 1,
+      "norm_label": "workflow"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L5",
+      "id": "issus_e_tracker_llm_workflow_overview",
+      "community": 1,
+      "norm_label": "overview"
+    },
+    {
+      "label": "High-Level Flow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L15",
+      "id": "issus_e_tracker_llm_workflow_high_level_flow",
+      "community": 1,
+      "norm_label": "high-level flow"
+    },
+    {
+      "label": "API Entry Flow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L28",
+      "id": "issus_e_tracker_llm_workflow_api_entry_flow",
+      "community": 1,
+      "norm_label": "api entry flow"
+    },
+    {
+      "label": "Request Shape",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L46",
+      "id": "issus_e_tracker_llm_workflow_request_shape",
+      "community": 1,
+      "norm_label": "request shape"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L54",
+      "id": "issus_e_tracker_llm_workflow_codeblock_1",
+      "community": 1,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "Grouping and Queueing",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L76",
+      "id": "issus_e_tracker_llm_workflow_grouping_and_queueing",
+      "community": 1,
+      "norm_label": "grouping and queueing"
+    },
+    {
+      "label": "Worker Runtime",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L90",
+      "id": "issus_e_tracker_llm_workflow_worker_runtime",
+      "community": 1,
+      "norm_label": "worker runtime"
+    },
+    {
+      "label": "Prediction Graph",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L110",
+      "id": "issus_e_tracker_llm_workflow_prediction_graph",
+      "community": 1,
+      "norm_label": "prediction graph"
+    },
+    {
+      "label": "Cache Lookup Flow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L140",
+      "id": "issus_e_tracker_llm_workflow_cache_lookup_flow",
+      "community": 1,
+      "norm_label": "cache lookup flow"
+    },
+    {
+      "label": "LLM Prediction Flow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L167",
+      "id": "issus_e_tracker_llm_workflow_llm_prediction_flow",
+      "community": 1,
+      "norm_label": "llm prediction flow"
+    },
+    {
+      "label": "Save Cache Flow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L188",
+      "id": "issus_e_tracker_llm_workflow_save_cache_flow",
+      "community": 1,
+      "norm_label": "save cache flow"
+    },
+    {
+      "label": "Callback Flow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L202",
+      "id": "issus_e_tracker_llm_workflow_callback_flow",
+      "community": 1,
+      "norm_label": "callback flow"
+    },
+    {
+      "label": "Redis Responsibilities",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L227",
+      "id": "issus_e_tracker_llm_workflow_redis_responsibilities",
+      "community": 1,
+      "norm_label": "redis responsibilities"
+    },
+    {
+      "label": "Configuration",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L236",
+      "id": "issus_e_tracker_llm_workflow_configuration",
+      "community": 1,
+      "norm_label": "configuration"
+    },
+    {
+      "label": "Deployment Topology",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L255",
+      "id": "issus_e_tracker_llm_workflow_deployment_topology",
+      "community": 1,
+      "norm_label": "deployment topology"
+    },
+    {
+      "label": "Failure Handling",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L275",
+      "id": "issus_e_tracker_llm_workflow_failure_handling",
+      "community": 1,
+      "norm_label": "failure handling"
+    },
+    {
+      "label": "End-to-End Sequence",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L286",
+      "id": "issus_e_tracker_llm_workflow_end_to_end_sequence",
+      "community": 1,
+      "norm_label": "end-to-end sequence"
+    },
+    {
+      "label": "code:text (Backend)",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L288",
+      "id": "issus_e_tracker_llm_workflow_codeblock_2",
+      "community": 1,
+      "norm_label": "code:text (backend)"
+    },
+    {
+      "label": "File Map",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L308",
+      "id": "issus_e_tracker_llm_workflow_file_map",
+      "community": 1,
+      "norm_label": "file map"
     },
     {
       "label": "main.py",
       "file_type": "code",
       "source_file": "main.py",
       "source_location": "L1",
-      "community": 17,
+      "community": 18,
       "norm_label": "main.py",
       "id": "main_py"
     },
@@ -980,7 +1223,7 @@
       "file_type": "code",
       "source_file": "worker.py",
       "source_location": "L1",
-      "community": 9,
+      "community": 10,
       "norm_label": "worker.py",
       "id": "worker_py"
     },
@@ -989,7 +1232,7 @@
       "file_type": "code",
       "source_file": "core/config.py",
       "source_location": "L1",
-      "community": 10,
+      "community": 11,
       "norm_label": "config.py",
       "id": "core_config_py"
     },
@@ -998,7 +1241,7 @@
       "file_type": "code",
       "source_file": "routes/v1/router.py",
       "source_location": "L1",
-      "community": 18,
+      "community": 19,
       "norm_label": "router.py",
       "id": "routes_v1_router_py"
     },
@@ -1007,7 +1250,7 @@
       "file_type": "code",
       "source_file": "routes/v1/endpoints/health.py",
       "source_location": "L1",
-      "community": 11,
+      "community": 12,
       "norm_label": "health.py",
       "id": "routes_v1_endpoints_health_py"
     },
@@ -1016,7 +1259,7 @@
       "file_type": "code",
       "source_file": "routes/v1/endpoints/predict.py",
       "source_location": "L1",
-      "community": 12,
+      "community": 13,
       "norm_label": "predict.py",
       "id": "routes_v1_endpoints_predict_py"
     },
@@ -1025,7 +1268,7 @@
       "file_type": "code",
       "source_file": "schemas/predict_ticket_schema.py",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "predict_ticket_schema.py",
       "id": "schemas_predict_ticket_schema_py"
     },
@@ -1034,7 +1277,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/agent.py",
       "source_location": "L1",
-      "community": 19,
+      "community": 20,
       "norm_label": "agent.py",
       "id": "services_predict_agent_agent_py"
     },
@@ -1043,7 +1286,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/cache.py",
       "source_location": "L1",
-      "community": 6,
+      "community": 7,
       "norm_label": "cache.py",
       "id": "services_predict_agent_utils_cache_py"
     },
@@ -1052,7 +1295,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/cache.py",
       "source_location": "L24",
-      "community": 6,
+      "community": 7,
       "norm_label": "_build_redis_url()",
       "id": "utils_cache_build_redis_url"
     },
@@ -1061,7 +1304,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/node.py",
       "source_location": "L1",
-      "community": 5,
+      "community": 4,
       "norm_label": "node.py",
       "id": "services_predict_agent_utils_node_py"
     },
@@ -1070,7 +1313,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/state.py",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "state.py",
       "id": "services_predict_agent_utils_state_py"
     },
@@ -1079,7 +1322,7 @@
       "file_type": "code",
       "source_file": "utils/hmac.py",
       "source_location": "L1",
-      "community": 7,
+      "community": 8,
       "norm_label": "hmac.py",
       "id": "utils_hmac_py"
     },
@@ -1120,7 +1363,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "redis service",
       "id": "docker_compose_redis_service"
     },
@@ -1133,7 +1376,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "app service",
       "id": "docker_compose_app_service"
     },
@@ -1146,7 +1389,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "worker service",
       "id": "docker_compose_worker_service"
     },
@@ -1159,7 +1402,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "fastapi application",
       "id": "main_fastapi_app"
     },
@@ -1172,7 +1415,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "api router",
       "id": "router_api_router"
     },
@@ -1185,7 +1428,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "health endpoint",
       "id": "health_health_endpoint"
     },
@@ -1198,7 +1441,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "predict ticket endpoint",
       "id": "predict_predict_ticket_endpoint"
     },
@@ -1211,7 +1454,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "ticket prediction celery task",
       "id": "worker_ticket_prediction_task"
     },
@@ -1224,7 +1467,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 21,
       "norm_label": "application settings",
       "id": "config_settings"
     },
@@ -1237,7 +1480,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "predict request",
       "id": "schema_predict_request"
     },
@@ -1250,7 +1493,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "predict response",
       "id": "schema_predict_response"
     },
@@ -1263,7 +1506,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 22,
       "norm_label": "priority enum",
       "id": "schema_priority_enum"
     },
@@ -1276,7 +1519,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "ticket state",
       "id": "state_ticket_state"
     },
@@ -1341,7 +1584,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 0,
       "norm_label": "prediction graph",
       "id": "agent_prediction_graph"
     },
@@ -1367,7 +1610,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 0,
       "norm_label": "route after cache lookup",
       "id": "node_route_after_cache_lookup"
     },
@@ -1640,7 +1883,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "verify request hmac dependency",
       "id": "hmac_verify_request_hmac_dependency"
     },
@@ -1653,7 +1896,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "verify request hmac",
       "id": "hmac_verify_request_hmac"
     },
@@ -1666,7 +1909,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "verify hmac",
       "id": "hmac_verify_hmac"
     },
@@ -1679,21 +1922,32 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 6,
       "norm_label": "normalize hmac signature",
       "id": "hmac_normalize_hmac_signature"
     }
   ],
   "links": [
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/worker.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_worker_py",
+      "target": "enum"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/worker.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_worker_py",
-      "target": "app_worker_build_redis_url",
-      "confidence_score": 1.0
+      "target": "app_worker_build_redis_url"
     },
     {
       "relation": "contains",
@@ -1701,9 +1955,19 @@
       "source_file": "app/worker.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_worker_py",
-      "target": "app_worker_get_prediction_graph",
-      "confidence_score": 1.0
+      "target": "app_worker_get_prediction_graph"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/worker.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_worker_py",
+      "target": "app_worker_make_json_safe"
     },
     {
       "relation": "contains",
@@ -1711,9 +1975,9 @@
       "source_file": "app/worker.py",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_worker_py",
-      "target": "app_worker_ticket_prediction",
-      "confidence_score": 1.0
+      "target": "app_worker_ticket_prediction"
     },
     {
       "relation": "calls",
@@ -1733,9 +1997,31 @@
       "source_file": "app/worker.py",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_worker_ticket_prediction",
-      "target": "app_worker_get_prediction_graph",
-      "confidence_score": 1.0
+      "target": "app_worker_get_prediction_graph"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/worker.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_worker_ticket_prediction",
+      "target": "app_worker_make_json_safe"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/worker.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "app_worker_make_json_safe",
+      "target": "str"
     },
     {
       "relation": "calls",
@@ -1764,9 +2050,9 @@
       "source_file": "app/core/config.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_core_config_py",
-      "target": "core_config_settings",
-      "confidence_score": 1.0
+      "target": "core_config_settings"
     },
     {
       "relation": "inherits",
@@ -1794,9 +2080,9 @@
       "source_file": "app/routes/v1/endpoints/health.py",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_routes_v1_endpoints_health_py",
-      "target": "endpoints_health_health",
-      "confidence_score": 1.0
+      "target": "endpoints_health_health"
     },
     {
       "relation": "contains",
@@ -1814,9 +2100,9 @@
       "source_file": "app/routes/v1/endpoints/predict.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_routes_v1_endpoints_predict_py",
-      "target": "endpoints_predict_predict_ticket",
-      "confidence_score": 1.0
+      "target": "endpoints_predict_predict_ticket"
     },
     {
       "relation": "calls",
@@ -1857,9 +2143,9 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_schemas_predict_ticket_schema_py",
-      "target": "enum",
-      "confidence_score": 1.0
+      "target": "enum"
     },
     {
       "relation": "contains",
@@ -1867,9 +2153,9 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_schemas_predict_ticket_schema_py",
-      "target": "schemas_predict_ticket_schema_priorityenum",
-      "confidence_score": 1.0
+      "target": "schemas_predict_ticket_schema_priorityenum"
     },
     {
       "relation": "contains",
@@ -1877,9 +2163,9 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_schemas_predict_ticket_schema_py",
-      "target": "schemas_predict_ticket_schema_formitem",
-      "confidence_score": 1.0
+      "target": "schemas_predict_ticket_schema_formitem"
     },
     {
       "relation": "contains",
@@ -1887,9 +2173,9 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_schemas_predict_ticket_schema_py",
-      "target": "schemas_predict_ticket_schema_companydata",
-      "confidence_score": 1.0
+      "target": "schemas_predict_ticket_schema_companydata"
     },
     {
       "relation": "contains",
@@ -1897,9 +2183,9 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_schemas_predict_ticket_schema_py",
-      "target": "schemas_predict_ticket_schema_predictrequest",
-      "confidence_score": 1.0
+      "target": "schemas_predict_ticket_schema_predictrequest"
     },
     {
       "relation": "contains",
@@ -1907,9 +2193,9 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_schemas_predict_ticket_schema_py",
-      "target": "schemas_predict_ticket_schema_predictresponse",
-      "confidence_score": 1.0
+      "target": "schemas_predict_ticket_schema_predictresponse"
     },
     {
       "relation": "inherits",
@@ -1949,6 +2235,16 @@
       "weight": 0.8,
       "confidence_score": 0.5,
       "source": "utils_state_ticketpredictresult",
+      "target": "schemas_predict_ticket_schema_priorityenum"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/services/predict_agent/utils/state.py",
+      "source_location": "L6",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "utils_state_ticketroutingdecision",
       "target": "schemas_predict_ticket_schema_priorityenum"
     },
     {
@@ -2010,6 +2306,17 @@
       "confidence_score": 1.0,
       "source": "schemas_predict_ticket_schema_py",
       "target": "schemas_predict_ticket_schema_priorityenum"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "utils_node_normalize_nullable_text",
+      "target": "str"
     },
     {
       "relation": "calls",
@@ -2161,6 +2468,16 @@
     {
       "relation": "inherits",
       "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/state.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_state_ticketroutingdecision",
+      "target": "basemodel"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
       "source_file": "services/predict_agent/utils/state.py",
       "source_location": "L29",
       "weight": 1.0,
@@ -2234,9 +2551,19 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_get_redis_client",
-      "confidence_score": 1.0
+      "target": "utils_cache_get_redis_client"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/cache.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_services_predict_agent_utils_cache_py",
+      "target": "utils_cache_build_company_cache_index_key"
     },
     {
       "relation": "contains",
@@ -2244,9 +2571,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_build_ticket_cache_key",
-      "confidence_score": 1.0
+      "target": "utils_cache_build_ticket_cache_key"
     },
     {
       "relation": "contains",
@@ -2254,9 +2581,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_get_hybrid_embedding",
-      "confidence_score": 1.0
+      "target": "utils_cache_get_hybrid_embedding"
     },
     {
       "relation": "contains",
@@ -2264,9 +2591,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_get_ticket_embeddings",
-      "confidence_score": 1.0
+      "target": "utils_cache_get_ticket_embeddings"
     },
     {
       "relation": "contains",
@@ -2274,9 +2601,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_cosine_similarity",
-      "confidence_score": 1.0
+      "target": "utils_cache_cosine_similarity"
     },
     {
       "relation": "contains",
@@ -2284,9 +2611,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_calculate_weighted_similarity",
-      "confidence_score": 1.0
+      "target": "utils_cache_calculate_weighted_similarity"
     },
     {
       "relation": "contains",
@@ -2294,9 +2621,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_get_dense_vector",
-      "confidence_score": 1.0
+      "target": "utils_cache_get_dense_vector"
     },
     {
       "relation": "contains",
@@ -2304,9 +2631,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_load_cache_entries",
-      "confidence_score": 1.0
+      "target": "utils_cache_load_cache_entries"
     },
     {
       "relation": "contains",
@@ -2314,9 +2641,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_find_best_cached_prediction",
-      "confidence_score": 1.0
+      "target": "utils_cache_find_best_cached_prediction"
     },
     {
       "relation": "contains",
@@ -2324,9 +2651,9 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L167",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_cache_py",
-      "target": "utils_cache_save_prediction_cache",
-      "confidence_score": 1.0
+      "target": "utils_cache_save_prediction_cache"
     },
     {
       "relation": "calls",
@@ -2370,6 +2697,28 @@
       "confidence_score": 1.0,
       "source": "utils_cache_get_redis_client",
       "target": "utils_cache_build_redis_url"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/cache.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_cache_load_cache_entries",
+      "target": "utils_cache_build_company_cache_index_key"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/cache.py",
+      "source_location": "L185",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_cache_save_prediction_cache",
+      "target": "utils_cache_build_company_cache_index_key"
     },
     {
       "relation": "calls",
@@ -2577,9 +2926,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_build_predict_messages",
-      "confidence_score": 1.0
+      "target": "utils_node_build_predict_messages"
     },
     {
       "relation": "contains",
@@ -2587,9 +2936,29 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_normalize_department_name",
-      "confidence_score": 1.0
+      "target": "utils_node_normalize_department_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_services_predict_agent_utils_node_py",
+      "target": "utils_node_normalize_nullable_text"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_services_predict_agent_utils_node_py",
+      "target": "utils_node_build_ticket_predict_result"
     },
     {
       "relation": "contains",
@@ -2597,9 +2966,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_extract_department_mapping",
-      "confidence_score": 1.0
+      "target": "utils_node_extract_department_mapping"
     },
     {
       "relation": "contains",
@@ -2607,9 +2976,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_get_tickets_from_state",
-      "confidence_score": 1.0
+      "target": "utils_node_get_tickets_from_state"
     },
     {
       "relation": "contains",
@@ -2617,9 +2986,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L117",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_merge_indexed_results",
-      "confidence_score": 1.0
+      "target": "utils_node_merge_indexed_results"
     },
     {
       "relation": "contains",
@@ -2627,9 +2996,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_get_department",
-      "confidence_score": 1.0
+      "target": "utils_node_get_department"
     },
     {
       "relation": "contains",
@@ -2637,9 +3006,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L152",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_cache_lookup_node",
-      "confidence_score": 1.0
+      "target": "utils_node_cache_lookup_node"
     },
     {
       "relation": "contains",
@@ -2647,9 +3016,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L230",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_route_after_cache_lookup",
-      "confidence_score": 1.0
+      "target": "utils_node_route_after_cache_lookup"
     },
     {
       "relation": "contains",
@@ -2657,9 +3026,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L239",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_llm_predict_node",
-      "confidence_score": 1.0
+      "target": "utils_node_llm_predict_node"
     },
     {
       "relation": "contains",
@@ -2667,9 +3036,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L308",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_save_cache_node",
-      "confidence_score": 1.0
+      "target": "utils_node_save_cache_node"
     },
     {
       "relation": "contains",
@@ -2677,9 +3046,9 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L349",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_node_py",
-      "target": "utils_node_callback_node",
-      "confidence_score": 1.0
+      "target": "utils_node_callback_node"
     },
     {
       "relation": "calls",
@@ -2733,6 +3102,39 @@
       "confidence_score": 1.0,
       "source": "services_predict_agent_utils_node_py",
       "target": "utils_node_normalize_department_name"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_node_build_ticket_predict_result",
+      "target": "utils_node_normalize_nullable_text"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L301",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_node_llm_predict_node",
+      "target": "utils_node_build_ticket_predict_result"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/services/predict_agent/utils/node.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "utils_node_build_ticket_predict_result",
+      "target": "utils_state_ticketpredictresult"
     },
     {
       "relation": "calls",
@@ -2995,9 +3397,9 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_state_py",
-      "target": "utils_state_ticketitem",
-      "confidence_score": 1.0
+      "target": "utils_state_ticketitem"
     },
     {
       "relation": "contains",
@@ -3005,9 +3407,9 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_state_py",
-      "target": "utils_state_ticketpredictresult",
-      "confidence_score": 1.0
+      "target": "utils_state_ticketpredictresult"
     },
     {
       "relation": "contains",
@@ -3015,9 +3417,19 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_state_py",
-      "target": "utils_state_hybridembeddingdata",
-      "confidence_score": 1.0
+      "target": "utils_state_ticketroutingdecision"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/predict_agent/utils/state.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_services_predict_agent_utils_state_py",
+      "target": "utils_state_hybridembeddingdata"
     },
     {
       "relation": "contains",
@@ -3025,9 +3437,9 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_state_py",
-      "target": "utils_state_pendingticketitem",
-      "confidence_score": 1.0
+      "target": "utils_state_pendingticketitem"
     },
     {
       "relation": "contains",
@@ -3035,9 +3447,9 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_state_py",
-      "target": "utils_state_indexedticketpredictresult",
-      "confidence_score": 1.0
+      "target": "utils_state_indexedticketpredictresult"
     },
     {
       "relation": "contains",
@@ -3045,9 +3457,9 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_state_py",
-      "target": "utils_state_ticketstate",
-      "confidence_score": 1.0
+      "target": "utils_state_ticketstate"
     },
     {
       "relation": "contains",
@@ -3055,9 +3467,9 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_services_predict_agent_utils_state_py",
-      "target": "utils_state_config",
-      "confidence_score": 1.0
+      "target": "utils_state_config"
     },
     {
       "relation": "contains",
@@ -3135,9 +3547,9 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_utils_hmac_py",
-      "target": "utils_hmac_normalize_hmac_body",
-      "confidence_score": 1.0
+      "target": "utils_hmac_normalize_hmac_body"
     },
     {
       "relation": "contains",
@@ -3145,9 +3557,9 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_utils_hmac_py",
-      "target": "utils_hmac_generate_hmac",
-      "confidence_score": 1.0
+      "target": "utils_hmac_generate_hmac"
     },
     {
       "relation": "contains",
@@ -3155,9 +3567,9 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_utils_hmac_py",
-      "target": "utils_hmac_normalize_hmac_signature",
-      "confidence_score": 1.0
+      "target": "utils_hmac_normalize_hmac_signature"
     },
     {
       "relation": "contains",
@@ -3165,9 +3577,9 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_utils_hmac_py",
-      "target": "utils_hmac_verify_hmac",
-      "confidence_score": 1.0
+      "target": "utils_hmac_verify_hmac"
     },
     {
       "relation": "contains",
@@ -3175,9 +3587,9 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_utils_hmac_py",
-      "target": "utils_hmac_verify_request_hmac",
-      "confidence_score": 1.0
+      "target": "utils_hmac_verify_request_hmac"
     },
     {
       "relation": "contains",
@@ -3185,9 +3597,9 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_utils_hmac_py",
-      "target": "utils_hmac_verify_request_hmac_dependency",
-      "confidence_score": 1.0
+      "target": "utils_hmac_verify_request_hmac_dependency"
     },
     {
       "relation": "calls",
@@ -3310,9 +3722,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agents_md",
-      "target": "issus_e_tracker_llm_agents_agents_instructions",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_agents_agents_instructions"
     },
     {
       "relation": "contains",
@@ -3320,9 +3732,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_agents_agents_instructions",
-      "target": "issus_e_tracker_llm_agents_coding_style",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_agents_coding_style"
     },
     {
       "relation": "contains",
@@ -3330,9 +3742,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_agents_agents_instructions",
-      "target": "issus_e_tracker_llm_agents_dependency_management",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_agents_dependency_management"
     },
     {
       "relation": "contains",
@@ -3340,9 +3752,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_agents_agents_instructions",
-      "target": "issus_e_tracker_llm_agents_communication",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_agents_communication"
     },
     {
       "relation": "contains",
@@ -3350,9 +3762,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_agents_agents_instructions",
-      "target": "issus_e_tracker_llm_agents_rules",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_agents_rules"
     },
     {
       "relation": "contains",
@@ -3360,9 +3772,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_agents_agents_instructions",
-      "target": "issus_e_tracker_llm_agents_graphify",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_agents_graphify"
     },
     {
       "relation": "contains",
@@ -3370,9 +3782,9 @@
       "source_file": "CACHE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "cache_md",
-      "target": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_cache_retrieval_flow"
     },
     {
       "relation": "contains",
@@ -3380,9 +3792,9 @@
       "source_file": "CACHE.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache"
     },
     {
       "relation": "contains",
@@ -3390,9 +3802,9 @@
       "source_file": "CACHE.md",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_flow",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_flow"
     },
     {
       "relation": "contains",
@@ -3400,9 +3812,9 @@
       "source_file": "CACHE.md",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_state_cache",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_state_cache"
     },
     {
       "relation": "contains",
@@ -3410,9 +3822,9 @@
       "source_file": "CACHE.md",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_cache",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_cache"
     },
     {
       "relation": "contains",
@@ -3420,9 +3832,9 @@
       "source_file": "CACHE.md",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_cache_75",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_cache_75"
     },
     {
       "relation": "contains",
@@ -3430,9 +3842,9 @@
       "source_file": "CACHE.md",
       "source_location": "L278",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_cache_278",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_cache_278"
     },
     {
       "relation": "contains",
@@ -3440,9 +3852,9 @@
       "source_file": "CACHE.md",
       "source_location": "L306",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_key_redis",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_key_redis"
     },
     {
       "relation": "contains",
@@ -3450,9 +3862,9 @@
       "source_file": "CACHE.md",
       "source_location": "L319",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_flow_save_cache_redis",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_flow_save_cache_redis"
     },
     {
       "relation": "contains",
@@ -3460,9 +3872,9 @@
       "source_file": "CACHE.md",
       "source_location": "L361",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_361",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_361"
     },
     {
       "relation": "contains",
@@ -3470,9 +3882,9 @@
       "source_file": "CACHE.md",
       "source_location": "L405",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "target": "issus_e_tracker_llm_cache_405",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_405"
     },
     {
       "relation": "contains",
@@ -3480,9 +3892,9 @@
       "source_file": "CACHE.md",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_1_cache_lookup_node_state",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_1_cache_lookup_node_state"
     },
     {
       "relation": "contains",
@@ -3490,9 +3902,9 @@
       "source_file": "CACHE.md",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_2_ticket_state_get_tickets_from_state",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_2_ticket_state_get_tickets_from_state"
     },
     {
       "relation": "contains",
@@ -3500,9 +3912,9 @@
       "source_file": "CACHE.md",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_3_cache_redis_load_cache_entries",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_3_cache_redis_load_cache_entries"
     },
     {
       "relation": "contains",
@@ -3510,9 +3922,9 @@
       "source_file": "CACHE.md",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_4_embedding_ticket_get_ticket_embeddings",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_4_embedding_ticket_get_ticket_embeddings"
     },
     {
       "relation": "contains",
@@ -3520,9 +3932,9 @@
       "source_file": "CACHE.md",
       "source_location": "L171",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_5_cache_find_best_cached_prediction",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_5_cache_find_best_cached_prediction"
     },
     {
       "relation": "contains",
@@ -3530,9 +3942,9 @@
       "source_file": "CACHE.md",
       "source_location": "L196",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_6_embedding_cache_get_dense_vector",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_6_embedding_cache_get_dense_vector"
     },
     {
       "relation": "contains",
@@ -3540,9 +3952,9 @@
       "source_file": "CACHE.md",
       "source_location": "L210",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_7_similarity",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_7_similarity"
     },
     {
       "relation": "contains",
@@ -3550,9 +3962,9 @@
       "source_file": "CACHE.md",
       "source_location": "L242",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_8_cache_hit_miss",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_8_cache_hit_miss"
     },
     {
       "relation": "contains",
@@ -3560,9 +3972,9 @@
       "source_file": "CACHE.md",
       "source_location": "L256",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_9_hit_node",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_9_hit_node"
     },
     {
       "relation": "contains",
@@ -3570,9 +3982,9 @@
       "source_file": "CACHE.md",
       "source_location": "L268",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_75",
-      "target": "issus_e_tracker_llm_cache_10_miss_llm",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_10_miss_llm"
     },
     {
       "relation": "contains",
@@ -3580,9 +3992,9 @@
       "source_file": "CACHE.md",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_4_embedding_ticket_get_ticket_embeddings",
-      "target": "issus_e_tracker_llm_cache_get_hybrid_embedding",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_get_hybrid_embedding"
     },
     {
       "relation": "contains",
@@ -3590,9 +4002,9 @@
       "source_file": "CACHE.md",
       "source_location": "L155",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_get_hybrid_embedding",
-      "target": "issus_e_tracker_llm_cache_codeblock_1",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_codeblock_1"
     },
     {
       "relation": "contains",
@@ -3600,9 +4012,9 @@
       "source_file": "CACHE.md",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_5_cache_find_best_cached_prediction",
-      "target": "issus_e_tracker_llm_cache_find_best_cached_prediction",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_find_best_cached_prediction"
     },
     {
       "relation": "contains",
@@ -3610,9 +4022,9 @@
       "source_file": "CACHE.md",
       "source_location": "L214",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_7_similarity",
-      "target": "issus_e_tracker_llm_cache_cosine_similarity_left_vector_right_vector",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_cosine_similarity_left_vector_right_vector"
     },
     {
       "relation": "contains",
@@ -3620,9 +4032,9 @@
       "source_file": "CACHE.md",
       "source_location": "L226",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_7_similarity",
-      "target": "issus_e_tracker_llm_cache_calculate_weighted_similarity",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_calculate_weighted_similarity"
     },
     {
       "relation": "contains",
@@ -3630,9 +4042,9 @@
       "source_file": "CACHE.md",
       "source_location": "L236",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_calculate_weighted_similarity",
-      "target": "issus_e_tracker_llm_cache_codeblock_2",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_codeblock_2"
     },
     {
       "relation": "contains",
@@ -3640,9 +4052,9 @@
       "source_file": "CACHE.md",
       "source_location": "L284",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_cache_278",
-      "target": "issus_e_tracker_llm_cache_codeblock_3",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_codeblock_3"
     },
     {
       "relation": "contains",
@@ -3650,9 +4062,9 @@
       "source_file": "CACHE.md",
       "source_location": "L323",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_flow_save_cache_redis",
-      "target": "issus_e_tracker_llm_cache_1_llm_predict_node",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_1_llm_predict_node"
     },
     {
       "relation": "contains",
@@ -3660,9 +4072,9 @@
       "source_file": "CACHE.md",
       "source_location": "L328",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_flow_save_cache_redis",
-      "target": "issus_e_tracker_llm_cache_2_save_cache_node",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_2_save_cache_node"
     },
     {
       "relation": "contains",
@@ -3670,9 +4082,9 @@
       "source_file": "CACHE.md",
       "source_location": "L338",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_flow_save_cache_redis",
-      "target": "issus_e_tracker_llm_cache_3_map_ticket_index",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_3_map_ticket_index"
     },
     {
       "relation": "contains",
@@ -3680,9 +4092,219 @@
       "source_file": "CACHE.md",
       "source_location": "L349",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_cache_flow_save_cache_redis",
-      "target": "issus_e_tracker_llm_cache_4_save_prediction_cache",
-      "confidence_score": 1.0
+      "target": "issus_e_tracker_llm_cache_4_save_prediction_cache"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_md",
+      "target": "issus_e_tracker_llm_workflow_this_module_documents_the_end_to_end_runtime_workflow_of_the_project"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "workflow_md",
+      "target": "issus_e_tracker_llm_workflow_workflow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_overview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_high_level_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_api_entry_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_request_shape"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_grouping_and_queueing"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_worker_runtime"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_prediction_graph"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L140",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_cache_lookup_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L167",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_llm_prediction_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L186",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_save_cache_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L200",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_callback_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L225",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_redis_responsibilities"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L234",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_configuration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L253",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_deployment_topology"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L273",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_failure_handling"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L284",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_end_to_end_sequence"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L306",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_workflow",
+      "target": "issus_e_tracker_llm_workflow_file_map"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_request_shape",
+      "target": "issus_e_tracker_llm_workflow_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L286",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_end_to_end_sequence",
+      "target": "issus_e_tracker_llm_workflow_codeblock_2"
     },
     {
       "relation": "contains",
@@ -4439,5 +5061,5 @@
       "source_file": "app/services/predict_agent/utils/state.py"
     }
   ],
-  "built_at_commit": "a44b642e9d7f456e13f23169fdaeb7d0d1887058"
+  "built_at_commit": "887f13407583a07506cc10bc09d6863ed2264107"
 }
