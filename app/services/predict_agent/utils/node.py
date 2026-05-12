@@ -17,6 +17,7 @@ from app.services.predict_agent.utils.state import (
     PendingTicketItem,
     TicketItem,
     TicketPredictResult,
+    TicketRoutingDecision,
     TicketState,
 )
 from app.utils.hmac import SIGNATURE_HEADER, generate_hmac
@@ -37,6 +38,7 @@ Your task is to analyze support tickets and classify:
 
 Always return the result strictly following the required schema.
 Do not include any explanation outside the schema.
+Return only the routing fields defined in the schema.
 If a ticket title or description is not related to recommendation requests or problem/issue reports,
 set both `priority` and `department_name` to null.
 """
@@ -60,6 +62,28 @@ def _build_predict_messages(title: str, description: str, department_info: Any) 
 def _normalize_department_name(name: str) -> str:
     # Normalize a department name for lookup matching.
     return (name or "").strip().lower()
+
+
+def _normalize_nullable_text(value: Any) -> str | None:
+    # Normalize nullable text values from the LLM into clean Python values.
+    if value is None:
+        return None
+
+    normalized_value = str(value).strip()
+    if normalized_value.lower() in {"", "null", "none"}:
+        return None
+
+    return normalized_value
+
+
+def _build_ticket_predict_result(ticket: PendingTicketItem, decision: TicketRoutingDecision) -> TicketPredictResult:
+    # Build the final prediction result by combining input ticket fields with LLM routing fields.
+    return TicketPredictResult(
+        title=ticket.title,
+        description=ticket.description,
+        priority=decision.priority,
+        department_name=_normalize_nullable_text(decision.department_name),
+    )
 
 
 def _extract_department_mapping(raw_departments: Any) -> Dict[str, str]:
@@ -138,7 +162,7 @@ async def get_department(company_id: str) -> Any:
         }
         async with httpx.AsyncClient() as client:
             response = await client.get(
-                f"{settings.BASE_BACKEND_URL}/api/v1/departments/{company_id}",
+                f"{settings.BASE_BACKEND_URL}/api/v1/internal/departments/{company_id}",
                 headers=headers,
             )
             response.raise_for_status()
@@ -167,7 +191,7 @@ async def cache_lookup_node(state: TicketState) -> Dict[str, Any]:
         }
 
     try:
-        cache_entries = await load_cache_entries()
+        cache_entries = await load_cache_entries(company_id=state.company_id)
         cached_results: List[IndexedTicketPredictResult] = []
         uncached_tickets: List[PendingTicketItem] = []
 
@@ -266,16 +290,15 @@ async def llm_predict_node(state: TicketState) -> Dict[str, Any]:
             "steps": state.steps + [{"node": "llm_predict", "status": "error", "error": department}],
         }
 
-    chain = llm.with_structured_output(TicketPredictResult)
+    chain = llm.with_structured_output(TicketRoutingDecision)
 
     try:
         fresh_results: List[IndexedTicketPredictResult] = []
 
         for ticket in pending_tickets:
             messages = _build_predict_messages(ticket.title, ticket.description, department)
-            result: TicketPredictResult = await chain.ainvoke(messages)
-            result.title = ticket.title
-            result.description = ticket.description
+            decision: TicketRoutingDecision = await chain.ainvoke(messages)
+            result = _build_ticket_predict_result(ticket, decision)
             fresh_results.append(
                 IndexedTicketPredictResult(index=ticket.index, result=result)
             )
@@ -326,6 +349,7 @@ async def save_cache_node(state: TicketState) -> Dict[str, Any]:
                 continue
 
             await save_prediction_cache(
+                company_id=state.company_id,
                 title=pending_ticket.title,
                 description=pending_ticket.description,
                 title_embedding=pending_ticket.title_embedding,
@@ -348,7 +372,7 @@ async def save_cache_node(state: TicketState) -> Dict[str, Any]:
 
 async def callback_node(state: TicketState) -> Dict[str, Any]:
     # Send callback results to the backend with an HMAC signature header.
-    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/create-bulk"
+    callback_url = f"{settings.BASE_BACKEND_URL}/api/v1/internal/tickets/bulk"
     payload: list[dict[str, Any]] = []
     department_mapping: Dict[str, str] = {}
 

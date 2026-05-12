@@ -13,16 +13,28 @@ class TicketItem(BaseModel):
 
 
 class TicketPredictResult(BaseModel):
-    # Store the routing prediction result for a single ticket.
-    title: str = Field(..., description="title ของ ticket")
-    description: str = Field(..., description="รายละเอียดของ ticket")
+    # Store the final routing prediction result for a single ticket.
+    title: str = Field(..., description="Original ticket title")
+    description: str = Field(..., description="Original ticket description")
     priority: Optional[PriorityEnum] = Field(
         None,
-        description="ระดับความสำคัญของปัญหา (low, medium, high, urgent)",
+        description="Predicted ticket priority",
     )
     department_name: Optional[str] = Field(
         None,
-        description="ชื่อแผนกที่เหมาะสมที่สุดสำหรับจัดการ ticket นี้",
+        description="Predicted target department name",
+    )
+
+
+class TicketRoutingDecision(BaseModel):
+    # Store only the routing fields returned directly from the LLM.
+    priority: Optional[PriorityEnum] = Field(
+        None,
+        description="LLM-predicted priority for the ticket",
+    )
+    department_name: Optional[str] = Field(
+        None,
+        description="LLM-predicted department name for the ticket",
     )
 
 
@@ -49,37 +61,37 @@ class IndexedTicketPredictResult(BaseModel):
 
 class TicketState(BaseModel):
     # Store the shared LangGraph state for the full ticket prediction flow.
-    company_id: str = Field(..., description="company_id ที่ส่งมาจาก backend")
-    form_id: str = Field(..., description="form_id ที่ส่งมาจาก backend")
+    company_id: str = Field(..., description="company_id sent from backend")
+    form_id: str = Field(..., description="form_id sent from backend")
     grouped_tickets: List[TicketItem] = Field(
         default_factory=list,
-        description="payload แบบ grouped ตาม link_id",
+        description="Grouped tickets for the current form",
     )
 
     data: List[TicketPredictResult] = Field(
         default_factory=list,
-        description="ผลลัพธ์สุดท้ายของการจัดหมวดหมู่ ticket",
+        description="Final ticket routing results",
     )
     cached_results: List[IndexedTicketPredictResult] = Field(
         default_factory=list,
-        description="ผลลัพธ์ที่ดึงได้จาก semantic cache",
+        description="Prediction results loaded from semantic cache",
     )
     fresh_results: List[IndexedTicketPredictResult] = Field(
         default_factory=list,
-        description="ผลลัพธ์ใหม่จาก LLM ที่ต้องบันทึกลง cache",
+        description="Fresh LLM results that should be written back to cache",
     )
     uncached_tickets: List[PendingTicketItem] = Field(
         default_factory=list,
-        description="tickets ที่ยังไม่พบ semantic cache",
+        description="Tickets that still require LLM prediction",
     )
     callback_response: Optional[Dict[str, Any]] = Field(
         None,
-        description="response ที่ได้จากการส่งข้อมูลไปยัง callback URL",
+        description="Response returned from the callback endpoint",
     )
 
-    success: bool = Field(True, description="success")
-    error: Optional[str] = Field(None, description="error")
-    steps: List[Dict[str, Any]] = Field(default_factory=list, description="steps")
+    success: bool = Field(True, description="Whether the workflow is successful")
+    error: Optional[str] = Field(None, description="Workflow error message")
+    steps: List[Dict[str, Any]] = Field(default_factory=list, description="Workflow steps")
 
     class Config:
         arbitrary_types_allowed = True

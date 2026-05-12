@@ -13,7 +13,6 @@ from app.services.predict_agent.utils.state import HybridEmbeddingData, TicketPr
 from app.worker import build_redis_url
 
 CACHE_KEY_PREFIX = "ticket_prediction_cache"
-CACHE_INDEX_KEY = f"{CACHE_KEY_PREFIX}:keys"
 CACHE_TTL_SECONDS = 60 * 60 * 24 * 7
 CACHE_THRESHOLD = 0.9
 TITLE_WEIGHT = 0.4
@@ -30,10 +29,15 @@ async def get_redis_client() -> Redis:
     return _redis_client
 
 
-def build_ticket_cache_key(title: str, description: str) -> str:
-    # Create a stable Redis key for one ticket cache entry.
+def build_company_cache_index_key(company_id: str) -> str:
+    # Create the Redis set key that tracks cache entries for one company.
+    return f"{CACHE_KEY_PREFIX}:keys:{company_id}"
+
+
+def build_ticket_cache_key(company_id: str, title: str, description: str) -> str:
+    # Create a stable Redis key for one company-scoped ticket cache entry.
     raw_value = json.dumps(
-        {"title": title, "description": description},
+        {"company_id": company_id, "title": title, "description": description},
         ensure_ascii=False,
         sort_keys=True,
     )
@@ -117,23 +121,27 @@ def _get_dense_vector(embedding_payload: Any) -> list[float]:
     return []
 
 
-async def load_cache_entries() -> list[dict[str, Any]]:
-    # Load all currently available semantic cache entries from Redis.
+async def load_cache_entries(company_id: str) -> list[dict[str, Any]]:
+    # Load all currently available semantic cache entries for one company from Redis.
     redis_client = await get_redis_client()
-    cache_keys = await redis_client.smembers(CACHE_INDEX_KEY)
+    cache_index_key = build_company_cache_index_key(company_id)
+    cache_keys = await redis_client.smembers(cache_index_key)
     cache_entries: list[dict[str, Any]] = []
 
     for cache_key in cache_keys:
         cache_payload = await redis_client.get(cache_key)
         if not cache_payload:
-            await redis_client.srem(CACHE_INDEX_KEY, cache_key)
+            await redis_client.srem(cache_index_key, cache_key)
             continue
 
         try:
-            cache_entries.append(json.loads(cache_payload))
+            cache_entry = json.loads(cache_payload)
+            if cache_entry.get("company_id") not in (None, "", company_id):
+                continue
+            cache_entries.append(cache_entry)
         except json.JSONDecodeError:
             await redis_client.delete(cache_key)
-            await redis_client.srem(CACHE_INDEX_KEY, cache_key)
+            await redis_client.srem(cache_index_key, cache_key)
 
     return cache_entries
 
@@ -165,6 +173,7 @@ def find_best_cached_prediction(
 
 
 async def save_prediction_cache(
+    company_id: str,
     title: str,
     description: str,
     title_embedding: HybridEmbeddingData,
@@ -173,8 +182,10 @@ async def save_prediction_cache(
 ) -> None:
     # Save one prediction result and its embeddings into Redis with one-week TTL.
     redis_client = await get_redis_client()
-    cache_key = build_ticket_cache_key(title=title, description=description)
+    cache_index_key = build_company_cache_index_key(company_id)
+    cache_key = build_ticket_cache_key(company_id=company_id, title=title, description=description)
     cache_payload = {
+        "company_id": company_id,
         "title": title,
         "description": description,
         "title_embedding": title_embedding.model_dump(mode="json"),
@@ -184,5 +195,5 @@ async def save_prediction_cache(
     }
 
     await redis_client.set(cache_key, json.dumps(cache_payload, ensure_ascii=False), ex=CACHE_TTL_SECONDS)
-    await redis_client.sadd(CACHE_INDEX_KEY, cache_key)
-    await redis_client.expire(CACHE_INDEX_KEY, CACHE_TTL_SECONDS)
+    await redis_client.sadd(cache_index_key, cache_key)
+    await redis_client.expire(cache_index_key, CACHE_TTL_SECONDS)
