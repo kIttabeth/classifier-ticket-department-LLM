@@ -112,7 +112,7 @@ endpoint จะตอบกลับทันทีด้วย:
 ไฟล์หลัก:
 
 - [app/services/predict_agent/agent.py](/D:/python%20learn/issus(e)-tracker-LLM/app/services/predict_agent/agent.py)
-- [app/services/predict_agent/utils/node.py](/D:/python%20learn/issus(e)-tracker-LLM/app/services/predict_agent/utils/state.py)
+- [app/services/predict_agent/utils/node.py](/D:/python%20learn/issus(e)-tracker-LLM/app/services/predict_agent/utils/node.py)
 - [app/services/predict_agent/utils/state.py](/D:/python%20learn/issus(e)-tracker-LLM/app/services/predict_agent/utils/state.py)
 
 graph มี 4 node:
@@ -173,14 +173,16 @@ logic อยู่ใน [app/services/predict_agent/utils/node.py](/D:/python%2
 1. เรียก `get_department(company_id)` ไป backend เพื่อดึงรายการแผนก
 2. สร้าง prompt ต่อ ticket ด้วย `_build_predict_messages()`
 3. ใช้ `ChatGoogleGenerativeAI` model `gemini-2.5-flash`
-4. บังคับ structured output ด้วย `TicketPredictResult`
-5. วนประมวลผลเฉพาะ `uncached_tickets`
-6. เก็บผลลัพธ์ใหม่ลง `fresh_results`
+4. บังคับ structured output ด้วย `TicketRoutingDecision`
+5. LLM คืนเฉพาะ field routing คือ `priority` และ `department_name`
+6. ระบบประกอบ `TicketPredictResult` จาก `title` และ `description` ของ input ticket เดิม แล้วใส่ค่า routing จาก LLM
 7. merge `cached_results` กับ `fresh_results` กลับไปเป็น `data` ตาม index เดิม
 
 กฎเชิงธุรกิจสำคัญ:
 
 - ถ้า title/description ไม่ใช่ recommendation request หรือ issue report, prompt ระบุให้คืน `priority = null` และ `department_name = null`
+- กรณี title/description ไม่พอให้วิเคราะห์ ระบบจะถือเป็นผลลัพธ์ valid แบบ no-routing ได้เช่นกัน โดย `priority` และ `department_name` เป็น `null`
+- `title` และ `description` ในผลลัพธ์สุดท้ายไม่ได้มาจาก LLM แต่ยึดจาก input เดิมเสมอ เพื่อกัน parse error จาก structured output
 - department ที่เลือกควรมาจากรายการ `Available Departments` ที่ backend ส่งกลับมา
 
 ## Save Cache Flow
