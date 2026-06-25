@@ -1,6 +1,6 @@
 services:
   redis:
-    image: redis:8-alpine          # ใช้ alpine ลด image size
+    image: redis:8-alpine
     container_name: issus_ticket_redis
     ports:
       - "6379:6379"
@@ -12,42 +12,45 @@ services:
       timeout: 5s
       retries: 5
 
-  app:
-    container_name: ptd-api-LLM
+  grpc:
+    container_name: ptd-api-LLM-grpc
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "50051:50051"
     env_file:
       - .env
+    environment:
+      - GRPC_PORT=50051
     volumes:
       - /src/.venv
     depends_on:
       redis:
-        condition: service_healthy  # รอให้ Redis พร้อมก่อน
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+        condition: service_healthy
+    restart: unless-stopped
 
   worker:
     container_name: ptd-api-LLM-worker
     build:
       context: .
       dockerfile: Dockerfile
-    command: ["celery", "-A", "app.worker.celery_app", "worker",
-              "--loglevel=info", "-n", "worker1@%h",
-              "--concurrency=2"]     # ควรระบุ concurrency ให้ชัดเจน
+    command:
+      - celery
+      - -A
+      - app.worker.celery_app
+      - worker
+      - --loglevel=info
+      - -n
+      - worker1@%h
+      - --concurrency=2
     env_file:
       - .env
     volumes:
       - /src/.venv
     depends_on:
       redis:
-        condition: service_healthy  # ✅ ต้องการแค่ Redis
+        condition: service_healthy
     restart: unless-stopped
 
 volumes:

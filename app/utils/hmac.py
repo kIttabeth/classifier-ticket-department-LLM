@@ -1,11 +1,7 @@
-# This module provides HMAC helpers and request verification middleware.
+# This module provides transport-neutral HMAC signing and verification helpers.
 import hashlib
 import hmac
 from typing import Union
-
-from fastapi import HTTPException, Request, status
-
-from app.core.config import settings
 
 
 SIGNATURE_HEADER = "X-HMAC-Signature"
@@ -39,28 +35,3 @@ def verify_hmac(body: bytes, sig: str, secret: str) -> bool:
     expected = generate_hmac(body, secret)
     normalized_signature = normalize_hmac_signature(sig)
     return hmac.compare_digest(expected, normalized_signature)
-
-
-async def verify_request_hmac(request: Request, secret: str) -> None:
-    # Validate the incoming request signature from the configured header.
-    if request.method == "OPTIONS":
-        return
-
-    signature = request.headers.get(SIGNATURE_HEADER)
-    if not signature:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=f"Missing {SIGNATURE_HEADER} header",
-        )
-
-    body = await request.body()
-    if not verify_hmac(body=body, sig=signature, secret=secret):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid request signature",
-        )
-
-
-async def verify_request_hmac_dependency(request: Request) -> None:
-    # Verify HMAC for routes that opt in through router dependencies.
-    await verify_request_hmac(request=request, secret=settings.SECRET_API_KEY)

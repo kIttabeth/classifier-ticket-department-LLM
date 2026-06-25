@@ -25,13 +25,14 @@ COPY --from=builder /src/.venv /src/.venv
 
 # Copy Code 
 COPY --from=builder /src/app /src/app
+COPY --from=builder /src/proto /src/proto
 
 # Place executables in the environment at the front of the path
 ENV PATH="/src/.venv/bin:$PATH"
 ENV DOCKER_RUNNING=1
 ENV PYTHONUNBUFFERED=1
 
-EXPOSE 8080
+EXPOSE 50051
 
-# Run the app 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Run the gRPC server.
+CMD ["python", "-m", "app.grpc.server"]

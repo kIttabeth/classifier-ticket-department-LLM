@@ -49,21 +49,12 @@
   },
   "nodes": [
     {
-      "label": "main.py",
-      "file_type": "code",
-      "source_file": "app/main.py",
-      "source_location": "L1",
-      "id": "app_main_py",
-      "community": 14,
-      "norm_label": "main.py"
-    },
-    {
       "label": "worker.py",
       "file_type": "code",
       "source_file": "app/worker.py",
       "source_location": "L1",
       "id": "app_worker_py",
-      "community": 10,
+      "community": 3,
       "norm_label": "worker.py"
     },
     {
@@ -72,7 +63,7 @@
       "source_file": "app/worker.py",
       "source_location": "L13",
       "id": "app_worker_build_redis_url",
-      "community": 10,
+      "community": 3,
       "norm_label": "build_redis_url()"
     },
     {
@@ -81,7 +72,7 @@
       "source_file": "app/worker.py",
       "source_location": "L21",
       "id": "app_worker_get_prediction_graph",
-      "community": 10,
+      "community": 3,
       "norm_label": "get_prediction_graph()"
     },
     {
@@ -90,7 +81,7 @@
       "source_file": "app/worker.py",
       "source_location": "L28",
       "id": "app_worker_make_json_safe",
-      "community": 10,
+      "community": 3,
       "norm_label": "make_json_safe()"
     },
     {
@@ -99,7 +90,7 @@
       "source_file": "app/worker.py",
       "source_location": "L79",
       "id": "app_worker_ticket_prediction",
-      "community": 10,
+      "community": 3,
       "norm_label": "ticket_prediction()"
     },
     {
@@ -108,7 +99,7 @@
       "source_file": "app/core/config.py",
       "source_location": "L1",
       "id": "app_core_config_py",
-      "community": 11,
+      "community": 13,
       "norm_label": "config.py"
     },
     {
@@ -117,7 +108,7 @@
       "source_file": "app/core/config.py",
       "source_location": "L5",
       "id": "core_config_settings",
-      "community": 11,
+      "community": 13,
       "norm_label": "settings"
     },
     {
@@ -126,53 +117,296 @@
       "source_file": "",
       "source_location": "",
       "id": "basesettings",
-      "community": 11,
+      "community": 13,
       "norm_label": "basesettings"
     },
     {
-      "label": "router.py",
+      "label": "server.py",
       "file_type": "code",
-      "source_file": "app/routes/v1/router.py",
+      "source_file": "app/grpc/server.py",
       "source_location": "L1",
-      "id": "app_routes_v1_router_py",
+      "id": "app_grpc_server_py",
+      "community": 0,
+      "norm_label": "server.py"
+    },
+    {
+      "label": "create_server()",
+      "file_type": "code",
+      "source_file": "app/grpc/server.py",
+      "source_location": "L12",
+      "id": "grpc_server_create_server",
+      "community": 0,
+      "norm_label": "create_server()"
+    },
+    {
+      "label": "serve()",
+      "file_type": "code",
+      "source_file": "app/grpc/server.py",
+      "source_location": "L25",
+      "id": "grpc_server_serve",
+      "community": 0,
+      "norm_label": "serve()"
+    },
+    {
+      "label": "ticket_prediction_pb2.py",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2.py",
+      "source_location": "L1",
+      "id": "app_grpc_generated_ticket_prediction_pb2_py",
       "community": 15,
-      "norm_label": "router.py"
+      "norm_label": "ticket_prediction_pb2.py"
     },
     {
-      "label": "health.py",
+      "label": "ticket_prediction_pb2_grpc.py",
       "file_type": "code",
-      "source_file": "app/routes/v1/endpoints/health.py",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
       "source_location": "L1",
-      "id": "app_routes_v1_endpoints_health_py",
-      "community": 12,
-      "norm_label": "health.py"
+      "id": "app_grpc_generated_ticket_prediction_pb2_grpc_py",
+      "community": 4,
+      "norm_label": "ticket_prediction_pb2_grpc.py"
     },
     {
-      "label": "health()",
+      "label": "TicketPredictionServiceStub",
       "file_type": "code",
-      "source_file": "app/routes/v1/endpoints/health.py",
-      "source_location": "L6",
-      "id": "endpoints_health_health",
-      "community": 12,
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L28",
+      "id": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub",
+      "community": 4,
+      "norm_label": "ticketpredictionservicestub"
+    },
+    {
+      "label": "object",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "object",
+      "community": 4,
+      "norm_label": "object"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L31",
+      "id": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub_init",
+      "community": 4,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "TicketPredictionServiceServicer",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L49",
+      "id": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer",
+      "community": 4,
+      "norm_label": "ticketpredictionserviceservicer"
+    },
+    {
+      "label": ".Predict()",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L52",
+      "id": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer_predict",
+      "community": 4,
+      "norm_label": ".predict()"
+    },
+    {
+      "label": ".Health()",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L58",
+      "id": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer_health",
+      "community": 4,
+      "norm_label": ".health()"
+    },
+    {
+      "label": "add_TicketPredictionServiceServicer_to_server()",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L65",
+      "id": "generated_ticket_prediction_pb2_grpc_add_ticketpredictionserviceservicer_to_server",
+      "community": 4,
+      "norm_label": "add_ticketpredictionserviceservicer_to_server()"
+    },
+    {
+      "label": "TicketPredictionService",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L85",
+      "id": "generated_ticket_prediction_pb2_grpc_ticketpredictionservice",
+      "community": 4,
+      "norm_label": "ticketpredictionservice"
+    },
+    {
+      "label": "Predict()",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L89",
+      "id": "generated_ticket_prediction_pb2_grpc_predict",
+      "community": 4,
+      "norm_label": "predict()"
+    },
+    {
+      "label": "Health()",
+      "file_type": "code",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L116",
+      "id": "generated_ticket_prediction_pb2_grpc_health",
+      "community": 4,
       "norm_label": "health()"
     },
     {
-      "label": "predict.py",
-      "file_type": "code",
-      "source_file": "app/routes/v1/endpoints/predict.py",
-      "source_location": "L1",
-      "id": "app_routes_v1_endpoints_predict_py",
-      "community": 13,
-      "norm_label": "predict.py"
+      "label": "Missing associated documentation comment in .proto file.",
+      "file_type": "rationale",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L29",
+      "id": "generated_ticket_prediction_pb2_grpc_rationale_29",
+      "community": 4,
+      "norm_label": "missing associated documentation comment in .proto file."
     },
     {
-      "label": "predict_ticket()",
+      "label": "Constructor.          Args:             channel: A grpc.Channel.",
+      "file_type": "rationale",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L32",
+      "id": "generated_ticket_prediction_pb2_grpc_rationale_32",
+      "community": 4,
+      "norm_label": "constructor.          args:             channel: a grpc.channel."
+    },
+    {
+      "label": "Missing associated documentation comment in .proto file.",
+      "file_type": "rationale",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L50",
+      "id": "generated_ticket_prediction_pb2_grpc_rationale_50",
+      "community": 4,
+      "norm_label": "missing associated documentation comment in .proto file."
+    },
+    {
+      "label": "Missing associated documentation comment in .proto file.",
+      "file_type": "rationale",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L53",
+      "id": "generated_ticket_prediction_pb2_grpc_rationale_53",
+      "community": 4,
+      "norm_label": "missing associated documentation comment in .proto file."
+    },
+    {
+      "label": "Missing associated documentation comment in .proto file.",
+      "file_type": "rationale",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L59",
+      "id": "generated_ticket_prediction_pb2_grpc_rationale_59",
+      "community": 4,
+      "norm_label": "missing associated documentation comment in .proto file."
+    },
+    {
+      "label": "Missing associated documentation comment in .proto file.",
+      "file_type": "rationale",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L86",
+      "id": "generated_ticket_prediction_pb2_grpc_rationale_86",
+      "community": 4,
+      "norm_label": "missing associated documentation comment in .proto file."
+    },
+    {
+      "label": "hmac_auth_interceptor.py",
       "file_type": "code",
-      "source_file": "app/routes/v1/endpoints/predict.py",
+      "source_file": "app/grpc/interceptors/hmac_auth_interceptor.py",
+      "source_location": "L1",
+      "id": "app_grpc_interceptors_hmac_auth_interceptor_py",
+      "community": 0,
+      "norm_label": "hmac_auth_interceptor.py"
+    },
+    {
+      "label": "HmacAuthInterceptor",
+      "file_type": "code",
+      "source_file": "app/grpc/interceptors/hmac_auth_interceptor.py",
+      "source_location": "L8",
+      "id": "interceptors_hmac_auth_interceptor_hmacauthinterceptor",
+      "community": 0,
+      "norm_label": "hmacauthinterceptor"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "app/grpc/interceptors/hmac_auth_interceptor.py",
       "source_location": "L11",
-      "id": "endpoints_predict_predict_ticket",
-      "community": 13,
-      "norm_label": "predict_ticket()"
+      "id": "interceptors_hmac_auth_interceptor_hmacauthinterceptor_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".intercept_service()",
+      "file_type": "code",
+      "source_file": "app/grpc/interceptors/hmac_auth_interceptor.py",
+      "source_location": "L17",
+      "id": "interceptors_hmac_auth_interceptor_hmacauthinterceptor_intercept_service",
+      "community": 0,
+      "norm_label": ".intercept_service()"
+    },
+    {
+      "label": "ticket_prediction_mapper.py",
+      "file_type": "code",
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L1",
+      "id": "app_grpc_mappers_ticket_prediction_mapper_py",
+      "community": 0,
+      "norm_label": "ticket_prediction_mapper.py"
+    },
+    {
+      "label": "proto_to_predict_request()",
+      "file_type": "code",
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L6",
+      "id": "mappers_ticket_prediction_mapper_proto_to_predict_request",
+      "community": 0,
+      "norm_label": "proto_to_predict_request()"
+    },
+    {
+      "label": "predict_response_to_proto()",
+      "file_type": "code",
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L26",
+      "id": "mappers_ticket_prediction_mapper_predict_response_to_proto",
+      "community": 0,
+      "norm_label": "predict_response_to_proto()"
+    },
+    {
+      "label": "ticket_prediction_service.py",
+      "file_type": "code",
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L1",
+      "id": "app_grpc_services_ticket_prediction_service_py",
+      "community": 0,
+      "norm_label": "ticket_prediction_service.py"
+    },
+    {
+      "label": "TicketPredictionServicer",
+      "file_type": "code",
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L10",
+      "id": "services_ticket_prediction_service_ticketpredictionservicer",
+      "community": 0,
+      "norm_label": "ticketpredictionservicer"
+    },
+    {
+      "label": ".Predict()",
+      "file_type": "code",
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L13",
+      "id": "services_ticket_prediction_service_ticketpredictionservicer_predict",
+      "community": 0,
+      "norm_label": ".predict()"
+    },
+    {
+      "label": ".Health()",
+      "file_type": "code",
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L22",
+      "id": "services_ticket_prediction_service_ticketpredictionservicer_health",
+      "community": 0,
+      "norm_label": ".health()"
     },
     {
       "label": "predict_ticket_schema.py",
@@ -180,7 +414,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L1",
       "id": "app_schemas_predict_ticket_schema_py",
-      "community": 2,
+      "community": 0,
       "norm_label": "predict_ticket_schema.py"
     },
     {
@@ -189,7 +423,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L6",
       "id": "schemas_predict_ticket_schema_priorityenum",
-      "community": 2,
+      "community": 9,
       "norm_label": "priorityenum"
     },
     {
@@ -198,7 +432,7 @@
       "source_file": "",
       "source_location": "",
       "id": "str",
-      "community": 4,
+      "community": 3,
       "norm_label": "str"
     },
     {
@@ -207,7 +441,7 @@
       "source_file": "",
       "source_location": "",
       "id": "enum",
-      "community": 2,
+      "community": 0,
       "norm_label": "enum"
     },
     {
@@ -216,7 +450,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L21",
       "id": "schemas_predict_ticket_schema_formitem",
-      "community": 2,
+      "community": 0,
       "norm_label": "formitem"
     },
     {
@@ -225,7 +459,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 2,
+      "community": 9,
       "norm_label": "basemodel"
     },
     {
@@ -234,7 +468,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L26",
       "id": "schemas_predict_ticket_schema_companydata",
-      "community": 2,
+      "community": 0,
       "norm_label": "companydata"
     },
     {
@@ -243,7 +477,7 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L30",
       "id": "schemas_predict_ticket_schema_predictrequest",
-      "community": 2,
+      "community": 0,
       "norm_label": "predictrequest"
     },
     {
@@ -252,8 +486,35 @@
       "source_file": "app/schemas/predict_ticket_schema.py",
       "source_location": "L33",
       "id": "schemas_predict_ticket_schema_predictresponse",
-      "community": 2,
+      "community": 0,
       "norm_label": "predictresponse"
+    },
+    {
+      "label": "ticket_prediction_queue.py",
+      "file_type": "code",
+      "source_file": "app/services/ticket_prediction_queue.py",
+      "source_location": "L1",
+      "id": "app_services_ticket_prediction_queue_py",
+      "community": 0,
+      "norm_label": "ticket_prediction_queue.py"
+    },
+    {
+      "label": "build_thread_id()",
+      "file_type": "code",
+      "source_file": "app/services/ticket_prediction_queue.py",
+      "source_location": "L9",
+      "id": "services_ticket_prediction_queue_build_thread_id",
+      "community": 0,
+      "norm_label": "build_thread_id()"
+    },
+    {
+      "label": "queue_prediction_jobs()",
+      "file_type": "code",
+      "source_file": "app/services/ticket_prediction_queue.py",
+      "source_location": "L14",
+      "id": "services_ticket_prediction_queue_queue_prediction_jobs",
+      "community": 0,
+      "norm_label": "queue_prediction_jobs()"
     },
     {
       "label": "agent.py",
@@ -270,7 +531,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L1",
       "id": "app_services_predict_agent_utils_cache_py",
-      "community": 7,
+      "community": 8,
       "norm_label": "cache.py"
     },
     {
@@ -279,7 +540,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L24",
       "id": "utils_cache_get_redis_client",
-      "community": 7,
+      "community": 8,
       "norm_label": "get_redis_client()"
     },
     {
@@ -288,7 +549,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L32",
       "id": "utils_cache_build_company_cache_index_key",
-      "community": 7,
+      "community": 8,
       "norm_label": "build_company_cache_index_key()"
     },
     {
@@ -297,7 +558,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L37",
       "id": "utils_cache_build_ticket_cache_key",
-      "community": 7,
+      "community": 8,
       "norm_label": "build_ticket_cache_key()"
     },
     {
@@ -306,7 +567,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L48",
       "id": "utils_cache_get_hybrid_embedding",
-      "community": 7,
+      "community": 8,
       "norm_label": "get_hybrid_embedding()"
     },
     {
@@ -315,7 +576,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L76",
       "id": "utils_cache_get_ticket_embeddings",
-      "community": 7,
+      "community": 8,
       "norm_label": "get_ticket_embeddings()"
     },
     {
@@ -324,7 +585,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L83",
       "id": "utils_cache_cosine_similarity",
-      "community": 7,
+      "community": 8,
       "norm_label": "cosine_similarity()"
     },
     {
@@ -333,7 +594,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L98",
       "id": "utils_cache_calculate_weighted_similarity",
-      "community": 7,
+      "community": 8,
       "norm_label": "calculate_weighted_similarity()"
     },
     {
@@ -342,7 +603,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L110",
       "id": "utils_cache_get_dense_vector",
-      "community": 7,
+      "community": 8,
       "norm_label": "_get_dense_vector()"
     },
     {
@@ -351,7 +612,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L124",
       "id": "utils_cache_load_cache_entries",
-      "community": 7,
+      "community": 8,
       "norm_label": "load_cache_entries()"
     },
     {
@@ -360,7 +621,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L149",
       "id": "utils_cache_find_best_cached_prediction",
-      "community": 7,
+      "community": 8,
       "norm_label": "find_best_cached_prediction()"
     },
     {
@@ -369,7 +630,7 @@
       "source_file": "app/services/predict_agent/utils/cache.py",
       "source_location": "L175",
       "id": "utils_cache_save_prediction_cache",
-      "community": 7,
+      "community": 8,
       "norm_label": "save_prediction_cache()"
     },
     {
@@ -378,7 +639,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L1",
       "id": "app_services_predict_agent_utils_node_py",
-      "community": 4,
+      "community": 3,
       "norm_label": "node.py"
     },
     {
@@ -387,7 +648,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L47",
       "id": "utils_node_build_predict_messages",
-      "community": 4,
+      "community": 3,
       "norm_label": "_build_predict_messages()"
     },
     {
@@ -396,7 +657,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L62",
       "id": "utils_node_normalize_department_name",
-      "community": 4,
+      "community": 3,
       "norm_label": "_normalize_department_name()"
     },
     {
@@ -405,7 +666,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L67",
       "id": "utils_node_normalize_nullable_text",
-      "community": 4,
+      "community": 3,
       "norm_label": "_normalize_nullable_text()"
     },
     {
@@ -414,7 +675,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L79",
       "id": "utils_node_build_ticket_predict_result",
-      "community": 4,
+      "community": 3,
       "norm_label": "_build_ticket_predict_result()"
     },
     {
@@ -423,7 +684,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L89",
       "id": "utils_node_extract_department_mapping",
-      "community": 4,
+      "community": 3,
       "norm_label": "_extract_department_mapping()"
     },
     {
@@ -432,7 +693,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L128",
       "id": "utils_node_get_tickets_from_state",
-      "community": 4,
+      "community": 3,
       "norm_label": "_get_tickets_from_state()"
     },
     {
@@ -441,7 +702,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L141",
       "id": "utils_node_merge_indexed_results",
-      "community": 4,
+      "community": 3,
       "norm_label": "_merge_indexed_results()"
     },
     {
@@ -450,7 +711,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L154",
       "id": "utils_node_get_department",
-      "community": 4,
+      "community": 3,
       "norm_label": "get_department()"
     },
     {
@@ -459,7 +720,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L176",
       "id": "utils_node_cache_lookup_node",
-      "community": 4,
+      "community": 3,
       "norm_label": "cache_lookup_node()"
     },
     {
@@ -468,7 +729,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L254",
       "id": "utils_node_route_after_cache_lookup",
-      "community": 4,
+      "community": 3,
       "norm_label": "route_after_cache_lookup()"
     },
     {
@@ -477,7 +738,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L263",
       "id": "utils_node_llm_predict_node",
-      "community": 4,
+      "community": 3,
       "norm_label": "llm_predict_node()"
     },
     {
@@ -486,7 +747,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L331",
       "id": "utils_node_save_cache_node",
-      "community": 4,
+      "community": 3,
       "norm_label": "save_cache_node()"
     },
     {
@@ -495,7 +756,7 @@
       "source_file": "app/services/predict_agent/utils/node.py",
       "source_location": "L373",
       "id": "utils_node_callback_node",
-      "community": 4,
+      "community": 3,
       "norm_label": "callback_node()"
     },
     {
@@ -504,7 +765,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L1",
       "id": "app_services_predict_agent_utils_state_py",
-      "community": 2,
+      "community": 9,
       "norm_label": "state.py"
     },
     {
@@ -513,7 +774,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L9",
       "id": "utils_state_ticketitem",
-      "community": 2,
+      "community": 9,
       "norm_label": "ticketitem"
     },
     {
@@ -522,7 +783,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L15",
       "id": "utils_state_ticketpredictresult",
-      "community": 2,
+      "community": 9,
       "norm_label": "ticketpredictresult"
     },
     {
@@ -531,7 +792,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L29",
       "id": "utils_state_ticketroutingdecision",
-      "community": 2,
+      "community": 9,
       "norm_label": "ticketroutingdecision"
     },
     {
@@ -540,7 +801,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L41",
       "id": "utils_state_hybridembeddingdata",
-      "community": 2,
+      "community": 9,
       "norm_label": "hybridembeddingdata"
     },
     {
@@ -549,7 +810,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L47",
       "id": "utils_state_pendingticketitem",
-      "community": 2,
+      "community": 9,
       "norm_label": "pendingticketitem"
     },
     {
@@ -558,7 +819,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L56",
       "id": "utils_state_indexedticketpredictresult",
-      "community": 2,
+      "community": 9,
       "norm_label": "indexedticketpredictresult"
     },
     {
@@ -567,7 +828,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L62",
       "id": "utils_state_ticketstate",
-      "community": 2,
+      "community": 9,
       "norm_label": "ticketstate"
     },
     {
@@ -576,7 +837,7 @@
       "source_file": "app/services/predict_agent/utils/state.py",
       "source_location": "L96",
       "id": "utils_state_config",
-      "community": 2,
+      "community": 9,
       "norm_label": "config"
     },
     {
@@ -585,62 +846,107 @@
       "source_file": "app/utils/hmac.py",
       "source_location": "L1",
       "id": "app_utils_hmac_py",
-      "community": 8,
+      "community": 10,
       "norm_label": "hmac.py"
     },
     {
       "label": "_normalize_hmac_body()",
       "file_type": "code",
       "source_file": "app/utils/hmac.py",
-      "source_location": "L14",
+      "source_location": "L10",
       "id": "utils_hmac_normalize_hmac_body",
-      "community": 8,
+      "community": 10,
       "norm_label": "_normalize_hmac_body()"
     },
     {
       "label": "generate_hmac()",
       "file_type": "code",
       "source_file": "app/utils/hmac.py",
-      "source_location": "L21",
+      "source_location": "L17",
       "id": "utils_hmac_generate_hmac",
-      "community": 8,
+      "community": 10,
       "norm_label": "generate_hmac()"
     },
     {
       "label": "normalize_hmac_signature()",
       "file_type": "code",
       "source_file": "app/utils/hmac.py",
-      "source_location": "L28",
+      "source_location": "L24",
       "id": "utils_hmac_normalize_hmac_signature",
-      "community": 8,
+      "community": 10,
       "norm_label": "normalize_hmac_signature()"
     },
     {
       "label": "verify_hmac()",
       "file_type": "code",
       "source_file": "app/utils/hmac.py",
-      "source_location": "L37",
+      "source_location": "L33",
       "id": "utils_hmac_verify_hmac",
-      "community": 8,
+      "community": 10,
       "norm_label": "verify_hmac()"
     },
     {
-      "label": "verify_request_hmac()",
+      "label": "test_grpc_migration.py",
       "file_type": "code",
-      "source_file": "app/utils/hmac.py",
-      "source_location": "L44",
-      "id": "utils_hmac_verify_request_hmac",
-      "community": 8,
-      "norm_label": "verify_request_hmac()"
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L1",
+      "id": "tests_test_grpc_migration_py",
+      "community": 0,
+      "norm_label": "test_grpc_migration.py"
     },
     {
-      "label": "verify_request_hmac_dependency()",
+      "label": "build_proto_request()",
       "file_type": "code",
-      "source_file": "app/utils/hmac.py",
-      "source_location": "L64",
-      "id": "utils_hmac_verify_request_hmac_dependency",
-      "community": 8,
-      "norm_label": "verify_request_hmac_dependency()"
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L26",
+      "id": "tests_test_grpc_migration_build_proto_request",
+      "community": 0,
+      "norm_label": "build_proto_request()"
+    },
+    {
+      "label": "GrpcMigrationTests",
+      "file_type": "code",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L54",
+      "id": "tests_test_grpc_migration_grpcmigrationtests",
+      "community": 0,
+      "norm_label": "grpcmigrationtests"
+    },
+    {
+      "label": ".test_proto_to_predict_request_maps_existing_dto_shape()",
+      "file_type": "code",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L57",
+      "id": "tests_test_grpc_migration_grpcmigrationtests_test_proto_to_predict_request_maps_existing_dto_shape",
+      "community": 0,
+      "norm_label": ".test_proto_to_predict_request_maps_existing_dto_shape()"
+    },
+    {
+      "label": "test_queue_prediction_jobs_groups_by_company_and_form()",
+      "file_type": "code",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L66",
+      "id": "tests_test_grpc_migration_test_queue_prediction_jobs_groups_by_company_and_form",
+      "community": 0,
+      "norm_label": "test_queue_prediction_jobs_groups_by_company_and_form()"
+    },
+    {
+      "label": ".test_grpc_health_does_not_require_hmac()",
+      "file_type": "code",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L90",
+      "id": "tests_test_grpc_migration_grpcmigrationtests_test_grpc_health_does_not_require_hmac",
+      "community": 0,
+      "norm_label": ".test_grpc_health_does_not_require_hmac()"
+    },
+    {
+      "label": "test_grpc_predict_requires_valid_hmac()",
+      "file_type": "code",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L105",
+      "id": "tests_test_grpc_migration_test_grpc_predict_requires_valid_hmac",
+      "community": 0,
+      "norm_label": "test_grpc_predict_requires_valid_hmac()"
     },
     {
       "label": "AGENTS.md",
@@ -648,7 +954,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "id": "agents_md",
-      "community": 9,
+      "community": 11,
       "norm_label": "agents.md"
     },
     {
@@ -657,7 +963,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "id": "issus_e_tracker_llm_agents_agents_instructions",
-      "community": 9,
+      "community": 11,
       "norm_label": "agents instructions"
     },
     {
@@ -666,7 +972,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L3",
       "id": "issus_e_tracker_llm_agents_coding_style",
-      "community": 9,
+      "community": 11,
       "norm_label": "coding style"
     },
     {
@@ -675,7 +981,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L11",
       "id": "issus_e_tracker_llm_agents_dependency_management",
-      "community": 9,
+      "community": 11,
       "norm_label": "dependency management"
     },
     {
@@ -684,7 +990,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L16",
       "id": "issus_e_tracker_llm_agents_communication",
-      "community": 9,
+      "community": 11,
       "norm_label": "communication"
     },
     {
@@ -693,7 +999,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L21",
       "id": "issus_e_tracker_llm_agents_rules",
-      "community": 9,
+      "community": 11,
       "norm_label": "rules"
     },
     {
@@ -702,7 +1008,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L25",
       "id": "issus_e_tracker_llm_agents_graphify",
-      "community": 9,
+      "community": 11,
       "norm_label": "graphify"
     },
     {
@@ -711,7 +1017,7 @@
       "source_file": "CACHE.md",
       "source_location": "L1",
       "id": "cache_md",
-      "community": 5,
+      "community": 6,
       "norm_label": "cache.md"
     },
     {
@@ -720,7 +1026,7 @@
       "source_file": "CACHE.md",
       "source_location": "L1",
       "id": "issus_e_tracker_llm_cache_cache_retrieval_flow",
-      "community": 5,
+      "community": 6,
       "norm_label": "cache retrieval flow"
     },
     {
@@ -729,7 +1035,7 @@
       "source_file": "CACHE.md",
       "source_location": "L5",
       "id": "issus_e_tracker_llm_cache",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e20\u0e32\u0e1e\u0e23\u0e27\u0e21"
     },
     {
@@ -738,7 +1044,7 @@
       "source_file": "CACHE.md",
       "source_location": "L20",
       "id": "issus_e_tracker_llm_cache_flow",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e08\u0e14\u0e40\u0e23\u0e34\u0e21\u0e15\u0e19\u0e02\u0e2d\u0e07 flow"
     },
     {
@@ -747,7 +1053,7 @@
       "source_file": "CACHE.md",
       "source_location": "L33",
       "id": "issus_e_tracker_llm_cache_state_cache",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e42\u0e04\u0e23\u0e07\u0e2a\u0e23\u0e32\u0e07 state \u0e17\u0e35\u0e40\u0e01\u0e35\u0e22\u0e27\u0e01\u0e31\u0e1a cache"
     },
     {
@@ -756,7 +1062,7 @@
       "source_file": "CACHE.md",
       "source_location": "L54",
       "id": "issus_e_tracker_llm_cache_cache",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e04\u0e32\u0e04\u0e07\u0e17\u0e35\u0e02\u0e2d\u0e07 cache"
     },
     {
@@ -765,7 +1071,7 @@
       "source_file": "CACHE.md",
       "source_location": "L75",
       "id": "issus_e_tracker_llm_cache_cache_75",
-      "community": 3,
+      "community": 5,
       "norm_label": "\u0e02\u0e31\u0e19\u0e15\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e14\u0e36\u0e07 cache \u0e41\u0e1a\u0e1a\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14"
     },
     {
@@ -774,7 +1080,7 @@
       "source_file": "CACHE.md",
       "source_location": "L77",
       "id": "issus_e_tracker_llm_cache_1_cache_lookup_node_state",
-      "community": 3,
+      "community": 5,
       "norm_label": "1. \u0e40\u0e02\u0e32 `cache_lookup_node(state)`"
     },
     {
@@ -783,7 +1089,7 @@
       "source_file": "CACHE.md",
       "source_location": "L91",
       "id": "issus_e_tracker_llm_cache_2_ticket_state_get_tickets_from_state",
-      "community": 3,
+      "community": 5,
       "norm_label": "2. \u0e14\u0e36\u0e07 ticket \u0e08\u0e32\u0e01 state \u0e14\u0e27\u0e22 `_get_tickets_from_state()`"
     },
     {
@@ -792,7 +1098,7 @@
       "source_file": "CACHE.md",
       "source_location": "L103",
       "id": "issus_e_tracker_llm_cache_3_cache_redis_load_cache_entries",
-      "community": 3,
+      "community": 5,
       "norm_label": "3. \u0e42\u0e2b\u0e25\u0e14 cache \u0e17\u0e31\u0e07\u0e2b\u0e21\u0e14\u0e08\u0e32\u0e01 redis \u0e14\u0e27\u0e22 `load_cache_entries()`"
     },
     {
@@ -801,7 +1107,7 @@
       "source_file": "CACHE.md",
       "source_location": "L131",
       "id": "issus_e_tracker_llm_cache_4_embedding_ticket_get_ticket_embeddings",
-      "community": 3,
+      "community": 5,
       "norm_label": "4. \u0e2a\u0e23\u0e32\u0e07 embedding \u0e02\u0e2d\u0e07 ticket \u0e1b\u0e31\u0e08\u0e08\u0e1a\u0e31\u0e19\u0e14\u0e27\u0e22 `get_ticket_embeddings()`"
     },
     {
@@ -810,7 +1116,7 @@
       "source_file": "CACHE.md",
       "source_location": "L147",
       "id": "issus_e_tracker_llm_cache_get_hybrid_embedding",
-      "community": 3,
+      "community": 5,
       "norm_label": "`get_hybrid_embedding()` \u0e17\u0e4d\u0e32\u0e2d\u0e30\u0e44\u0e23"
     },
     {
@@ -819,7 +1125,7 @@
       "source_file": "CACHE.md",
       "source_location": "L155",
       "id": "issus_e_tracker_llm_cache_codeblock_1",
-      "community": 3,
+      "community": 5,
       "norm_label": "code:json ({)"
     },
     {
@@ -828,7 +1134,7 @@
       "source_file": "CACHE.md",
       "source_location": "L171",
       "id": "issus_e_tracker_llm_cache_5_cache_find_best_cached_prediction",
-      "community": 3,
+      "community": 5,
       "norm_label": "5. \u0e2b\u0e32 cache \u0e17\u0e35\u0e43\u0e01\u0e25\u0e17\u0e35\u0e2a\u0e14\u0e14\u0e27\u0e22 `find_best_cached_prediction()`"
     },
     {
@@ -837,7 +1143,7 @@
       "source_file": "CACHE.md",
       "source_location": "L186",
       "id": "issus_e_tracker_llm_cache_find_best_cached_prediction",
-      "community": 3,
+      "community": 5,
       "norm_label": "\u0e20\u0e32\u0e22\u0e43\u0e19 `find_best_cached_prediction()` \u0e17\u0e4d\u0e32\u0e2d\u0e30\u0e44\u0e23\u0e1a\u0e32\u0e07"
     },
     {
@@ -846,7 +1152,7 @@
       "source_file": "CACHE.md",
       "source_location": "L196",
       "id": "issus_e_tracker_llm_cache_6_embedding_cache_get_dense_vector",
-      "community": 3,
+      "community": 5,
       "norm_label": "6. \u0e01\u0e32\u0e23\u0e2d\u0e32\u0e19 embedding \u0e08\u0e32\u0e01 cache \u0e14\u0e27\u0e22 `_get_dense_vector()`"
     },
     {
@@ -855,7 +1161,7 @@
       "source_file": "CACHE.md",
       "source_location": "L210",
       "id": "issus_e_tracker_llm_cache_7_similarity",
-      "community": 3,
+      "community": 5,
       "norm_label": "7. \u0e01\u0e32\u0e23\u0e04\u0e4d\u0e32\u0e19\u0e27\u0e13 similarity"
     },
     {
@@ -864,7 +1170,7 @@
       "source_file": "CACHE.md",
       "source_location": "L214",
       "id": "issus_e_tracker_llm_cache_cosine_similarity_left_vector_right_vector",
-      "community": 3,
+      "community": 5,
       "norm_label": "`cosine_similarity(left_vector, right_vector)`"
     },
     {
@@ -873,7 +1179,7 @@
       "source_file": "CACHE.md",
       "source_location": "L226",
       "id": "issus_e_tracker_llm_cache_calculate_weighted_similarity",
-      "community": 3,
+      "community": 5,
       "norm_label": "`calculate_weighted_similarity(...)`"
     },
     {
@@ -882,7 +1188,7 @@
       "source_file": "CACHE.md",
       "source_location": "L236",
       "id": "issus_e_tracker_llm_cache_codeblock_2",
-      "community": 3,
+      "community": 5,
       "norm_label": "code:text ((0.4 * title_similarity) + (0.6 * description_similarity))"
     },
     {
@@ -891,7 +1197,7 @@
       "source_file": "CACHE.md",
       "source_location": "L242",
       "id": "issus_e_tracker_llm_cache_8_cache_hit_miss",
-      "community": 3,
+      "community": 5,
       "norm_label": "8. \u0e15\u0e31\u0e14\u0e2a\u0e34\u0e19\u0e27\u0e32\u0e40\u0e1b\u0e47\u0e19 cache hit \u0e2b\u0e23\u0e37\u0e2d miss"
     },
     {
@@ -900,7 +1206,7 @@
       "source_file": "CACHE.md",
       "source_location": "L256",
       "id": "issus_e_tracker_llm_cache_9_hit_node",
-      "community": 3,
+      "community": 5,
       "norm_label": "9. \u0e16\u0e32 hit \u0e17\u0e31\u0e07\u0e2b\u0e21\u0e14 \u0e08\u0e30\u0e08\u0e1a\u0e15\u0e31\u0e07\u0e41\u0e15 node \u0e19\u0e35"
     },
     {
@@ -909,7 +1215,7 @@
       "source_file": "CACHE.md",
       "source_location": "L268",
       "id": "issus_e_tracker_llm_cache_10_miss_llm",
-      "community": 3,
+      "community": 5,
       "norm_label": "10. \u0e16\u0e32\u0e22\u0e31\u0e07\u0e21\u0e35 miss \u0e08\u0e30\u0e44\u0e1b\u0e15\u0e2d\u0e17\u0e35 llm"
     },
     {
@@ -918,7 +1224,7 @@
       "source_file": "CACHE.md",
       "source_location": "L278",
       "id": "issus_e_tracker_llm_cache_cache_278",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e23\u0e1b\u0e41\u0e1a\u0e1a\u0e02\u0e2d\u0e21\u0e25\u0e17\u0e35\u0e40\u0e01\u0e47\u0e1a\u0e43\u0e19 cache"
     },
     {
@@ -927,7 +1233,7 @@
       "source_file": "CACHE.md",
       "source_location": "L284",
       "id": "issus_e_tracker_llm_cache_codeblock_3",
-      "community": 5,
+      "community": 6,
       "norm_label": "code:json ({)"
     },
     {
@@ -936,7 +1242,7 @@
       "source_file": "CACHE.md",
       "source_location": "L306",
       "id": "issus_e_tracker_llm_cache_key_redis",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e27\u0e34\u0e18\u0e35\u0e15\u0e31\u0e07\u0e0a\u0e37\u0e2d key \u0e43\u0e19 redis"
     },
     {
@@ -945,7 +1251,7 @@
       "source_file": "CACHE.md",
       "source_location": "L319",
       "id": "issus_e_tracker_llm_cache_flow_save_cache_redis",
-      "community": 5,
+      "community": 6,
       "norm_label": "flow \u0e15\u0e2d\u0e19 save cache \u0e01\u0e25\u0e31\u0e1a\u0e40\u0e02\u0e32 redis"
     },
     {
@@ -954,7 +1260,7 @@
       "source_file": "CACHE.md",
       "source_location": "L323",
       "id": "issus_e_tracker_llm_cache_1_llm_predict_node",
-      "community": 5,
+      "community": 6,
       "norm_label": "1. \u0e40\u0e02\u0e32 `llm_predict_node()`"
     },
     {
@@ -963,7 +1269,7 @@
       "source_file": "CACHE.md",
       "source_location": "L328",
       "id": "issus_e_tracker_llm_cache_2_save_cache_node",
-      "community": 5,
+      "community": 6,
       "norm_label": "2. \u0e40\u0e02\u0e32 `save_cache_node()`"
     },
     {
@@ -972,7 +1278,7 @@
       "source_file": "CACHE.md",
       "source_location": "L338",
       "id": "issus_e_tracker_llm_cache_3_map_ticket_index",
-      "community": 5,
+      "community": 6,
       "norm_label": "3. map ticket \u0e40\u0e14\u0e34\u0e21\u0e01\u0e31\u0e1a\u0e1c\u0e25\u0e25\u0e31\u0e1e\u0e18\u0e4c\u0e43\u0e2b\u0e21\u0e14\u0e27\u0e22 `index`"
     },
     {
@@ -981,7 +1287,7 @@
       "source_file": "CACHE.md",
       "source_location": "L349",
       "id": "issus_e_tracker_llm_cache_4_save_prediction_cache",
-      "community": 5,
+      "community": 6,
       "norm_label": "4. \u0e40\u0e23\u0e35\u0e22\u0e01 `save_prediction_cache(...)`"
     },
     {
@@ -990,7 +1296,7 @@
       "source_file": "CACHE.md",
       "source_location": "L361",
       "id": "issus_e_tracker_llm_cache_361",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e2a\u0e23\u0e1b\u0e2b\u0e19\u0e32\u0e17\u0e35\u0e02\u0e2d\u0e07\u0e41\u0e15\u0e25\u0e30\u0e1f\u0e31\u0e07\u0e01\u0e4c\u0e0a\u0e31\u0e19"
     },
     {
@@ -999,7 +1305,7 @@
       "source_file": "CACHE.md",
       "source_location": "L405",
       "id": "issus_e_tracker_llm_cache_405",
-      "community": 5,
+      "community": 6,
       "norm_label": "\u0e2a\u0e23\u0e1b\u0e2a\u0e31\u0e19\u0e17\u0e35\u0e2a\u0e14"
     },
     {
@@ -1008,8 +1314,26 @@
       "source_file": "README.md",
       "source_location": "L1",
       "id": "readme_md",
-      "community": 17,
+      "community": 12,
       "norm_label": "readme.md"
+    },
+    {
+      "label": "Ticket Prediction gRPC API",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "issus_e_tracker_llm_readme_ticket_prediction_grpc_api",
+      "community": 12,
+      "norm_label": "ticket prediction grpc api"
+    },
+    {
+      "label": "code:bash (python -m app.grpc.server)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "id": "issus_e_tracker_llm_readme_codeblock_1",
+      "community": 12,
+      "norm_label": "code:bash (python -m app.grpc.server)"
     },
     {
       "label": "WORKFLOW.md",
@@ -1021,200 +1345,380 @@
       "norm_label": "workflow.md"
     },
     {
+      "label": "Ticket Prediction gRPC Workflow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L1",
+      "id": "issus_e_tracker_llm_workflow_ticket_prediction_grpc_workflow",
+      "community": 1,
+      "norm_label": "ticket prediction grpc workflow"
+    },
+    {
+      "label": "Runtime Services",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L5",
+      "id": "issus_e_tracker_llm_workflow_runtime_services",
+      "community": 1,
+      "norm_label": "runtime services"
+    },
+    {
+      "label": "Request Flow",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L11",
+      "id": "issus_e_tracker_llm_workflow_request_flow",
+      "community": 1,
+      "norm_label": "request flow"
+    },
+    {
+      "label": "gRPC Contract",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L21",
+      "id": "issus_e_tracker_llm_workflow_grpc_contract",
+      "community": 1,
+      "norm_label": "grpc contract"
+    },
+    {
+      "label": "code:proto (service TicketPredictionService {)",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L25",
+      "id": "issus_e_tracker_llm_workflow_codeblock_1",
+      "community": 1,
+      "norm_label": "code:proto (service ticketpredictionservice {)"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L34",
+      "id": "issus_e_tracker_llm_workflow_codeblock_2",
+      "community": 1,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L43",
+      "id": "issus_e_tracker_llm_workflow_codeblock_3",
+      "community": 1,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "HMAC",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L49",
+      "id": "issus_e_tracker_llm_workflow_hmac",
+      "community": 1,
+      "norm_label": "hmac"
+    },
+    {
+      "label": "code:python (request.SerializeToString(deterministic=True))",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L53",
+      "id": "issus_e_tracker_llm_workflow_codeblock_4",
+      "community": 1,
+      "norm_label": "code:python (request.serializetostring(deterministic=true))"
+    },
+    {
+      "label": "Internal State Shape",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L59",
+      "id": "issus_e_tracker_llm_workflow_internal_state_shape",
+      "community": 1,
+      "norm_label": "internal state shape"
+    },
+    {
+      "label": "code:python ({)",
+      "file_type": "document",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L63",
+      "id": "issus_e_tracker_llm_workflow_codeblock_5",
+      "community": 1,
+      "norm_label": "code:python ({)"
+    },
+    {
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "app/main.py",
+      "source_location": "L1",
+      "community": 17,
+      "norm_label": "main.py",
+      "id": "app_main_py"
+    },
+    {
+      "label": "router.py",
+      "file_type": "code",
+      "source_file": "app/routes/v1/router.py",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "router.py",
+      "id": "app_routes_v1_router_py"
+    },
+    {
+      "label": "health.py",
+      "file_type": "code",
+      "source_file": "app/routes/v1/endpoints/health.py",
+      "source_location": "L1",
+      "community": 14,
+      "norm_label": "health.py",
+      "id": "app_routes_v1_endpoints_health_py"
+    },
+    {
+      "label": "health()",
+      "file_type": "code",
+      "source_file": "app/routes/v1/endpoints/health.py",
+      "source_location": "L6",
+      "community": 14,
+      "norm_label": "health()",
+      "id": "endpoints_health_health"
+    },
+    {
+      "label": "predict.py",
+      "file_type": "code",
+      "source_file": "app/routes/v1/endpoints/predict.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "predict.py",
+      "id": "app_routes_v1_endpoints_predict_py"
+    },
+    {
+      "label": "predict_ticket()",
+      "file_type": "code",
+      "source_file": "app/routes/v1/endpoints/predict.py",
+      "source_location": "L11",
+      "community": 0,
+      "norm_label": "predict_ticket()",
+      "id": "endpoints_predict_predict_ticket"
+    },
+    {
+      "label": "verify_request_hmac()",
+      "file_type": "code",
+      "source_file": "app/utils/hmac.py",
+      "source_location": "L44",
+      "community": 10,
+      "norm_label": "verify_request_hmac()",
+      "id": "utils_hmac_verify_request_hmac"
+    },
+    {
+      "label": "verify_request_hmac_dependency()",
+      "file_type": "code",
+      "source_file": "app/utils/hmac.py",
+      "source_location": "L64",
+      "community": 10,
+      "norm_label": "verify_request_hmac_dependency()",
+      "id": "utils_hmac_verify_request_hmac_dependency"
+    },
+    {
+      "label": "Ticket Prediction API",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "community": 12,
+      "norm_label": "ticket prediction api",
+      "id": "issus_e_tracker_llm_readme_ticket_prediction_api"
+    },
+    {
+      "label": "REST",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "community": 12,
+      "norm_label": "rest",
+      "id": "issus_e_tracker_llm_readme_rest"
+    },
+    {
+      "label": "gRPC",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "community": 12,
+      "norm_label": "grpc",
+      "id": "issus_e_tracker_llm_readme_grpc"
+    },
+    {
       "label": "This module documents the end-to-end runtime workflow of the project.",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L1",
-      "id": "issus_e_tracker_llm_workflow_this_module_documents_the_end_to_end_runtime_workflow_of_the_project",
       "community": 1,
-      "norm_label": "this module documents the end-to-end runtime workflow of the project."
+      "norm_label": "this module documents the end-to-end runtime workflow of the project.",
+      "id": "issus_e_tracker_llm_workflow_this_module_documents_the_end_to_end_runtime_workflow_of_the_project"
     },
     {
       "label": "WORKFLOW",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L3",
-      "id": "issus_e_tracker_llm_workflow_workflow",
       "community": 1,
-      "norm_label": "workflow"
+      "norm_label": "workflow",
+      "id": "issus_e_tracker_llm_workflow_workflow"
     },
     {
       "label": "Overview",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L5",
-      "id": "issus_e_tracker_llm_workflow_overview",
       "community": 1,
-      "norm_label": "overview"
+      "norm_label": "overview",
+      "id": "issus_e_tracker_llm_workflow_overview"
     },
     {
       "label": "High-Level Flow",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L15",
-      "id": "issus_e_tracker_llm_workflow_high_level_flow",
       "community": 1,
-      "norm_label": "high-level flow"
+      "norm_label": "high-level flow",
+      "id": "issus_e_tracker_llm_workflow_high_level_flow"
     },
     {
       "label": "API Entry Flow",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L28",
-      "id": "issus_e_tracker_llm_workflow_api_entry_flow",
       "community": 1,
-      "norm_label": "api entry flow"
+      "norm_label": "api entry flow",
+      "id": "issus_e_tracker_llm_workflow_api_entry_flow"
     },
     {
       "label": "Request Shape",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L46",
-      "id": "issus_e_tracker_llm_workflow_request_shape",
       "community": 1,
-      "norm_label": "request shape"
-    },
-    {
-      "label": "code:json ({)",
-      "file_type": "document",
-      "source_file": "WORKFLOW.md",
-      "source_location": "L54",
-      "id": "issus_e_tracker_llm_workflow_codeblock_1",
-      "community": 1,
-      "norm_label": "code:json ({)"
+      "norm_label": "request shape",
+      "id": "issus_e_tracker_llm_workflow_request_shape"
     },
     {
       "label": "Grouping and Queueing",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L76",
-      "id": "issus_e_tracker_llm_workflow_grouping_and_queueing",
       "community": 1,
-      "norm_label": "grouping and queueing"
+      "norm_label": "grouping and queueing",
+      "id": "issus_e_tracker_llm_workflow_grouping_and_queueing"
     },
     {
       "label": "Worker Runtime",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L90",
-      "id": "issus_e_tracker_llm_workflow_worker_runtime",
       "community": 1,
-      "norm_label": "worker runtime"
+      "norm_label": "worker runtime",
+      "id": "issus_e_tracker_llm_workflow_worker_runtime"
     },
     {
       "label": "Prediction Graph",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L110",
-      "id": "issus_e_tracker_llm_workflow_prediction_graph",
       "community": 1,
-      "norm_label": "prediction graph"
+      "norm_label": "prediction graph",
+      "id": "issus_e_tracker_llm_workflow_prediction_graph"
     },
     {
       "label": "Cache Lookup Flow",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L140",
-      "id": "issus_e_tracker_llm_workflow_cache_lookup_flow",
       "community": 1,
-      "norm_label": "cache lookup flow"
+      "norm_label": "cache lookup flow",
+      "id": "issus_e_tracker_llm_workflow_cache_lookup_flow"
     },
     {
       "label": "LLM Prediction Flow",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L167",
-      "id": "issus_e_tracker_llm_workflow_llm_prediction_flow",
       "community": 1,
-      "norm_label": "llm prediction flow"
+      "norm_label": "llm prediction flow",
+      "id": "issus_e_tracker_llm_workflow_llm_prediction_flow"
     },
     {
       "label": "Save Cache Flow",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L188",
-      "id": "issus_e_tracker_llm_workflow_save_cache_flow",
       "community": 1,
-      "norm_label": "save cache flow"
+      "norm_label": "save cache flow",
+      "id": "issus_e_tracker_llm_workflow_save_cache_flow"
     },
     {
       "label": "Callback Flow",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L202",
-      "id": "issus_e_tracker_llm_workflow_callback_flow",
       "community": 1,
-      "norm_label": "callback flow"
+      "norm_label": "callback flow",
+      "id": "issus_e_tracker_llm_workflow_callback_flow"
     },
     {
       "label": "Redis Responsibilities",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L227",
-      "id": "issus_e_tracker_llm_workflow_redis_responsibilities",
       "community": 1,
-      "norm_label": "redis responsibilities"
+      "norm_label": "redis responsibilities",
+      "id": "issus_e_tracker_llm_workflow_redis_responsibilities"
     },
     {
       "label": "Configuration",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L236",
-      "id": "issus_e_tracker_llm_workflow_configuration",
       "community": 1,
-      "norm_label": "configuration"
+      "norm_label": "configuration",
+      "id": "issus_e_tracker_llm_workflow_configuration"
     },
     {
       "label": "Deployment Topology",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L255",
-      "id": "issus_e_tracker_llm_workflow_deployment_topology",
       "community": 1,
-      "norm_label": "deployment topology"
+      "norm_label": "deployment topology",
+      "id": "issus_e_tracker_llm_workflow_deployment_topology"
     },
     {
       "label": "Failure Handling",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L275",
-      "id": "issus_e_tracker_llm_workflow_failure_handling",
       "community": 1,
-      "norm_label": "failure handling"
+      "norm_label": "failure handling",
+      "id": "issus_e_tracker_llm_workflow_failure_handling"
     },
     {
       "label": "End-to-End Sequence",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L286",
-      "id": "issus_e_tracker_llm_workflow_end_to_end_sequence",
       "community": 1,
-      "norm_label": "end-to-end sequence"
-    },
-    {
-      "label": "code:text (Backend)",
-      "file_type": "document",
-      "source_file": "WORKFLOW.md",
-      "source_location": "L288",
-      "id": "issus_e_tracker_llm_workflow_codeblock_2",
-      "community": 1,
-      "norm_label": "code:text (backend)"
+      "norm_label": "end-to-end sequence",
+      "id": "issus_e_tracker_llm_workflow_end_to_end_sequence"
     },
     {
       "label": "File Map",
       "file_type": "document",
       "source_file": "WORKFLOW.md",
       "source_location": "L308",
-      "id": "issus_e_tracker_llm_workflow_file_map",
       "community": 1,
-      "norm_label": "file map"
+      "norm_label": "file map",
+      "id": "issus_e_tracker_llm_workflow_file_map"
     },
     {
       "label": "main.py",
       "file_type": "code",
       "source_file": "main.py",
       "source_location": "L1",
-      "community": 18,
+      "community": 19,
       "norm_label": "main.py",
       "id": "main_py"
     },
@@ -1223,7 +1727,7 @@
       "file_type": "code",
       "source_file": "worker.py",
       "source_location": "L1",
-      "community": 10,
+      "community": 3,
       "norm_label": "worker.py",
       "id": "worker_py"
     },
@@ -1232,7 +1736,7 @@
       "file_type": "code",
       "source_file": "core/config.py",
       "source_location": "L1",
-      "community": 11,
+      "community": 13,
       "norm_label": "config.py",
       "id": "core_config_py"
     },
@@ -1241,7 +1745,7 @@
       "file_type": "code",
       "source_file": "routes/v1/router.py",
       "source_location": "L1",
-      "community": 19,
+      "community": 20,
       "norm_label": "router.py",
       "id": "routes_v1_router_py"
     },
@@ -1250,7 +1754,7 @@
       "file_type": "code",
       "source_file": "routes/v1/endpoints/health.py",
       "source_location": "L1",
-      "community": 12,
+      "community": 14,
       "norm_label": "health.py",
       "id": "routes_v1_endpoints_health_py"
     },
@@ -1259,7 +1763,7 @@
       "file_type": "code",
       "source_file": "routes/v1/endpoints/predict.py",
       "source_location": "L1",
-      "community": 13,
+      "community": 0,
       "norm_label": "predict.py",
       "id": "routes_v1_endpoints_predict_py"
     },
@@ -1268,7 +1772,7 @@
       "file_type": "code",
       "source_file": "schemas/predict_ticket_schema.py",
       "source_location": "L1",
-      "community": 2,
+      "community": 0,
       "norm_label": "predict_ticket_schema.py",
       "id": "schemas_predict_ticket_schema_py"
     },
@@ -1277,7 +1781,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/agent.py",
       "source_location": "L1",
-      "community": 20,
+      "community": 21,
       "norm_label": "agent.py",
       "id": "services_predict_agent_agent_py"
     },
@@ -1286,7 +1790,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/cache.py",
       "source_location": "L1",
-      "community": 7,
+      "community": 8,
       "norm_label": "cache.py",
       "id": "services_predict_agent_utils_cache_py"
     },
@@ -1295,7 +1799,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/cache.py",
       "source_location": "L24",
-      "community": 7,
+      "community": 8,
       "norm_label": "_build_redis_url()",
       "id": "utils_cache_build_redis_url"
     },
@@ -1304,7 +1808,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/node.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 3,
       "norm_label": "node.py",
       "id": "services_predict_agent_utils_node_py"
     },
@@ -1313,7 +1817,7 @@
       "file_type": "code",
       "source_file": "services/predict_agent/utils/state.py",
       "source_location": "L1",
-      "community": 2,
+      "community": 9,
       "norm_label": "state.py",
       "id": "services_predict_agent_utils_state_py"
     },
@@ -1322,7 +1826,7 @@
       "file_type": "code",
       "source_file": "utils/hmac.py",
       "source_location": "L1",
-      "community": 8,
+      "community": 10,
       "norm_label": "hmac.py",
       "id": "utils_hmac_py"
     },
@@ -1336,7 +1840,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Reuse prior ticket predictions when title and description embeddings are sufficiently similar, reducing unnecessary LLM calls; description similarity is weighted more heavily than title similarity.",
-      "community": 0,
+      "community": 2,
       "norm_label": "semantic cache",
       "id": "cache_semantic_cache"
     },
@@ -1350,7 +1854,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The cache compares dense embeddings for both title and description, while preserving sparse payloads for compatibility with the embedding service response.",
-      "community": 0,
+      "community": 2,
       "norm_label": "hybrid embedding api",
       "id": "cache_hybrid_embedding_api"
     },
@@ -1363,7 +1867,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "redis service",
       "id": "docker_compose_redis_service"
     },
@@ -1376,7 +1880,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "app service",
       "id": "docker_compose_app_service"
     },
@@ -1389,7 +1893,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "worker service",
       "id": "docker_compose_worker_service"
     },
@@ -1402,7 +1906,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "fastapi application",
       "id": "main_fastapi_app"
     },
@@ -1415,7 +1919,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "api router",
       "id": "router_api_router"
     },
@@ -1428,7 +1932,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "health endpoint",
       "id": "health_health_endpoint"
     },
@@ -1441,7 +1945,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "predict ticket endpoint",
       "id": "predict_predict_ticket_endpoint"
     },
@@ -1454,7 +1958,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "ticket prediction celery task",
       "id": "worker_ticket_prediction_task"
     },
@@ -1467,7 +1971,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 21,
+      "community": 22,
       "norm_label": "application settings",
       "id": "config_settings"
     },
@@ -1480,7 +1984,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "predict request",
       "id": "schema_predict_request"
     },
@@ -1493,7 +1997,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "predict response",
       "id": "schema_predict_response"
     },
@@ -1506,7 +2010,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 23,
       "norm_label": "priority enum",
       "id": "schema_priority_enum"
     },
@@ -1519,7 +2023,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "ticket state",
       "id": "state_ticket_state"
     },
@@ -1532,7 +2036,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "pending ticket item",
       "id": "state_pending_ticket_item"
     },
@@ -1545,7 +2049,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "indexed ticket predict result",
       "id": "state_indexed_ticket_predict_result"
     },
@@ -1558,7 +2062,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "ticket predict result",
       "id": "state_ticket_predict_result"
     },
@@ -1571,7 +2075,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "hybrid embedding data",
       "id": "state_hybrid_embedding_data"
     },
@@ -1584,7 +2088,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "prediction graph",
       "id": "agent_prediction_graph"
     },
@@ -1597,7 +2101,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "cache lookup node",
       "id": "node_cache_lookup_node"
     },
@@ -1610,7 +2114,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "route after cache lookup",
       "id": "node_route_after_cache_lookup"
     },
@@ -1623,7 +2127,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "llm predict node",
       "id": "node_llm_predict_node"
     },
@@ -1636,7 +2140,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "save cache node",
       "id": "node_save_cache_node"
     },
@@ -1649,7 +2153,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "callback node",
       "id": "node_callback_node"
     },
@@ -1662,7 +2166,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "get department",
       "id": "node_get_department"
     },
@@ -1675,7 +2179,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "extract department mapping",
       "id": "node_extract_department_mapping"
     },
@@ -1688,7 +2192,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "get tickets from state",
       "id": "node_get_tickets_from_state"
     },
@@ -1701,7 +2205,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "merge indexed results",
       "id": "node_merge_indexed_results"
     },
@@ -1714,7 +2218,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "build predict messages",
       "id": "node_build_predict_messages"
     },
@@ -1727,7 +2231,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "build redis url",
       "id": "cache_build_redis_url"
     },
@@ -1740,7 +2244,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "get redis client",
       "id": "cache_get_redis_client"
     },
@@ -1753,7 +2257,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "get hybrid embedding",
       "id": "cache_get_hybrid_embedding"
     },
@@ -1766,7 +2270,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "get ticket embeddings",
       "id": "cache_get_ticket_embeddings"
     },
@@ -1779,7 +2283,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "load cache entries",
       "id": "cache_load_cache_entries"
     },
@@ -1792,7 +2296,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "find best cached prediction",
       "id": "cache_find_best_cached_prediction"
     },
@@ -1805,7 +2309,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "calculate weighted similarity",
       "id": "cache_calculate_weighted_similarity"
     },
@@ -1818,7 +2322,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "cosine similarity",
       "id": "cache_cosine_similarity"
     },
@@ -1831,7 +2335,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "get dense vector",
       "id": "cache_get_dense_vector"
     },
@@ -1844,7 +2348,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "save prediction cache",
       "id": "cache_save_prediction_cache"
     },
@@ -1857,7 +2361,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "build ticket cache key",
       "id": "cache_build_ticket_cache_key"
     },
@@ -1870,7 +2374,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 2,
       "norm_label": "generate hmac",
       "id": "hmac_generate_hmac"
     },
@@ -1883,7 +2387,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "verify request hmac dependency",
       "id": "hmac_verify_request_hmac_dependency"
     },
@@ -1896,7 +2400,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "verify request hmac",
       "id": "hmac_verify_request_hmac"
     },
@@ -1909,7 +2413,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "verify hmac",
       "id": "hmac_verify_hmac"
     },
@@ -1922,7 +2426,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "normalize hmac signature",
       "id": "hmac_normalize_hmac_signature"
     }
@@ -2077,64 +2581,425 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "app/routes/v1/endpoints/health.py",
-      "source_location": "L6",
+      "source_file": "app/grpc/server.py",
+      "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "app_routes_v1_endpoints_health_py",
-      "target": "endpoints_health_health"
+      "source": "app_grpc_server_py",
+      "target": "grpc_server_create_server"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "routes/v1/endpoints/health.py",
-      "source_location": "L6",
+      "source_file": "app/grpc/server.py",
+      "source_location": "L25",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "routes_v1_endpoints_health_py",
-      "target": "endpoints_health_health"
+      "source": "app_grpc_server_py",
+      "target": "grpc_server_serve"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/server.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "grpc_server_serve",
+      "target": "grpc_server_create_server"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/grpc/server.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "grpc_server_create_server",
+      "target": "interceptors_hmac_auth_interceptor_hmacauthinterceptor"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/grpc/server.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "grpc_server_create_server",
+      "target": "services_ticket_prediction_service_ticketpredictionservicer"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "tests_test_grpc_migration_grpcmigrationtests_test_grpc_health_does_not_require_hmac",
+      "target": "grpc_server_create_server"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "tests_test_grpc_migration_test_grpc_predict_requires_valid_hmac",
+      "target": "grpc_server_create_server"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "app/routes/v1/endpoints/predict.py",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_generated_ticket_prediction_pb2_grpc_py",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_generated_ticket_prediction_pb2_grpc_py",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_generated_ticket_prediction_pb2_grpc_py",
+      "target": "generated_ticket_prediction_pb2_grpc_add_ticketpredictionserviceservicer_to_server"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_generated_ticket_prediction_pb2_grpc_py",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionservice"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_generated_ticket_prediction_pb2_grpc_py",
+      "target": "generated_ticket_prediction_pb2_grpc_predict"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_generated_ticket_prediction_pb2_grpc_py",
+      "target": "generated_ticket_prediction_pb2_grpc_health"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub",
+      "target": "object"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub_init"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_rationale_29",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer",
+      "target": "object"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_ticketpredictionservice",
+      "target": "object"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_rationale_32",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionservicestub_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer_predict"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer_health"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_rationale_50",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_rationale_53",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer_predict"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_rationale_59",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionserviceservicer_health"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/generated/ticket_prediction_pb2_grpc.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "generated_ticket_prediction_pb2_grpc_rationale_86",
+      "target": "generated_ticket_prediction_pb2_grpc_ticketpredictionservice"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/interceptors/hmac_auth_interceptor.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_interceptors_hmac_auth_interceptor_py",
+      "target": "interceptors_hmac_auth_interceptor_hmacauthinterceptor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/interceptors/hmac_auth_interceptor.py",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "app_routes_v1_endpoints_predict_py",
-      "target": "endpoints_predict_predict_ticket"
+      "source": "interceptors_hmac_auth_interceptor_hmacauthinterceptor",
+      "target": "interceptors_hmac_auth_interceptor_hmacauthinterceptor_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/interceptors/hmac_auth_interceptor.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "interceptors_hmac_auth_interceptor_hmacauthinterceptor",
+      "target": "interceptors_hmac_auth_interceptor_hmacauthinterceptor_intercept_service"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_mappers_ticket_prediction_mapper_py",
+      "target": "mappers_ticket_prediction_mapper_proto_to_predict_request"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_mappers_ticket_prediction_mapper_py",
+      "target": "mappers_ticket_prediction_mapper_predict_response_to_proto"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "routes/v1/endpoints/predict.py",
-      "source_location": "L54",
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L8",
       "weight": 1.0,
-      "source": "endpoints_predict_predict_ticket",
-      "target": "schemas_predict_ticket_schema_predictresponse"
+      "source": "mappers_ticket_prediction_mapper_proto_to_predict_request",
+      "target": "schemas_predict_ticket_schema_predictrequest"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
-      "source_file": "routes/v1/endpoints/predict.py",
-      "source_location": "L61",
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L10",
       "weight": 1.0,
-      "source": "endpoints_predict_predict_ticket",
+      "source": "mappers_ticket_prediction_mapper_proto_to_predict_request",
+      "target": "schemas_predict_ticket_schema_companydata"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/grpc/mappers/ticket_prediction_mapper.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "mappers_ticket_prediction_mapper_proto_to_predict_request",
+      "target": "schemas_predict_ticket_schema_formitem"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "services_ticket_prediction_service_ticketpredictionservicer_predict",
+      "target": "mappers_ticket_prediction_mapper_proto_to_predict_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "tests_test_grpc_migration_grpcmigrationtests_test_proto_to_predict_request_maps_existing_dto_shape",
+      "target": "mappers_ticket_prediction_mapper_proto_to_predict_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "services_ticket_prediction_service_ticketpredictionservicer_predict",
+      "target": "mappers_ticket_prediction_mapper_predict_response_to_proto"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_grpc_services_ticket_prediction_service_py",
+      "target": "services_ticket_prediction_service_ticketpredictionservicer"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_ticket_prediction_service_ticketpredictionservicer",
+      "target": "services_ticket_prediction_service_ticketpredictionservicer_predict"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_ticket_prediction_service_ticketpredictionservicer",
+      "target": "services_ticket_prediction_service_ticketpredictionservicer_health"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "services_ticket_prediction_service_ticketpredictionservicer_predict",
+      "target": "services_ticket_prediction_queue_queue_prediction_jobs"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/grpc/services/ticket_prediction_service.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "services_ticket_prediction_service_ticketpredictionservicer_predict",
       "target": "str"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "routes/v1/endpoints/predict.py",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "routes_v1_endpoints_predict_py",
-      "target": "endpoints_predict_predict_ticket"
     },
     {
       "relation": "imports_from",
@@ -2385,6 +3250,17 @@
       "target": "str"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "routes/v1/endpoints/predict.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "endpoints_predict_predict_ticket",
+      "target": "str"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -2404,6 +3280,27 @@
       "confidence_score": 1.0,
       "source": "schemas_predict_ticket_schema_formitem",
       "target": "basemodel"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L21",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "tests_test_grpc_migration_grpcmigrationtests",
+      "target": "schemas_predict_ticket_schema_formitem"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "tests_test_grpc_migration_test_queue_prediction_jobs_groups_by_company_and_form",
+      "target": "schemas_predict_ticket_schema_formitem"
     },
     {
       "relation": "contains",
@@ -2516,6 +3413,27 @@
       "target": "basemodel"
     },
     {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L21",
+      "weight": 0.8,
+      "confidence_score": 0.5,
+      "source": "tests_test_grpc_migration_grpcmigrationtests",
+      "target": "schemas_predict_ticket_schema_companydata"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "tests_test_grpc_migration_test_queue_prediction_jobs_groups_by_company_and_form",
+      "target": "schemas_predict_ticket_schema_companydata"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "schemas/predict_ticket_schema.py",
@@ -2536,6 +3454,28 @@
       "target": "schemas_predict_ticket_schema_predictrequest"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/services/ticket_prediction_queue.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "services_ticket_prediction_queue_queue_prediction_jobs",
+      "target": "schemas_predict_ticket_schema_predictresponse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "routes/v1/endpoints/predict.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "endpoints_predict_predict_ticket",
+      "target": "schemas_predict_ticket_schema_predictresponse"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "schemas/predict_ticket_schema.py",
@@ -2544,6 +3484,59 @@
       "confidence_score": 1.0,
       "source": "schemas_predict_ticket_schema_py",
       "target": "schemas_predict_ticket_schema_predictresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/ticket_prediction_queue.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_services_ticket_prediction_queue_py",
+      "target": "services_ticket_prediction_queue_build_thread_id"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/ticket_prediction_queue.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_services_ticket_prediction_queue_py",
+      "target": "services_ticket_prediction_queue_queue_prediction_jobs"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/ticket_prediction_queue.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_ticket_prediction_queue_queue_prediction_jobs",
+      "target": "services_ticket_prediction_queue_build_thread_id"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "tests_test_grpc_migration_test_queue_prediction_jobs_groups_by_company_and_form",
+      "target": "services_ticket_prediction_queue_queue_prediction_jobs"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/routes/v1/endpoints/predict.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "endpoints_predict_predict_ticket",
+      "target": "services_ticket_prediction_queue_queue_prediction_jobs"
     },
     {
       "relation": "contains",
@@ -3634,6 +4627,17 @@
       "target": "utils_hmac_generate_hmac"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "tests_test_grpc_migration_test_grpc_predict_requires_valid_hmac",
+      "target": "utils_hmac_generate_hmac"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "utils/hmac.py",
@@ -3686,35 +4690,86 @@
       "target": "utils_hmac_verify_hmac"
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "utils/hmac.py",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_grpc_migration_py",
+      "target": "tests_test_grpc_migration_build_proto_request"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_grpc_migration_py",
+      "target": "tests_test_grpc_migration_grpcmigrationtests"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_grpc_migration.py",
       "source_location": "L66",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "utils_hmac_verify_request_hmac_dependency",
-      "target": "utils_hmac_verify_request_hmac"
+      "source": "tests_test_grpc_migration_py",
+      "target": "tests_test_grpc_migration_test_queue_prediction_jobs_groups_by_company_and_form"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "utils/hmac.py",
-      "source_location": "L44",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L105",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "utils_hmac_py",
-      "target": "utils_hmac_verify_request_hmac"
+      "source": "tests_test_grpc_migration_py",
+      "target": "tests_test_grpc_migration_test_grpc_predict_requires_valid_hmac"
     },
     {
-      "relation": "contains",
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "utils/hmac.py",
-      "source_location": "L64",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L59",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "utils_hmac_py",
-      "target": "utils_hmac_verify_request_hmac_dependency"
+      "source": "tests_test_grpc_migration_grpcmigrationtests_test_proto_to_predict_request_maps_existing_dto_shape",
+      "target": "tests_test_grpc_migration_build_proto_request"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_grpc_migration_test_grpc_predict_requires_valid_hmac",
+      "target": "tests_test_grpc_migration_build_proto_request"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_grpc_migration_grpcmigrationtests",
+      "target": "tests_test_grpc_migration_grpcmigrationtests_test_proto_to_predict_request_maps_existing_dto_shape"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_grpc_migration.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_grpc_migration_grpcmigrationtests",
+      "target": "tests_test_grpc_migration_grpcmigrationtests_test_grpc_health_does_not_require_hmac"
     },
     {
       "relation": "contains",
@@ -4099,6 +5154,56 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "issus_e_tracker_llm_readme_ticket_prediction_grpc_api",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_md",
+      "target": "issus_e_tracker_llm_readme_ticket_prediction_api"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_readme_ticket_prediction_grpc_api",
+      "target": "issus_e_tracker_llm_readme_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_readme_grpc",
+      "target": "issus_e_tracker_llm_readme_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "workflow_md",
+      "target": "issus_e_tracker_llm_workflow_ticket_prediction_grpc_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "WORKFLOW.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -4115,6 +5220,217 @@
       "confidence_score": 1.0,
       "source": "workflow_md",
       "target": "issus_e_tracker_llm_workflow_workflow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_ticket_prediction_grpc_workflow",
+      "target": "issus_e_tracker_llm_workflow_runtime_services",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_ticket_prediction_grpc_workflow",
+      "target": "issus_e_tracker_llm_workflow_request_flow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_ticket_prediction_grpc_workflow",
+      "target": "issus_e_tracker_llm_workflow_grpc_contract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_ticket_prediction_grpc_workflow",
+      "target": "issus_e_tracker_llm_workflow_hmac",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_ticket_prediction_grpc_workflow",
+      "target": "issus_e_tracker_llm_workflow_internal_state_shape",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_grpc_contract",
+      "target": "issus_e_tracker_llm_workflow_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_grpc_contract",
+      "target": "issus_e_tracker_llm_workflow_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_grpc_contract",
+      "target": "issus_e_tracker_llm_workflow_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_request_shape",
+      "target": "issus_e_tracker_llm_workflow_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L286",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_workflow_end_to_end_sequence",
+      "target": "issus_e_tracker_llm_workflow_codeblock_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_hmac",
+      "target": "issus_e_tracker_llm_workflow_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "WORKFLOW.md",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "issus_e_tracker_llm_workflow_internal_state_shape",
+      "target": "issus_e_tracker_llm_workflow_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/routes/v1/endpoints/health.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_routes_v1_endpoints_health_py",
+      "target": "endpoints_health_health"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "routes/v1/endpoints/health.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_v1_endpoints_health_py",
+      "target": "endpoints_health_health"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/routes/v1/endpoints/predict.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_routes_v1_endpoints_predict_py",
+      "target": "endpoints_predict_predict_ticket"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "routes/v1/endpoints/predict.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routes_v1_endpoints_predict_py",
+      "target": "endpoints_predict_predict_ticket"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/hmac.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_hmac_verify_request_hmac_dependency",
+      "target": "utils_hmac_verify_request_hmac"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/hmac.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_hmac_py",
+      "target": "utils_hmac_verify_request_hmac"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/hmac.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_hmac_py",
+      "target": "utils_hmac_verify_request_hmac_dependency"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_readme_ticket_prediction_api",
+      "target": "issus_e_tracker_llm_readme_rest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "issus_e_tracker_llm_readme_ticket_prediction_api",
+      "target": "issus_e_tracker_llm_readme_grpc"
     },
     {
       "relation": "contains",
@@ -4285,26 +5601,6 @@
       "confidence_score": 1.0,
       "source": "issus_e_tracker_llm_workflow_workflow",
       "target": "issus_e_tracker_llm_workflow_file_map"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "WORKFLOW.md",
-      "source_location": "L54",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "issus_e_tracker_llm_workflow_request_shape",
-      "target": "issus_e_tracker_llm_workflow_codeblock_1"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "WORKFLOW.md",
-      "source_location": "L286",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "issus_e_tracker_llm_workflow_end_to_end_sequence",
-      "target": "issus_e_tracker_llm_workflow_codeblock_2"
     },
     {
       "relation": "contains",
@@ -5061,5 +6357,5 @@
       "source_file": "app/services/predict_agent/utils/state.py"
     }
   ],
-  "built_at_commit": "887f13407583a07506cc10bc09d6863ed2264107"
+  "built_at_commit": "103de6de09b4603d15dcb50121b406e452c306a2"
 }
