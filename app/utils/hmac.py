@@ -17,7 +17,7 @@ def _normalize_hmac_body(body: Union[str, bytes]) -> bytes:
 def generate_hmac(body: Union[str, bytes], secret: str) -> str:
     # Generate a SHA-256 HMAC hex digest for the raw request body.
     normalized_body = _normalize_hmac_body(body)
-    mac = hmac.new(secret.encode(), normalized_body, hashlib.sha256)
+    mac = hmac.new(secret.encode(encoding="utf-8"), normalized_body, hashlib.sha256)
     return mac.hexdigest()
 
 
